@@ -21,6 +21,12 @@
   var CHAVE_FAVORITAS = 'skills-lib-favoritas';
   var CHAVE_TEMA = 'skills-lib-tema';
 
+  // localStorage pode lançar exceção em iframes sandbox — degrada sem quebrar
+  var armazenamento = {
+    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { /* indisponível */ } }
+  };
+
   /* ---------- utilidades ---------- */
 
   function $(sel) { return document.querySelector(sel); }
@@ -114,13 +120,13 @@
     }
     var novo = atual === 'dark' ? 'light' : 'dark';
     raiz.dataset.theme = novo;
-    localStorage.setItem(CHAVE_TEMA, novo);
+    armazenamento.set(CHAVE_TEMA, novo);
   });
 
   /* ---------- favoritas ---------- */
 
   function lerFavoritas() {
-    try { return new Set(JSON.parse(localStorage.getItem(CHAVE_FAVORITAS) || '[]')); }
+    try { return new Set(JSON.parse(armazenamento.get(CHAVE_FAVORITAS) || '[]')); }
     catch (e) { return new Set(); }
   }
 
@@ -128,7 +134,7 @@
 
   function alternarFavorita(id) {
     if (favoritas.has(id)) favoritas.delete(id); else favoritas.add(id);
-    localStorage.setItem(CHAVE_FAVORITAS, JSON.stringify(Array.from(favoritas)));
+    armazenamento.set(CHAVE_FAVORITAS, JSON.stringify(Array.from(favoritas)));
   }
 
   /* ---------- render de cards ---------- */

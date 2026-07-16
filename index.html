@@ -10,8 +10,10 @@
   <script>
     // Aplica o tema salvo antes do primeiro paint para evitar flash
     (function () {
-      var t = localStorage.getItem('skills-lib-tema');
-      if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+      try {
+        var t = localStorage.getItem('skills-lib-tema');
+        if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+      } catch (e) { /* armazenamento indisponível (ex.: iframe sandbox) */ }
     })();
   </script>
 </head>
