@@ -169,3 +169,17 @@ GitHub. A data da coleta fica em `coletadoEm` no JSON e aparece na página e no
 rodapé. As descrições editoriais (para que serve, quando usar, benefícios,
 economia de tokens etc.) foram escritas a partir da documentação oficial de cada
 repositório.
+
+## Publicando no GitHub Pages
+
+A página é estática e fica na raiz do repositório, então não precisa de build
+nem de CI. Em **Settings → Pages**, escolha:
+
+- **Source:** Deploy from a branch
+- **Branch:** `main` · pasta `/ (root)`
+
+Em cerca de um minuto o site fica no ar em
+`https://<usuário>.github.io/CLAUDEnho/`. Cada push na `main` republica.
+
+O arquivo `.nojekyll` na raiz desliga o processamento do Jekyll, que não é
+necessário aqui e poderia ignorar arquivos por engano.
