@@ -1246,3 +1246,133 @@ button { font-family: inherit; }
   .marca-texto em { display: none; }
   .nav-topo a { padding: 6px 8px; font-size: 0.76rem; }
 }
+
+/* ============================================================
+   Guia: seções "O que é uma Skill" e "Veja a diferença"
+   ============================================================ */
+
+.guia-analogia {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.analogia-frase {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px 18px;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-left: 3px solid var(--acento);
+  border-radius: 0 var(--raio) var(--raio) 0;
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.guia-secao-alt .analogia-frase { background: var(--fundo); }
+
+.analogia-emoji { font-size: 1.5rem; line-height: 1.2; flex: none; }
+
+.guia-mitos {
+  display: grid;
+  gap: 10px;
+}
+
+.guia-mitos p {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.92rem;
+  color: var(--tinta-2);
+}
+
+.guia-mitos strong { color: var(--tinta); }
+
+.mito-check {
+  flex: none;
+  font-weight: 700;
+  color: var(--acento);
+}
+
+/* comparações antes / depois */
+.guia-comparacoes {
+  display: grid;
+  gap: 18px;
+}
+
+.comparacao {
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-g);
+  padding: 18px 20px;
+}
+
+.comparacao-cenario {
+  font-size: 0.98rem;
+  margin-bottom: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.comparacao-cenario em { color: var(--tinta); font-style: italic; }
+.cenario-emoji { font-size: 1.2rem; flex: none; }
+
+.comparacao-lados {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.lado {
+  padding: 14px 16px;
+  border-radius: var(--raio);
+  border: 1px solid var(--borda);
+}
+
+.lado p { font-size: 0.88rem; color: var(--tinta-2); }
+.lado code { font-size: 0.8em; }
+
+.lado-sem {
+  background: var(--superficie-2);
+}
+
+.lado-com {
+  background: var(--acento-suave);
+  border-color: var(--acento);
+}
+
+.lado-rotulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.lado-sem .lado-rotulo { color: var(--tinta-3); }
+.lado-sem .lado-rotulo::before { content: "✗"; font-size: 0.9rem; }
+
+.lado-com .lado-rotulo { color: var(--acento); }
+.lado-com .lado-rotulo::before { content: "✓"; font-size: 0.9rem; }
+
+.comparacao-nota {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--acento);
+  background: var(--fundo);
+  border-radius: 0 var(--raio) var(--raio) 0;
+  font-size: 0.92rem;
+  color: var(--tinta-2);
+}
+
+.comparacao-nota strong { color: var(--tinta); }
+
+@media (max-width: 560px) {
+  .comparacao-lados { grid-template-columns: 1fr; }
+}
