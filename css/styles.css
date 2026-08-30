@@ -1194,7 +1194,7 @@ button { font-family: inherit; }
   border-radius: 50%;
 }
 
-.guia-passos strong { display: block; font-size: 1rem; margin-bottom: 4px; }
+.guia-passos > li > strong { display: block; font-size: 1rem; margin-bottom: 4px; }
 .guia-passos p { color: var(--tinta-2); font-size: 0.9rem; }
 .guia-passos code { font-size: 0.82em; }
 
@@ -1376,3 +1376,77 @@ button { font-family: inherit; }
 @media (max-width: 560px) {
   .comparacao-lados { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   Guia: seção "Como usar uma skill" (blocos por superfície)
+   ============================================================ */
+
+.uso-bloco {
+  padding: 22px;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-g);
+  margin-bottom: 16px;
+}
+
+.guia-secao-alt .uso-bloco { background: var(--fundo); }
+
+.uso-cab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.uso-emoji {
+  font-size: 1.7rem;
+  flex: none;
+  line-height: 1;
+}
+
+.uso-cab h3 { font-size: 1.12rem; line-height: 1.25; }
+
+.uso-para {
+  font-size: 0.84rem;
+  color: var(--tinta-2);
+  margin-top: 2px;
+}
+
+/* a lista .guia-passos já traz a numeração; aqui só o espaçamento do bloco */
+.uso-bloco .guia-passos { gap: 14px; }
+
+.uso-exemplo {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: var(--acento-suave);
+  border-radius: var(--raio);
+  font-size: 0.9rem;
+  color: var(--tinta);
+}
+
+.uso-exemplo em { font-style: italic; color: var(--tinta); }
+.uso-exemplo code { font-size: 0.82em; }
+
+.uso-exemplo-rot {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--acento);
+  margin-right: 8px;
+}
+
+.uso-nota {
+  margin-top: 4px;
+  padding: 14px 16px;
+  border: 1px dashed var(--borda-forte);
+  border-radius: var(--raio);
+  font-size: 0.92rem;
+  color: var(--tinta-2);
+}
+
+.uso-nota strong { color: var(--tinta); }

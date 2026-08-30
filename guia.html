@@ -227,25 +227,114 @@
 
     <section class="guia-secao">
       <div class="container guia-largura">
-        <h2>Instale sua primeira skill em 3 passos</h2>
-        <p class="guia-intro">Usando o Claude Code como exemplo, porque é onde a maioria das skills do catálogo roda.</p>
-        <ol class="guia-passos">
-          <li>
-            <strong>Escolha uma skill no catálogo</strong>
-            <p>Abra o <a href="index.html">catálogo</a>, use a busca ou os filtros, e clique em
-            "Detalhes" na que resolver o seu problema.</p>
-          </li>
-          <li>
-            <strong>Siga a instalação e copie o prompt inicial</strong>
-            <p>Cada skill tem seus próprios passos de instalação (geralmente um comando de terminal) e
-            um prompt pronto — use os botões "Copiar instalação" e "Copiar prompt" no modal de detalhes.</p>
-          </li>
-          <li>
-            <strong>Cole o prompt no Claude Code e descreva sua tarefa real</strong>
-            <p>O prompt copiado já inclui instruções para o Claude analisar o contexto do seu projeto
-            antes de agir — é só completar com o que você precisa fazer.</p>
-          </li>
-        </ol>
+        <h2>Como usar uma skill: passo a passo</h2>
+        <p class="guia-intro">
+          Escolha abaixo a forma como você usa o Claude. Em todas, a lógica é a mesma:
+          <strong>ligar a skill uma vez</strong> e depois <strong>pedir com as suas palavras</strong>.
+        </p>
+
+        <div class="uso-bloco">
+          <div class="uso-cab">
+            <span class="uso-emoji" aria-hidden="true">🌐</span>
+            <div>
+              <h3>No navegador (claude.ai) ou no app do celular</h3>
+              <p class="uso-para">O jeito mais simples — não instala nada no computador</p>
+            </div>
+          </div>
+          <ol class="guia-passos">
+            <li>
+              <strong>Entre no Claude e faça login</strong>
+              <p>Acesse <strong>claude.ai</strong> pelo navegador ou abra o aplicativo do Claude no
+              celular e entre com a sua conta.</p>
+            </li>
+            <li>
+              <strong>Ligue as skills nas configurações</strong>
+              <p>Abra as <strong>Configurações</strong> e procure por <strong>"Skills"</strong> (ou
+              "Capacidades"). Ative as que quiser usar — as de criar documentos (Word, Excel,
+              PowerPoint, PDF) costumam já vir prontas.</p>
+            </li>
+            <li>
+              <strong>Peça na conversa, com as suas palavras</strong>
+              <p>Numa conversa comum, escreva o que você precisa. O Claude reconhece sozinho quando
+              usar a skill — você não precisa digitar nenhum comando especial.</p>
+            </li>
+          </ol>
+          <p class="uso-exemplo">
+            <span class="uso-exemplo-rot" aria-hidden="true">Exemplo</span>
+            Digite: <em>"crie uma planilha de Excel com o meu orçamento do mês, com colunas de
+            categoria, valor e total"</em> — e o Claude devolve o arquivo pronto para baixar.
+          </p>
+        </div>
+
+        <div class="uso-bloco">
+          <div class="uso-cab">
+            <span class="uso-emoji" aria-hidden="true">🖥️</span>
+            <div>
+              <h3>No Claude Desktop (computador)</h3>
+              <p class="uso-para">Para quem instalou o aplicativo no Windows ou no Mac</p>
+            </div>
+          </div>
+          <ol class="guia-passos">
+            <li>
+              <strong>Instale e abra o Claude Desktop</strong>
+              <p>Baixe o aplicativo no site do Claude, instale como qualquer programa e faça login.</p>
+            </li>
+            <li>
+              <strong>Ative a skill nas configurações</strong>
+              <p>Em <strong>Configurações → Capacidades</strong>, ligue as skills desejadas. Algumas
+              skills do catálogo conectam o Claude a outros programas (os "servidores MCP") — nesse
+              caso, siga a instrução de configuração que aparece no card da skill.</p>
+            </li>
+            <li>
+              <strong>Peça na conversa</strong>
+              <p>Descreva a tarefa normalmente. Se você copiou o <strong>"prompt inicial"</strong> do
+              catálogo, cole-o para o Claude seguir o procedimento completo.</p>
+            </li>
+          </ol>
+          <p class="uso-exemplo">
+            <span class="uso-exemplo-rot" aria-hidden="true">Exemplo</span>
+            Digite: <em>"transforme as anotações deste arquivo em uma apresentação de slides"</em> — e
+            o Claude gera o arquivo <code>.pptx</code> para você.
+          </p>
+        </div>
+
+        <div class="uso-bloco">
+          <div class="uso-cab">
+            <span class="uso-emoji" aria-hidden="true">⌨️</span>
+            <div>
+              <h3>No Claude Code (terminal)</h3>
+              <p class="uso-para">Para quem programa — é onde roda a maioria das skills do catálogo</p>
+            </div>
+          </div>
+          <ol class="guia-passos">
+            <li>
+              <strong>Escolha uma skill no catálogo</strong>
+              <p>Abra o <a href="index.html">catálogo</a>, use a busca ou os filtros e clique em
+              "Detalhes".</p>
+            </li>
+            <li>
+              <strong>Copie a instalação e rode no terminal</strong>
+              <p>Use o botão <strong>"Copiar instalação"</strong> no modal e cole o comando no
+              terminal (em geral algo como <code>/plugin install …</code>).</p>
+            </li>
+            <li>
+              <strong>Copie o prompt inicial e descreva sua tarefa</strong>
+              <p>Use <strong>"Copiar prompt"</strong>, cole no Claude Code e complete com o que precisa.
+              O prompt já pede para o Claude analisar o projeto antes de mexer em qualquer coisa.</p>
+            </li>
+          </ol>
+          <p class="uso-exemplo">
+            <span class="uso-exemplo-rot" aria-hidden="true">Exemplo</span>
+            Depois de instalar o TDD Guard, peça: <em>"implemente o cálculo de frete seguindo TDD"</em>
+            — e cada mudança nasce acompanhada de um teste.
+          </p>
+        </div>
+
+        <p class="uso-nota">
+          <span aria-hidden="true">💡</span> Em qualquer uma das formas você <strong>não precisa decorar
+          comandos</strong>: ligue a skill uma vez e depois é só conversar. O botão "Copiar prompt" do
+          catálogo já te dá um pedido bem escrito para começar.
+        </p>
       </div>
     </section>
 
