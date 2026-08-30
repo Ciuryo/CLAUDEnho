@@ -1328,6 +1328,53 @@ window.SKILLS_DB = {
         "api",
         "qualidade"
       ]
+    },
+    {
+      "id": "awesome-claude-skills",
+      "nome": "Awesome Claude Skills",
+      "autor": "travisvn",
+      "repo": "https://github.com/travisvn/awesome-claude-skills",
+      "stars": 14127,
+      "atualizadoEm": "2026-04-28",
+      "licenca": "Ver repositório",
+      "linguagem": "—",
+      "categorias": [
+        "pesquisa",
+        "documentacao"
+      ],
+      "tags": [
+        "awesome-list",
+        "curadoria",
+        "claude-desktop",
+        "skills",
+        "formato-skill"
+      ],
+      "destaque": false,
+      "paraQueServe": "Lista curada focada especificamente em Skills do Claude — incluindo as que rodam no Claude Desktop e no claude.ai, não só no Claude Code — com recursos sobre o formato SKILL.md e ferramentas para criá-las.",
+      "quandoUsar": "Quando você usa o Claude fora do terminal e quer skills que funcionem no app/web, ou quando vai escrever a sua própria skill e precisa de referências do formato e de exemplos bem estruturados.",
+      "beneficios": [
+        "Recorte específico de Skills, sem diluir com plugins e MCPs",
+        "Cobre Claude Desktop e claude.ai, não apenas o Claude Code",
+        "Reúne ferramentas de criação e validação de skills",
+        "Entradas descritas, facilitando escolher sem abrir cada repositório"
+      ],
+      "economiaTokens": "Escolher uma skill pronta e enxuta evita manter instruções longas e repetidas no seu CLAUDE.md ou no prompt de sistema.",
+      "qualidadeRespostas": "As skills listadas seguem o formato oficial, com instruções específicas que substituem prompts genéricos escritos às pressas.",
+      "multiAgentes": "Skills no formato padrão são portáveis: a mesma pasta serve o Claude Code, o Desktop e qualquer agente do seu pipeline.",
+      "melhorias": {
+        "produtividade": "Descoberta rápida de skills por caso de uso",
+        "escrita": "Referências de skills de redação e documentos",
+        "raciocinio": "Exemplos de skills que estruturam análise passo a passo"
+      },
+      "instalacao": "Não requer instalação: navegue pelo README e siga as instruções da skill escolhida (em geral, copiar a pasta para .claude/skills/ ou fazer upload no Claude Desktop).",
+      "exemploUso": "Antes de escrever uma skill de análise de contratos, você acha na lista uma equivalente, estuda o SKILL.md dela e adapta em vez de começar do zero.",
+      "promptInicial": "Utilize a Skill Awesome Claude Skills para executar a busca de uma skill existente que atenda a esta necessidade antes de criar uma nova. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "pesquisa",
+        "documentacao",
+        "escritorio",
+        "conteudo"
+      ]
     }
   ]
 };

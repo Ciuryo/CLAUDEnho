@@ -30,6 +30,7 @@
   /* ---------- utilidades ---------- */
 
   function $(sel) { return document.querySelector(sel); }
+  function $$(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
 
   function escapeHtml(s) {
     return String(s == null ? '' : s)
@@ -44,13 +45,18 @@
   function formatarEstrelas(n) {
     if (n >= 1000) {
       var v = n / 1000;
-      return (v >= 100 ? Math.round(v) : v.toFixed(1).replace('.', ',')) + ' mil';
+      if (v >= 100) return Math.round(v) + ' mil';
+      return (v % 1 === 0 ? String(v) : v.toFixed(1).replace('.', ',')) + ' mil';
     }
     return String(n);
   }
 
+  function diasDesde(iso) {
+    return Math.floor((Date.now() - new Date(iso + 'T12:00:00Z').getTime()) / 86400000);
+  }
+
   function dataRelativa(iso) {
-    var dias = Math.floor((Date.now() - new Date(iso + 'T12:00:00Z').getTime()) / 86400000);
+    var dias = diasDesde(iso);
     if (dias <= 0) return 'hoje';
     if (dias === 1) return 'ontem';
     if (dias < 30) return 'há ' + dias + ' dias';
@@ -60,9 +66,7 @@
     return 'há ' + anos + (anos === 1 ? ' ano' : ' anos');
   }
 
-  function diasDesde(iso) {
-    return Math.floor((Date.now() - new Date(iso + 'T12:00:00Z').getTime()) / 86400000);
-  }
+  function dataBR(iso) { return iso.split('-').reverse().join('/'); }
 
   /* ---------- toast (feedback visual) ---------- */
 
@@ -73,7 +77,7 @@
     toastEl.textContent = msg;
     toastEl.classList.add('visivel');
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { toastEl.classList.remove('visivel'); }, 2200);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('visivel'); }, 2400);
   }
 
   /* ---------- copiar com feedback ---------- */
@@ -112,15 +116,17 @@
 
   /* ---------- tema claro/escuro ---------- */
 
+  function temaAtivo() {
+    var t = document.documentElement.dataset.theme;
+    if (t) return t;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
   $('#btn-tema').addEventListener('click', function () {
-    var raiz = document.documentElement;
-    var atual = raiz.dataset.theme;
-    if (!atual) {
-      atual = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    var novo = atual === 'dark' ? 'light' : 'dark';
-    raiz.dataset.theme = novo;
+    var novo = temaAtivo() === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = novo;
     armazenamento.set(CHAVE_TEMA, novo);
+    this.setAttribute('aria-label', novo === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro');
   });
 
   /* ---------- favoritas ---------- */
@@ -135,6 +141,18 @@
   function alternarFavorita(id) {
     if (favoritas.has(id)) favoritas.delete(id); else favoritas.add(id);
     armazenamento.set(CHAVE_FAVORITAS, JSON.stringify(Array.from(favoritas)));
+    // atualiza todos os botões daquela skill sem re-renderizar a página inteira
+    $$('[data-fav="' + id + '"]').forEach(function (b) {
+      var ativa = favoritas.has(id);
+      b.setAttribute('aria-pressed', String(ativa));
+      b.textContent = ativa ? '♥' : '♡';
+    });
+    atualizarContadorFavoritas();
+  }
+
+  function atualizarContadorFavoritas() {
+    var btn = $('#filtro-favoritas');
+    btn.textContent = favoritas.size ? '♥ Só favoritas (' + favoritas.size + ')' : '♥ Só favoritas';
   }
 
   /* ---------- render de cards ---------- */
@@ -149,9 +167,9 @@
 
   function statsHtml(skill) {
     return '<div class="card-stats">' +
-      '<span class="stat-estrelas" title="' + skill.stars.toLocaleString('pt-BR') + ' estrelas">★ ' +
+      '<span class="stat-estrelas" title="' + skill.stars.toLocaleString('pt-BR') + ' estrelas no GitHub">★ ' +
       formatarEstrelas(skill.stars) + '</span>' +
-      '<span title="Último commit em ' + escapeHtml(skill.atualizadoEm) + '">↻ ' + dataRelativa(skill.atualizadoEm) + '</span>' +
+      '<span title="Último commit em ' + escapeHtml(dataBR(skill.atualizadoEm)) + '">↻ ' + dataRelativa(skill.atualizadoEm) + '</span>' +
       '<span>' + escapeHtml(skill.licenca) + '</span>' +
       '</div>';
   }
@@ -159,7 +177,7 @@
   function botaoFavHtml(skill) {
     var ativa = favoritas.has(skill.id);
     return '<button type="button" class="btn-fav" data-fav="' + escapeHtml(skill.id) + '" ' +
-      'aria-pressed="' + ativa + '" aria-label="Favoritar ' + escapeHtml(skill.nome) + '">' +
+      'aria-pressed="' + ativa + '" title="Favoritar" aria-label="Favoritar ' + escapeHtml(skill.nome) + '">' +
       (ativa ? '♥' : '♡') + '</button>';
   }
 
@@ -200,16 +218,30 @@
     $('#trilho-recentes').innerHTML = recentes.map(function (s) { return cardHtml(s, true); }).join('');
   }
 
-  /* ---------- pesquisa, filtros e ordenação ---------- */
+  /* ---------- estado, pesquisa e filtros ---------- */
 
-  var estado = {
-    busca: '',
-    categoria: '',
-    minEstrelas: 0,
-    atualizadaEmDias: 0,   // 0 = qualquer
-    ordem: 'popularidade',
-    soFavoritas: false
+  var PADRAO = {
+    busca: '', categoria: '', minEstrelas: 0,
+    atualizadaEmDias: 0, ordem: 'popularidade', soFavoritas: false
   };
+  var estado = Object.assign({}, PADRAO);
+
+  function pontuarRelevancia(skill, termo) {
+    var p = 0;
+    if (normalizar(skill.nome).indexOf(termo) !== -1) p += 100;
+    if (normalizar(skill.autor).indexOf(termo) !== -1) p += 40;
+    if (skill.tags.some(function (t) { return normalizar(t).indexOf(termo) !== -1; })) p += 30;
+    if (normalizar(skill.paraQueServe).indexOf(termo) !== -1) p += 15;
+    if (normalizar(skill.quandoUsar).indexOf(termo) !== -1) p += 10;
+    return p;
+  }
+
+  function textoBuscavel(s) {
+    return normalizar([
+      s.nome, s.autor, s.paraQueServe, s.quandoUsar, s.tags.join(' '),
+      s.categorias.map(function (c) { return CATEGORIAS[c] ? CATEGORIAS[c].nome : c; }).join(' ')
+    ].join(' '));
+  }
 
   function aplicarFiltros() {
     var termo = normalizar(estado.busca);
@@ -218,48 +250,134 @@
       if (s.stars < estado.minEstrelas) return false;
       if (estado.atualizadaEmDias && diasDesde(s.atualizadoEm) > estado.atualizadaEmDias) return false;
       if (estado.soFavoritas && !favoritas.has(s.id)) return false;
-      if (termo) {
-        var alvo = normalizar([
-          s.nome, s.autor, s.paraQueServe, s.quandoUsar,
-          s.tags.join(' '),
-          s.categorias.map(function (c) { return CATEGORIAS[c] ? CATEGORIAS[c].nome : c; }).join(' ')
-        ].join(' '));
-        if (alvo.indexOf(termo) === -1) return false;
-      }
+      if (termo && textoBuscavel(s).indexOf(termo) === -1) return false;
       return true;
     });
 
-    if (estado.ordem === 'popularidade') {
-      lista.sort(function (a, b) { return b.stars - a.stars; });
+    if (estado.ordem === 'relevancia' && termo) {
+      lista.sort(function (a, b) {
+        var d = pontuarRelevancia(b, termo) - pontuarRelevancia(a, termo);
+        return d !== 0 ? d : b.stars - a.stars;
+      });
     } else if (estado.ordem === 'recentes') {
       lista.sort(function (a, b) { return a.atualizadoEm < b.atualizadoEm ? 1 : -1; });
-    } else {
+    } else if (estado.ordem === 'nome') {
       lista.sort(function (a, b) { return a.nome.localeCompare(b.nome, 'pt-BR'); });
+    } else {
+      lista.sort(function (a, b) { return b.stars - a.stars; });
     }
     return lista;
+  }
+
+  function descreverFiltros() {
+    var partes = [];
+    if (estado.busca) partes.push('busca "' + estado.busca + '"');
+    if (estado.categoria && CATEGORIAS[estado.categoria]) partes.push(CATEGORIAS[estado.categoria].nome);
+    if (estado.minEstrelas) partes.push(formatarEstrelas(estado.minEstrelas) + '+ estrelas');
+    if (estado.atualizadaEmDias) partes.push('atualizadas em ' + estado.atualizadaEmDias + ' dias');
+    if (estado.soFavoritas) partes.push('só favoritas');
+    return partes.join(' · ');
   }
 
   function renderCatalogo() {
     var lista = aplicarFiltros();
     $('#grade-skills').innerHTML = lista.map(function (s) { return cardHtml(s, false); }).join('');
     $('#vazio').hidden = lista.length > 0;
+    var desc = descreverFiltros();
     $('#contagem-resultados').textContent =
-      lista.length + ' de ' + SKILLS.length + ' skills' +
-      (estado.soFavoritas ? ' · só favoritas' : '');
+      lista.length + ' de ' + SKILLS.length + ' skills' + (desc ? ' · ' + desc : '');
+    $('#btn-limpar').disabled = !desc;
+    escreverHash();
   }
 
   function preencherFiltroCategorias() {
     var sel = $('#filtro-categoria');
+    var contagem = {};
+    SKILLS.forEach(function (s) {
+      s.categorias.forEach(function (c) { contagem[c] = (contagem[c] || 0) + 1; });
+    });
     DB.categorias.forEach(function (c) {
       var opt = document.createElement('option');
       opt.value = c.id;
-      opt.textContent = c.nome;
+      opt.textContent = c.nome + ' (' + (contagem[c.id] || 0) + ')';
       sel.appendChild(opt);
     });
   }
 
+  function sincronizarControles() {
+    $('#campo-busca').value = estado.busca;
+    $('#filtro-categoria').value = estado.categoria;
+    $('#filtro-estrelas').value = String(estado.minEstrelas);
+    $('#filtro-atualizacao').value = estado.atualizadaEmDias ? String(estado.atualizadaEmDias) : '';
+    $('#filtro-ordem').value = estado.ordem;
+    $('#filtro-favoritas').setAttribute('aria-pressed', String(estado.soFavoritas));
+  }
+
+  /* ---------- estado na URL (visões compartilháveis) ---------- */
+
+  var lendoHash = false;
+
+  function escreverHash() {
+    if (lendoHash) return;
+    var p = [];
+    if (estado.busca) p.push('q=' + encodeURIComponent(estado.busca));
+    if (estado.categoria) p.push('cat=' + estado.categoria);
+    if (estado.minEstrelas) p.push('min=' + estado.minEstrelas);
+    if (estado.atualizadaEmDias) p.push('dias=' + estado.atualizadaEmDias);
+    if (estado.ordem !== PADRAO.ordem) p.push('ord=' + estado.ordem);
+    if (estado.soFavoritas) p.push('fav=1');
+    if (skillAberta) p.push('skill=' + skillAberta);
+    var hash = p.length ? '#' + p.join('&') : '';
+    try {
+      history.replaceState(null, '', location.pathname + location.search + hash);
+    } catch (e) {
+      if (hash) location.hash = hash;
+    }
+  }
+
+  function lerHash() {
+    var bruto = location.hash.replace(/^#/, '');
+    var conservarBusca = estado.busca;
+    estado = Object.assign({}, PADRAO);
+    if (!bruto) { estado.busca = ''; return null; }
+    void conservarBusca;
+    var p = {};
+    bruto.split('&').forEach(function (par) {
+      var i = par.indexOf('=');
+      if (i > 0) p[par.slice(0, i)] = decodeURIComponent(par.slice(i + 1));
+    });
+    lendoHash = true;
+    if (p.q) estado.busca = p.q;
+    if (p.cat && CATEGORIAS[p.cat]) estado.categoria = p.cat;
+    if (p.min) estado.minEstrelas = parseInt(p.min, 10) || 0;
+    if (p.dias) estado.atualizadaEmDias = parseInt(p.dias, 10) || 0;
+    if (p.ord) estado.ordem = p.ord;
+    if (p.fav === '1') estado.soFavoritas = true;
+    lendoHash = false;
+    return p.skill || null;
+  }
+
+  window.addEventListener('hashchange', function () {
+    var alvo = lerHash();
+    sincronizarControles();
+    renderCatalogo();
+    if (alvo) {
+      var s = acharSkill(alvo);
+      if (s && skillAberta !== alvo) abrirModal(s);
+    } else if (!modal.hidden) {
+      fecharModal();
+    }
+  });
+
+  /* ---------- ligações dos filtros ---------- */
+
   $('#campo-busca').addEventListener('input', function (e) {
+    var tinhaBusca = !!estado.busca;
     estado.busca = e.target.value;
+    // ao começar a buscar, ordena por relevância (visível e reversível no seletor)
+    if (!tinhaBusca && estado.busca && estado.ordem === 'popularidade') estado.ordem = 'relevancia';
+    if (!estado.busca && estado.ordem === 'relevancia') estado.ordem = 'popularidade';
+    $('#filtro-ordem').value = estado.ordem;
     renderCatalogo();
   });
   $('#filtro-categoria').addEventListener('change', function (e) {
@@ -280,19 +398,17 @@
     renderCatalogo();
   });
   $('#btn-limpar').addEventListener('click', function () {
-    estado = { busca: '', categoria: '', minEstrelas: 0, atualizadaEmDias: 0, ordem: 'popularidade', soFavoritas: false };
-    $('#campo-busca').value = '';
-    $('#filtro-categoria').value = '';
-    $('#filtro-estrelas').value = '0';
-    $('#filtro-atualizacao').value = '';
-    $('#filtro-ordem').value = 'popularidade';
-    $('#filtro-favoritas').setAttribute('aria-pressed', 'false');
+    estado = Object.assign({}, PADRAO);
+    sincronizarControles();
     renderCatalogo();
+    toast('Filtros limpos');
   });
 
   /* ---------- modal de detalhes ---------- */
 
   var modal = $('#modal');
+  var skillAberta = null;
+  var focoAnterior = null;
 
   function secao(titulo, corpoHtml) {
     return corpoHtml ? '<div class="modal-secao"><h3>' + titulo + '</h3>' + corpoHtml + '</div>' : '';
@@ -314,13 +430,13 @@
     $('#modal-conteudo').innerHTML =
       '<div class="modal-cab">' +
         '<h2 id="modal-titulo">' + escapeHtml(skill.nome) + '</h2>' +
-        '<span class="autor">' + escapeHtml(skill.autor) + ' · ' + escapeHtml(skill.linguagem || '') + '</span>' +
+        '<span class="autor">' + escapeHtml(skill.autor) + (skill.linguagem ? ' · ' + escapeHtml(skill.linguagem) : '') + '</span>' +
         '<div class="modal-stats">' +
           '<span class="stat-estrelas">★ ' + skill.stars.toLocaleString('pt-BR') + ' estrelas</span>' +
-          '<span>↻ atualizado ' + dataRelativa(skill.atualizadoEm) + ' (' + escapeHtml(skill.atualizadoEm) + ')</span>' +
+          '<span>↻ atualizado ' + dataRelativa(skill.atualizadoEm) + ' (' + escapeHtml(dataBR(skill.atualizadoEm)) + ')</span>' +
           '<span>licença: ' + escapeHtml(skill.licenca) + '</span>' +
         '</div>' +
-        '<div class="card-chips" style="margin-top:10px">' + chipsCategorias(skill) + '</div>' +
+        '<div class="card-chips modal-chips">' + chipsCategorias(skill) + '</div>' +
       '</div>' +
       secao('Para que serve', '<p>' + escapeHtml(skill.paraQueServe) + '</p>') +
       secao('Quando usar', '<p>' + escapeHtml(skill.quandoUsar) + '</p>') +
@@ -338,149 +454,226 @@
         '<button type="button" class="btn-acao" data-copiar-prompt="' + escapeHtml(skill.id) + '">Copiar prompt</button>') +
       '<div class="modal-acoes">' +
         '<a class="btn-acao principal" href="' + escapeHtml(skill.repo) + '" target="_blank" rel="noopener noreferrer">Abrir no GitHub ↗</a>' +
+        '<button type="button" class="btn-acao" data-copiar-link="' + escapeHtml(skill.id) + '">Copiar link desta skill</button>' +
         botaoFavHtml(skill) +
       '</div>';
 
+    focoAnterior = document.activeElement;
+    skillAberta = skill.id;
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
+    $('.modal-caixa').scrollTop = 0;
     $('.modal-fechar').focus();
+    escreverHash();
   }
 
   function fecharModal() {
     modal.hidden = true;
+    skillAberta = null;
     document.body.style.overflow = '';
+    escreverHash();
+    if (focoAnterior && document.contains(focoAnterior)) focoAnterior.focus();
   }
 
   modal.addEventListener('click', function (e) {
     if (e.target.closest('[data-fechar]')) fecharModal();
   });
+
+  // acessibilidade: prende o foco dentro do modal enquanto ele estiver aberto
+  modal.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab' || modal.hidden) return;
+    var foco = $$('#modal a[href], #modal button:not([disabled])');
+    if (!foco.length) return;
+    var primeiro = foco[0], ultimo = foco[foco.length - 1];
+    if (e.shiftKey && document.activeElement === primeiro) { e.preventDefault(); ultimo.focus(); }
+    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primeiro.focus(); }
+  });
+
+  /* ---------- atalhos de teclado ---------- */
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !modal.hidden) fecharModal();
+    var emCampo = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
+    if (e.key === 'Escape') {
+      if (!modal.hidden) { fecharModal(); return; }
+      if (emCampo && document.activeElement.id === 'campo-busca' && estado.busca) {
+        estado.busca = '';
+        $('#campo-busca').value = '';
+        renderCatalogo();
+      }
+      return;
+    }
+    if ((e.key === '/' || e.key === 's') && !emCampo && modal.hidden && !e.ctrlKey && !e.metaKey) {
+      e.preventDefault();
+      $('#campo-busca').focus();
+      $('#campo-busca').select();
+    }
   });
 
   /* ---------- recomendação por tipo de projeto ---------- */
 
-  // Cada área liga gatilhos (palavras no texto do usuário, sem acento)
-  // a skills candidatas. "base: true" = entra em qualquer projeto de software.
+  // Cada frente liga gatilhos (palavras no texto do usuário, sem acento) a
+  // skills candidatas. `base` = vale para qualquer projeto de software.
+  // `ordemAdocao` = em que ordem faz sentido adotar (contexto antes de código).
   var AREAS_RECOMENDACAO = [
     {
-      titulo: 'Arquitetura e planejamento',
-      icone: '▦',
-      base: true,
+      titulo: 'Gerenciamento de contexto e tokens', icone: '◌', base: true, ordemAdocao: 1,
+      gatilhos: ['token', 'contexto', 'custo', 'monorepo', 'legado', 'banco de dados', 'codebase', 'refator'],
+      motivo: 'Instale primeiro: documentação atualizada e busca semântica melhoram tudo o que vier depois.',
+      skills: ['context7', 'claude-context', 'ccusage', 'claude-code-router']
+    },
+    {
+      titulo: 'Arquitetura e planejamento', icone: '▦', base: true, ordemAdocao: 2,
       gatilhos: ['arquitetura', 'planejamento', 'mvp', 'produto', 'requisito', 'prd', 'roadmap', 'saas', 'sistema', 'plataforma', 'startup'],
       motivo: 'Estruture requisitos, arquitetura e backlog antes de escrever código.',
       skills: ['bmad-method', 'superpowers', 'spec-workflow', 'claude-task-master']
     },
     {
-      titulo: 'Revisão de código',
-      icone: '⌘',
-      base: true,
-      gatilhos: ['codigo', 'revisao', 'refator', 'qualidade', 'backend', 'frontend', 'api'],
+      titulo: 'Documentação', icone: '▤', base: true, ordemAdocao: 3,
+      gatilhos: ['documenta', 'docs', 'readme', 'spec', 'biblioteca', 'framework', 'manual'],
+      motivo: 'Docs atualizadas das dependências e specs geradas por fase do projeto.',
+      skills: ['context7', 'anthropic-skills', 'spec-workflow']
+    },
+    {
+      titulo: 'Programação e revisão de código', icone: '⌘', base: true, ordemAdocao: 4,
+      gatilhos: ['codigo', 'revisao', 'refator', 'qualidade', 'backend', 'frontend', 'api', 'microservi'],
       motivo: 'Revisores especialistas encontram problemas antes do merge.',
       skills: ['wshobson-agents', 'awesome-cc-subagents', 'superclaude']
     },
     {
-      titulo: 'Segurança e auditoria',
-      icone: '◉',
-      base: true,
-      gatilhos: ['seguranca', 'auth', 'login', 'pagamento', 'lgpd', 'senha', 'upload', 'api', 'banco'],
-      motivo: 'Auditoria automática de vulnerabilidades em cada mudança.',
-      skills: ['cc-security-review', 'wshobson-agents']
-    },
-    {
-      titulo: 'Testes e depuração',
-      icone: '✓',
-      base: true,
-      gatilhos: ['teste', 'tdd', 'bug', 'depura', 'qualidade', 'ci'],
+      titulo: 'Testes e depuração', icone: '✓', base: true, ordemAdocao: 5,
+      gatilhos: ['teste', 'tdd', 'bug', 'depura', 'qualidade', 'ci', 'cobertura'],
       motivo: 'Disciplina de testes imposta por ferramenta, não por lembrete.',
       skills: ['tdd-guard', 'superpowers']
     },
     {
-      titulo: 'Documentação',
-      icone: '▤',
-      base: true,
-      gatilhos: ['documenta', 'docs', 'readme', 'spec', 'biblioteca', 'framework', 'integracao'],
-      motivo: 'Docs atualizadas das dependências e specs geradas por fase.',
-      skills: ['context7', 'anthropic-skills', 'spec-workflow']
+      titulo: 'Segurança e auditoria', icone: '◉', base: true, ordemAdocao: 6,
+      gatilhos: ['seguranca', 'auth', 'login', 'pagamento', 'lgpd', 'senha', 'upload', 'api', 'banco', 'dados sensiveis'],
+      motivo: 'Auditoria automática de vulnerabilidades em cada mudança.',
+      skills: ['cc-security-review', 'wshobson-agents']
     },
     {
-      titulo: 'Gerenciamento de contexto e tokens',
-      icone: '◌',
-      base: true,
-      gatilhos: ['token', 'contexto', 'custo', 'monorepo', 'grande', 'legado', 'banco de dados'],
-      motivo: 'Contexto sob controle: busca semântica, medição e roteamento de custo.',
-      skills: ['claude-context', 'context7', 'ccusage', 'claude-code-router']
-    },
-    {
-      titulo: 'Múltiplos agentes e orquestração',
-      icone: '⬡',
-      base: true,
-      gatilhos: ['agente', 'paralel', 'orquestr', 'swarm', 'equipe', 'time', 'migra'],
+      titulo: 'Múltiplos agentes e orquestração', icone: '⬡', base: true, ordemAdocao: 7,
+      gatilhos: ['agente', 'paralel', 'orquestr', 'swarm', 'equipe', 'time', 'migra', 'escala'],
       motivo: 'Divida o trabalho entre agentes especializados rodando em paralelo.',
       skills: ['ruflo', 'wshobson-agents', 'awesome-cc-subagents']
     },
     {
-      titulo: 'Interface, UX e design',
-      icone: '◐',
-      base: false,
-      gatilhos: ['frontend', 'front-end', 'ui', 'ux', 'design', 'figma', 'tela', 'interface', 'mobile', 'app', 'react', 'vue', 'landing'],
+      titulo: 'Interface, UX e design', icone: '◐', base: false, ordemAdocao: 8,
+      gatilhos: ['frontend', 'front-end', 'ui', 'ux', 'design', 'figma', 'tela', 'interface', 'mobile', 'app', 'react', 'vue', 'angular', 'landing', 'site'],
       motivo: 'Do Figma ao código fiel, com revisão de design automatizada.',
       skills: ['figma-context-mcp', 'oneredoak-workflows', 'contains-studio-agents']
     },
     {
-      titulo: 'Automação e integrações',
-      icone: '⚙',
-      base: false,
-      gatilhos: ['integra', 'automa', 'webhook', 'n8n', 'workflow', 'crm', 'zapier', 'api'],
+      titulo: 'Automação e integrações', icone: '⚙', base: false, ordemAdocao: 9,
+      gatilhos: ['integra', 'automa', 'webhook', 'n8n', 'workflow', 'crm', 'zapier', 'api', 'stripe', 'pagamento'],
       motivo: 'Automatize processos e use as skills oficiais dos serviços que você integra.',
-      skills: ['n8n-mcp', 'awesome-agent-skills']
+      skills: ['n8n-mcp', 'awesome-agent-skills', 'claude-code-templates']
     },
     {
-      titulo: 'Escrita e comunicação',
-      icone: '✎',
-      base: false,
-      gatilhos: ['escrita', 'conteudo', 'marketing', 'relatorio', 'documento', 'apresentacao', 'blog', 'email'],
-      motivo: 'Documentos e conteúdo profissionais gerados como arquivos reais.',
-      skills: ['anthropic-skills', 'alireza-claude-skills']
-    },
-    {
-      titulo: 'Pesquisa e análise de dados',
-      icone: '◈',
-      base: false,
-      gatilhos: ['dados', 'analise', 'rag', 'busca', 'dashboard', 'relatorio', 'pdf', 'ia', 'llm', 'machine learning'],
+      titulo: 'Pesquisa e análise de dados', icone: '◈', base: false, ordemAdocao: 10,
+      gatilhos: ['dados', 'analise', 'rag', 'busca', 'dashboard', 'relatorio', 'pdf', 'ia', 'llm', 'machine learning', 'bi'],
       motivo: 'Padrões prontos de RAG, análise de documentos e avaliação.',
-      skills: ['claude-cookbooks', 'claude-context']
+      skills: ['claude-cookbooks', 'claude-context', 'awesome-claude-code']
     },
     {
-      titulo: 'Criação e melhoria de prompts',
-      icone: '❝',
-      base: false,
-      gatilhos: ['prompt', 'ia', 'llm', 'chatbot', 'assistente', 'gpt', 'claude api'],
+      titulo: 'Criação e melhoria de prompts', icone: '❝', base: false, ordemAdocao: 11,
+      gatilhos: ['prompt', 'ia', 'llm', 'chatbot', 'assistente', 'gpt', 'claude api', 'agente de ia'],
       motivo: 'Prompts em produção merecem engenharia, não tentativa e erro.',
       skills: ['prompt-eng-tutorial', 'superclaude']
+    },
+    {
+      titulo: 'Escrita e comunicação', icone: '✎', base: false, ordemAdocao: 12,
+      gatilhos: ['escrita', 'conteudo', 'marketing', 'relatorio', 'documento', 'apresentacao', 'blog', 'email', 'proposta'],
+      motivo: 'Documentos e conteúdo profissionais gerados como arquivos reais.',
+      skills: ['anthropic-skills', 'alireza-claude-skills', 'awesome-claude-skills']
     }
   ];
+
+  var MAX_PRIMARIAS = 5;
+
+  // Gatilhos casam no INÍCIO de uma palavra, nunca no meio: assim "integra"
+  // encontra "integrações" mas "ci" não dispara dentro de "preciso".
+  var cacheGatilho = {};
+  function casaGatilho(texto, gatilho) {
+    if (!cacheGatilho[gatilho]) {
+      cacheGatilho[gatilho] = new RegExp(
+        '(^|[^a-z0-9])' + gatilho.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    }
+    return cacheGatilho[gatilho].test(texto);
+  }
 
   function recomendar(textoProjeto) {
     var texto = normalizar(textoProjeto);
     var pareceSoftware = AREAS_RECOMENDACAO.some(function (a) {
-      return a.gatilhos.some(function (g) { return texto.indexOf(g) !== -1; });
+      return a.gatilhos.some(function (g) { return casaGatilho(texto, g); });
     });
 
     var grupos = [];
     AREAS_RECOMENDACAO.forEach(function (area) {
-      var acertos = area.gatilhos.filter(function (g) { return texto.indexOf(g) !== -1; });
-      var incluir = acertos.length > 0 || (area.base && pareceSoftware);
-      if (!incluir) return;
-      var skillsDaArea = area.skills
+      var acertos = area.gatilhos.filter(function (g) { return casaGatilho(texto, g); });
+      if (!acertos.length && !(area.base && pareceSoftware)) return;
+      var skills = area.skills
         .map(function (id) { return SKILLS.find(function (s) { return s.id === id; }); })
-        .filter(Boolean)
-        .slice(0, 3);
-      grupos.push({ area: area, acertos: acertos, skills: skillsDaArea, peso: acertos.length + (area.base ? 0.5 : 0) });
+        .filter(Boolean).slice(0, 3);
+      if (!skills.length) return;
+      grupos.push({
+        area: area, acertos: acertos, skills: skills,
+        // menções explícitas pesam mais que a inclusão por ser área-base
+        pontos: acertos.length * 2 + (area.base ? 1 : 0)
+      });
     });
 
-    grupos.sort(function (a, b) { return b.peso - a.peso; });
-    return grupos;
+    grupos.sort(function (a, b) {
+      return b.pontos - a.pontos || a.area.ordemAdocao - b.area.ordemAdocao;
+    });
+
+    var comAcerto = grupos.filter(function (g) { return g.acertos.length; });
+    var primarias = (comAcerto.length ? comAcerto : grupos).slice(0, MAX_PRIMARIAS);
+    var secundarias = grupos.filter(function (g) { return primarias.indexOf(g) === -1; });
+    return { pareceSoftware: pareceSoftware, primarias: primarias, secundarias: secundarias, todos: grupos };
+  }
+
+  function itemSkillHtml(s) {
+    return '<li class="rec-item">' +
+      '<span class="rec-item-nome">' + escapeHtml(s.nome) + '</span>' +
+      '<span class="card-stats"><span class="stat-estrelas">★ ' + formatarEstrelas(s.stars) + '</span></span>' +
+      '<span class="rec-item-acoes">' +
+        '<button type="button" class="btn-acao" data-copiar-prompt="' + escapeHtml(s.id) + '">Copiar prompt</button>' +
+        '<button type="button" class="btn-acao principal" data-detalhes="' + escapeHtml(s.id) + '">Detalhes</button>' +
+      '</span>' +
+      '<span class="rec-item-desc">' + escapeHtml(s.paraQueServe) + '</span>' +
+    '</li>';
+  }
+
+  function grupoHtml(g) {
+    return '<div class="rec-grupo">' +
+      '<h3><span class="rec-icone" aria-hidden="true">' + g.area.icone + '</span>' + escapeHtml(g.area.titulo) + '</h3>' +
+      '<p class="rec-motivo">' + escapeHtml(g.area.motivo) +
+      (g.acertos.length
+        ? ' <em>(no seu texto: ' + escapeHtml(g.acertos.slice(0, 4).join(', ')) + ')</em>'
+        : ' <em>(vale para qualquer projeto de software)</em>') + '</p>' +
+      '<ul class="rec-lista">' + g.skills.map(itemSkillHtml).join('') + '</ul>' +
+    '</div>';
+  }
+
+  var recomendacaoAtual = null;
+
+  function planoMarkdown(projeto, rec) {
+    var linhas = ['# Plano de Skills para o projeto', '', '> ' + projeto, '',
+      'Skills recomendadas por frente, com o prompt inicial de cada uma.', ''];
+    rec.primarias.concat(rec.secundarias).forEach(function (g, i) {
+      linhas.push('## ' + (i + 1) + '. ' + g.area.titulo);
+      linhas.push(g.area.motivo, '');
+      g.skills.forEach(function (s) {
+        linhas.push('### ' + s.nome + ' (' + s.stars.toLocaleString('pt-BR') + ' ★)');
+        linhas.push('- Repositório: ' + s.repo);
+        linhas.push('- Para que serve: ' + s.paraQueServe);
+        linhas.push('- Instalação: ' + s.instalacao);
+        linhas.push('- Prompt inicial:', '', '  ' + s.promptInicial, '');
+      });
+    });
+    linhas.push('---', 'Dados do GitHub coletados em ' + dataBR(DB.coletadoEm) + '.');
+    return linhas.join('\n');
   }
 
   function renderRecomendacao() {
@@ -491,36 +684,46 @@
       $('#campo-projeto').focus();
       return;
     }
-    var grupos = recomendar(texto);
-    if (!grupos.length) {
+
+    var rec = recomendar(texto);
+    recomendacaoAtual = { projeto: texto, rec: rec };
+
+    if (!rec.todos.length) {
       alvo.hidden = false;
-      alvo.innerHTML = '<p class="rec-intro">Não reconheci o tipo de projeto. Tente descrever a stack e as frentes ' +
-        '(ex.: frontend, backend, banco de dados, APIs, testes, conteúdo…).</p>';
+      alvo.innerHTML = '<p class="rec-intro">Não reconheci o tipo de projeto. Tente citar a stack e as frentes ' +
+        'envolvidas — por exemplo: frontend, backend, banco de dados, APIs, testes, segurança ou conteúdo.</p>';
       return;
     }
 
-    var html = '<p class="rec-intro">Para este projeto, recomendo cobrir <strong>' + grupos.length +
-      (grupos.length === 1 ? ' frente' : ' frentes') + '</strong>. Em cada uma, copie o prompt inicial da skill e cole no Claude para começar.</p>';
+    // Plano de adoção: as frentes prioritárias na ordem em que fazem sentido adotar
+    var plano = rec.primarias.slice().sort(function (a, b) {
+      return a.area.ordemAdocao - b.area.ordemAdocao;
+    });
 
-    html += grupos.map(function (g) {
-      var itens = g.skills.map(function (s) {
-        return '<li class="rec-item">' +
-          '<span class="rec-item-nome">' + escapeHtml(s.nome) + '</span>' +
-          '<span class="card-stats"><span class="stat-estrelas">★ ' + formatarEstrelas(s.stars) + '</span></span>' +
-          '<span class="rec-item-acoes">' +
-            '<button type="button" class="btn-acao" data-copiar-prompt="' + escapeHtml(s.id) + '">Copiar prompt</button>' +
-            '<button type="button" class="btn-acao principal" data-detalhes="' + escapeHtml(s.id) + '">Detalhes</button>' +
-          '</span>' +
-          '<span class="rec-item-desc">' + escapeHtml(s.paraQueServe) + '</span>' +
-        '</li>';
-      }).join('');
-      return '<div class="rec-grupo">' +
-        '<h3><span class="rec-icone" aria-hidden="true">' + g.area.icone + '</span>' + escapeHtml(g.area.titulo) + '</h3>' +
-        '<p class="rec-motivo">' + escapeHtml(g.area.motivo) +
-        (g.acertos.length ? ' <em>(detectado: ' + escapeHtml(g.acertos.slice(0, 4).join(', ')) + ')</em>' : '') + '</p>' +
-        '<ul class="rec-lista">' + itens + '</ul>' +
-      '</div>';
-    }).join('');
+    var html =
+      '<div class="rec-intro">' +
+        '<p><strong>' + rec.primarias.length + ' frentes prioritárias</strong> para este projeto' +
+        (rec.secundarias.length ? ' e mais ' + rec.secundarias.length + ' relevantes.' : '.') +
+        ' Copie o prompt inicial de cada skill e cole no Claude.</p>' +
+      '</div>' +
+      '<ol class="rec-plano">' +
+        plano.map(function (g) {
+          return '<li><span class="passo-titulo">' + escapeHtml(g.area.titulo) + '</span>' +
+            '<span class="passo-skill">' + escapeHtml(g.skills[0].nome) + '</span></li>';
+        }).join('') +
+      '</ol>' +
+      '<p class="rec-plano-nota">Ordem sugerida de adoção: contexto e documentação primeiro, ' +
+      'porque melhoram a qualidade de tudo o que vem depois.</p>' +
+      '<div class="rec-acoes-topo">' +
+        '<button type="button" class="btn btn-primario" id="btn-copiar-plano">Copiar plano completo (Markdown)</button>' +
+        '<button type="button" class="btn btn-fantasma" id="btn-copiar-prompts">Copiar só os prompts</button>' +
+      '</div>' +
+      rec.primarias.map(grupoHtml).join('');
+
+    if (rec.secundarias.length) {
+      html += '<details class="rec-secundarias"><summary>Também relevantes para este projeto (' +
+        rec.secundarias.length + ')</summary>' + rec.secundarias.map(grupoHtml).join('') + '</details>';
+    }
 
     alvo.hidden = false;
     alvo.innerHTML = html;
@@ -539,33 +742,57 @@
 
   /* ---------- delegação de eventos global ---------- */
 
+  function acharSkill(id) { return SKILLS.find(function (s) { return s.id === id; }); }
+
   document.addEventListener('click', function (e) {
     var alvo;
 
     if ((alvo = e.target.closest('[data-copiar-prompt]'))) {
-      var s1 = SKILLS.find(function (s) { return s.id === alvo.dataset.copiarPrompt; });
+      var s1 = acharSkill(alvo.dataset.copiarPrompt);
       if (s1) copiarTexto(s1.promptInicial, alvo, 'Prompt copiado — cole no Claude para começar');
       return;
     }
     if ((alvo = e.target.closest('[data-copiar-instalacao]'))) {
-      var s2 = SKILLS.find(function (s) { return s.id === alvo.dataset.copiarInstalacao; });
+      var s2 = acharSkill(alvo.dataset.copiarInstalacao);
       if (s2) copiarTexto(s2.instalacao, alvo, 'Instruções de instalação copiadas');
       return;
     }
+    if ((alvo = e.target.closest('[data-copiar-link]'))) {
+      var base = location.href.split('#')[0];
+      copiarTexto(base + '#skill=' + alvo.dataset.copiarLink, alvo, 'Link direto desta skill copiado');
+      return;
+    }
     if ((alvo = e.target.closest('[data-detalhes]'))) {
-      var s3 = SKILLS.find(function (s) { return s.id === alvo.dataset.detalhes; });
+      var s3 = acharSkill(alvo.dataset.detalhes);
       if (s3) abrirModal(s3);
       return;
     }
     if ((alvo = e.target.closest('[data-fav]'))) {
       alternarFavorita(alvo.dataset.fav);
-      renderFaixas();
-      renderCatalogo();
-      if (!modal.hidden) {
-        var s4 = SKILLS.find(function (s) { return s.id === alvo.dataset.fav; });
-        if (s4) abrirModal(s4);
-      }
       toast(favoritas.has(alvo.dataset.fav) ? 'Adicionada às favoritas ♥' : 'Removida das favoritas');
+      if (estado.soFavoritas) renderCatalogo();
+      return;
+    }
+    if ((alvo = e.target.closest('#btn-copiar-plano'))) {
+      if (recomendacaoAtual) {
+        copiarTexto(planoMarkdown(recomendacaoAtual.projeto, recomendacaoAtual.rec), alvo,
+          'Plano completo copiado — cole no Claude ou no seu README');
+      }
+      return;
+    }
+    if ((alvo = e.target.closest('#btn-copiar-prompts'))) {
+      if (recomendacaoAtual) {
+        var vistos = {};
+        var prompts = [];
+        recomendacaoAtual.rec.primarias.concat(recomendacaoAtual.rec.secundarias).forEach(function (g) {
+          g.skills.forEach(function (s) {
+            if (vistos[s.id]) return;
+            vistos[s.id] = true;
+            prompts.push('— ' + s.nome + ' —\n' + s.promptInicial);
+          });
+        });
+        copiarTexto(prompts.join('\n\n'), alvo, prompts.length + ' prompts copiados');
+      }
       return;
     }
     if ((alvo = e.target.closest('.chip[data-cat]'))) {
@@ -577,13 +804,30 @@
     }
   });
 
+  $('#link-topo').addEventListener('click', function (e) {
+    e.preventDefault();  // não limpa os filtros guardados na hash
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
   /* ---------- inicialização ---------- */
 
   preencherFiltroCategorias();
+  var skillDoLink = lerHash();
+  sincronizarControles();
+  atualizarContadorFavoritas();
   renderFaixas();
   renderCatalogo();
 
-  $('#meta-dados').textContent =
-    SKILLS.length + ' skills · ' + DB.categorias.length + ' categorias · dados do GitHub coletados em ' +
-    DB.coletadoEm.split('-').reverse().join('/');
+  var diasDados = diasDesde(DB.coletadoEm);
+  $('#meta-dados').innerHTML =
+    escapeHtml(SKILLS.length + ' skills · ' + DB.categorias.length + ' categorias · dados do GitHub de ' + dataBR(DB.coletadoEm)) +
+    (diasDados > 45
+      ? ' <span class="aviso-dados" title="Rode: node scripts/refresh-github.mjs">· coletados há ' +
+        Math.floor(diasDados / 30) + ' meses, as estrelas podem ter mudado</span>'
+      : '');
+
+  if (skillDoLink) {
+    var alvoInicial = acharSkill(skillDoLink);
+    if (alvoInicial) abrirModal(alvoInicial);
+  }
 })();

@@ -3,18 +3,66 @@
   "coletadoEm": "2026-07-15",
   "fonteDados": "API pública do GitHub (api.github.com) — estrelas, descrições, datas e licenças coletadas em 2026-07-15",
   "categorias": [
-    { "id": "tokens", "nome": "Economia de tokens e contexto", "icone": "◌" },
-    { "id": "programacao", "nome": "Programação e revisão de código", "icone": "⌘" },
-    { "id": "multiagentes", "nome": "Múltiplos agentes e orquestração", "icone": "⬡" },
-    { "id": "prompts", "nome": "Criação e melhoria de prompts", "icone": "❝" },
-    { "id": "escrita", "nome": "Escrita e comunicação", "icone": "✎" },
-    { "id": "pesquisa", "nome": "Pesquisa e análise", "icone": "◈" },
-    { "id": "automacao", "nome": "Automação de tarefas", "icone": "⚙" },
-    { "id": "documentacao", "nome": "Documentação", "icone": "▤" },
-    { "id": "seguranca", "nome": "Segurança e auditoria", "icone": "◉" },
-    { "id": "planejamento", "nome": "Planejamento e gestão de projetos", "icone": "▦" },
-    { "id": "testes", "nome": "Testes e depuração", "icone": "✓" },
-    { "id": "design", "nome": "Interface, UX e design", "icone": "◐" }
+    {
+      "id": "tokens",
+      "nome": "Economia de tokens e contexto",
+      "icone": "◌"
+    },
+    {
+      "id": "programacao",
+      "nome": "Programação e revisão de código",
+      "icone": "⌘"
+    },
+    {
+      "id": "multiagentes",
+      "nome": "Múltiplos agentes e orquestração",
+      "icone": "⬡"
+    },
+    {
+      "id": "prompts",
+      "nome": "Criação e melhoria de prompts",
+      "icone": "❝"
+    },
+    {
+      "id": "escrita",
+      "nome": "Escrita e comunicação",
+      "icone": "✎"
+    },
+    {
+      "id": "pesquisa",
+      "nome": "Pesquisa e análise",
+      "icone": "◈"
+    },
+    {
+      "id": "automacao",
+      "nome": "Automação de tarefas",
+      "icone": "⚙"
+    },
+    {
+      "id": "documentacao",
+      "nome": "Documentação",
+      "icone": "▤"
+    },
+    {
+      "id": "seguranca",
+      "nome": "Segurança e auditoria",
+      "icone": "◉"
+    },
+    {
+      "id": "planejamento",
+      "nome": "Planejamento e gestão de projetos",
+      "icone": "▦"
+    },
+    {
+      "id": "testes",
+      "nome": "Testes e depuração",
+      "icone": "✓"
+    },
+    {
+      "id": "design",
+      "nome": "Interface, UX e design",
+      "icone": "◐"
+    }
   ],
   "skills": [
     {
@@ -26,8 +74,20 @@
       "atualizadoEm": "2026-07-14",
       "licenca": "MIT",
       "linguagem": "Shell",
-      "categorias": ["programacao", "testes", "planejamento", "multiagentes"],
-      "tags": ["tdd", "workflow", "brainstorm", "subagentes", "metodologia", "git-worktree"],
+      "categorias": [
+        "programacao",
+        "testes",
+        "planejamento",
+        "multiagentes"
+      ],
+      "tags": [
+        "tdd",
+        "workflow",
+        "brainstorm",
+        "subagentes",
+        "metodologia",
+        "git-worktree"
+      ],
       "destaque": true,
       "paraQueServe": "Framework de skills que impõe uma metodologia completa de desenvolvimento: brainstorm, planejamento, TDD rigoroso, execução por subagentes e revisão final.",
       "quandoUsar": "Em qualquer feature não trivial: quando você quer que o Claude planeje antes de codar, escreva testes antes da implementação e trabalhe em etapas verificáveis em vez de gerar um bloco gigante de código de uma vez.",
@@ -48,7 +108,15 @@
       "instalacao": "No Claude Code: /plugin marketplace add obra/superpowers-marketplace e depois /plugin install superpowers@superpowers-marketplace",
       "exemploUso": "Peça 'brainstorm: quero adicionar exportação de relatórios em PDF' — a skill conduz perguntas, gera uma spec, monta o plano de implementação e executa cada etapa com testes.",
       "promptInicial": "Utilize a Skill Superpowers para executar o planejamento e a implementação desta feature com TDD, começando pelo brainstorm da especificação. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["saas", "backend", "frontend", "api", "testes", "planejamento", "mvp"]
+      "recomendadoPara": [
+        "saas",
+        "backend",
+        "frontend",
+        "api",
+        "testes",
+        "planejamento",
+        "mvp"
+      ]
     },
     {
       "id": "anthropic-skills",
@@ -59,8 +127,21 @@
       "atualizadoEm": "2026-07-13",
       "licenca": "Apache-2.0 (maioria das skills)",
       "linguagem": "Python",
-      "categorias": ["escrita", "documentacao", "programacao"],
-      "tags": ["oficial", "docx", "pptx", "xlsx", "pdf", "artifacts", "mcp-builder", "template"],
+      "categorias": [
+        "escrita",
+        "documentacao",
+        "programacao"
+      ],
+      "tags": [
+        "oficial",
+        "docx",
+        "pptx",
+        "xlsx",
+        "pdf",
+        "artifacts",
+        "mcp-builder",
+        "template"
+      ],
       "destaque": true,
       "paraQueServe": "Repositório oficial da Anthropic com skills prontas para gerar e editar documentos Word, PowerPoint, Excel e PDF, criar artifacts, construir servidores MCP e mais — além da especificação e do template para criar suas próprias skills.",
       "quandoUsar": "Quando o entregável é um arquivo real (relatório .docx, planilha .xlsx, apresentação .pptx, PDF preenchido) ou quando você quer aprender o formato SKILL.md canônico para escrever skills próprias.",
@@ -81,7 +162,13 @@
       "instalacao": "No Claude Code: /plugin marketplace add anthropics/skills e instale o conjunto desejado com /plugin install — ou copie a pasta da skill para ~/.claude/skills/",
       "exemploUso": "'Gere uma proposta comercial em .docx com capa, sumário e tabela de preços a partir deste rascunho' — a skill docx produz o arquivo final formatado.",
       "promptInicial": "Utilize a Skill docx (Agent Skills da Anthropic) para executar a geração deste documento formatado. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["conteudo", "documentacao", "saas", "dados", "escritorio"]
+      "recomendadoPara": [
+        "conteudo",
+        "documentacao",
+        "saas",
+        "dados",
+        "escritorio"
+      ]
     },
     {
       "id": "ruflo",
@@ -92,8 +179,18 @@
       "atualizadoEm": "2026-07-14",
       "licenca": "MIT",
       "linguagem": "TypeScript",
-      "categorias": ["multiagentes", "automacao"],
-      "tags": ["swarm", "orquestracao", "hive-mind", "memoria", "mcp", "paralelismo"],
+      "categorias": [
+        "multiagentes",
+        "automacao"
+      ],
+      "tags": [
+        "swarm",
+        "orquestracao",
+        "hive-mind",
+        "memoria",
+        "mcp",
+        "paralelismo"
+      ],
       "destaque": true,
       "paraQueServe": "Meta-harness de orquestração que coordena enxames (swarms) de agentes Claude trabalhando em paralelo, com memória persistente, filas de tarefas e fluxos autônomos.",
       "quandoUsar": "Em tarefas grandes demais para um agente só: migrações amplas, geração de módulos independentes em paralelo, pipelines em que pesquisador, implementador e revisor precisam rodar simultaneamente.",
@@ -114,7 +211,13 @@
       "instalacao": "npx ruflo@latest init (projeto renomeado de claude-flow para ruflo — confira o README para o comando atual da sua versão)",
       "exemploUso": "'Orquestre um swarm para migrar estes 40 componentes de JavaScript para TypeScript' — o orquestrador divide, distribui entre agentes paralelos e consolida os resultados.",
       "promptInicial": "Utilize a Skill Ruflo para executar a orquestração desta tarefa em múltiplos agentes paralelos com papéis definidos. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["saas", "multiagentes", "backend", "migracao", "automacao"]
+      "recomendadoPara": [
+        "saas",
+        "multiagentes",
+        "backend",
+        "migracao",
+        "automacao"
+      ]
     },
     {
       "id": "context7",
@@ -125,8 +228,18 @@
       "atualizadoEm": "2026-07-13",
       "licenca": "MIT",
       "linguagem": "TypeScript",
-      "categorias": ["documentacao", "tokens", "programacao"],
-      "tags": ["mcp", "docs-atualizadas", "bibliotecas", "api-reference", "anti-alucinacao"],
+      "categorias": [
+        "documentacao",
+        "tokens",
+        "programacao"
+      ],
+      "tags": [
+        "mcp",
+        "docs-atualizadas",
+        "bibliotecas",
+        "api-reference",
+        "anti-alucinacao"
+      ],
       "destaque": true,
       "paraQueServe": "Servidor MCP que injeta documentação atualizada e específica da versão de milhares de bibliotecas diretamente no contexto do modelo, no momento do uso.",
       "quandoUsar": "Sempre que o código depende de frameworks que mudam rápido (Next.js, Prisma, LangChain...): o modelo para de sugerir APIs descontinuadas do treinamento e passa a usar a doc real da versão do seu projeto.",
@@ -147,7 +260,14 @@
       "instalacao": "claude mcp add context7 -- npx -y @upstash/context7-mcp (ou adicione ao arquivo de configuração MCP do seu cliente)",
       "exemploUso": "'use context7: como faço streaming de Server Actions no Next.js 15?' — a resposta vem baseada na doc atual do Next.js 15, não na memória do modelo.",
       "promptInicial": "Utilize a Skill Context7 para executar esta implementação consultando a documentação atualizada das bibliotecas do projeto. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["frontend", "backend", "api", "saas", "integracao", "documentacao"]
+      "recomendadoPara": [
+        "frontend",
+        "backend",
+        "api",
+        "saas",
+        "integracao",
+        "documentacao"
+      ]
     },
     {
       "id": "bmad-method",
@@ -158,8 +278,19 @@
       "atualizadoEm": "2026-07-14",
       "licenca": "Ver repositório",
       "linguagem": "JavaScript",
-      "categorias": ["planejamento", "multiagentes", "documentacao"],
-      "tags": ["agile", "prd", "arquitetura", "product-owner", "scrum", "greenfield"],
+      "categorias": [
+        "planejamento",
+        "multiagentes",
+        "documentacao"
+      ],
+      "tags": [
+        "agile",
+        "prd",
+        "arquitetura",
+        "product-owner",
+        "scrum",
+        "greenfield"
+      ],
       "destaque": false,
       "paraQueServe": "Metodologia ágil dirigida por agentes de IA: personas de Analista, PM, Arquiteto, Scrum Master, Dev e QA colaboram para transformar uma ideia em PRD, arquitetura e histórias implementáveis.",
       "quandoUsar": "No início de projetos (greenfield) ou de módulos grandes, quando a dor é transformar uma ideia vaga em requisitos, arquitetura e backlog executável antes de escrever código.",
@@ -180,7 +311,13 @@
       "instalacao": "npx bmad-method install (instalador interativo que configura os agentes no seu projeto)",
       "exemploUso": "'Quero construir um app de agendamento para clínicas' — o fluxo BMAD conduz da análise de mercado ao PRD, à arquitetura e às histórias prontas para o agente dev implementar.",
       "promptInicial": "Utilize a Skill BMAD-METHOD para executar o planejamento completo deste produto, do levantamento de requisitos às histórias de implementação. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["saas", "mvp", "startup", "planejamento", "greenfield"]
+      "recomendadoPara": [
+        "saas",
+        "mvp",
+        "startup",
+        "planejamento",
+        "greenfield"
+      ]
     },
     {
       "id": "awesome-claude-code",
@@ -191,8 +328,18 @@
       "atualizadoEm": "2026-07-15",
       "licenca": "Ver repositório",
       "linguagem": "Python",
-      "categorias": ["pesquisa", "documentacao"],
-      "tags": ["awesome-list", "curadoria", "comandos", "hooks", "workflows", "claude-md"],
+      "categorias": [
+        "pesquisa",
+        "documentacao"
+      ],
+      "tags": [
+        "awesome-list",
+        "curadoria",
+        "comandos",
+        "hooks",
+        "workflows",
+        "claude-md"
+      ],
       "destaque": false,
       "paraQueServe": "Curadoria contínua dos melhores recursos do ecossistema Claude Code: skills, comandos slash, hooks, arquivos CLAUDE.md exemplares, integrações e workflows testados pela comunidade.",
       "quandoUsar": "Quando você precisa descobrir se já existe uma solução pronta para o seu problema antes de construir do zero — ou quer referências de CLAUDE.md e comandos bem escritos para copiar.",
@@ -212,7 +359,12 @@
       "instalacao": "Não requer instalação: navegue pelo README e instale os recursos individuais que escolher, cada um com instruções próprias.",
       "exemploUso": "Procurando automatizar changelogs, você encontra na lista um slash command pronto, copia para .claude/commands/ e usa no minuto seguinte.",
       "promptInicial": "Utilize a Skill Awesome Claude Code para executar uma pesquisa dos recursos existentes que resolvem esta necessidade antes de construir algo novo. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["pesquisa", "produtividade", "cli", "configuracao"]
+      "recomendadoPara": [
+        "pesquisa",
+        "produtividade",
+        "cli",
+        "configuracao"
+      ]
     },
     {
       "id": "claude-cookbooks",
@@ -223,8 +375,20 @@
       "atualizadoEm": "2026-07-13",
       "licenca": "MIT",
       "linguagem": "Jupyter Notebook",
-      "categorias": ["pesquisa", "programacao", "prompts"],
-      "tags": ["oficial", "rag", "tool-use", "avaliacao", "embeddings", "visao", "notebooks"],
+      "categorias": [
+        "pesquisa",
+        "programacao",
+        "prompts"
+      ],
+      "tags": [
+        "oficial",
+        "rag",
+        "tool-use",
+        "avaliacao",
+        "embeddings",
+        "visao",
+        "notebooks"
+      ],
       "destaque": false,
       "paraQueServe": "Coleção oficial de notebooks com receitas testadas para construir com a API do Claude: RAG, uso de ferramentas, subagentes, análise de PDFs e imagens, avaliação automática e classificação.",
       "quandoUsar": "Quando for implementar um padrão conhecido (RAG, roteamento, avaliador, extração estruturada) e quiser partir de código de referência da própria Anthropic em vez de descobrir a arquitetura sozinho.",
@@ -245,7 +409,13 @@
       "instalacao": "git clone https://github.com/anthropics/claude-cookbooks.git e execute os notebooks com Jupyter (requer chave da API Anthropic)",
       "exemploUso": "Para adicionar busca semântica ao seu produto, adapte o notebook de RAG com citações: chunking, embeddings e prompt de resposta já vêm resolvidos.",
       "promptInicial": "Utilize a Skill Claude Cookbooks para executar a implementação deste padrão de IA partindo da receita oficial correspondente. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["dados", "api", "integracao", "pesquisa", "ia"]
+      "recomendadoPara": [
+        "dados",
+        "api",
+        "integracao",
+        "pesquisa",
+        "ia"
+      ]
     },
     {
       "id": "wshobson-agents",
@@ -256,8 +426,19 @@
       "atualizadoEm": "2026-07-14",
       "licenca": "MIT",
       "linguagem": "Python",
-      "categorias": ["programacao", "multiagentes", "seguranca"],
-      "tags": ["subagentes", "marketplace", "especialistas", "code-review", "arquitetura", "plugins"],
+      "categorias": [
+        "programacao",
+        "multiagentes",
+        "seguranca"
+      ],
+      "tags": [
+        "subagentes",
+        "marketplace",
+        "especialistas",
+        "code-review",
+        "arquitetura",
+        "plugins"
+      ],
       "destaque": true,
       "paraQueServe": "Marketplace de plugins com dezenas de subagentes especialistas prontos — arquiteto backend, revisor de código, auditor de segurança, engenheiro de performance, especialistas por linguagem — que o Claude Code aciona automaticamente conforme a tarefa.",
       "quandoUsar": "Quando você quer opiniões de especialista sob demanda: revisão de segurança num PR, tuning de SQL, decisão de arquitetura — sem escrever você mesmo o prompt de cada persona.",
@@ -278,7 +459,15 @@
       "instalacao": "No Claude Code: /plugin marketplace add wshobson/agents e instale os agentes desejados — ou clone o repositório para ~/.claude/agents",
       "exemploUso": "Ao pedir 'revise a segurança deste endpoint de upload', o subagente security-auditor assume e devolve análise de vulnerabilidades com correções sugeridas.",
       "promptInicial": "Utilize a Skill Agents (wshobson) para executar esta tarefa delegando ao subagente especialista adequado. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["saas", "backend", "frontend", "api", "seguranca", "multiagentes", "revisao"]
+      "recomendadoPara": [
+        "saas",
+        "backend",
+        "frontend",
+        "api",
+        "seguranca",
+        "multiagentes",
+        "revisao"
+      ]
     },
     {
       "id": "prompt-eng-tutorial",
@@ -289,8 +478,18 @@
       "atualizadoEm": "2026-03-01",
       "licenca": "Ver repositório",
       "linguagem": "Jupyter Notebook",
-      "categorias": ["prompts", "pesquisa"],
-      "tags": ["oficial", "curso", "few-shot", "chain-of-thought", "xml-tags", "exercicios"],
+      "categorias": [
+        "prompts",
+        "pesquisa"
+      ],
+      "tags": [
+        "oficial",
+        "curso",
+        "few-shot",
+        "chain-of-thought",
+        "xml-tags",
+        "exercicios"
+      ],
       "destaque": false,
       "paraQueServe": "Curso interativo oficial da Anthropic, em 9 capítulos com exercícios práticos, que ensina a construir prompts robustos: papéis, exemplos, raciocínio passo a passo, tags XML e prevenção de alucinação.",
       "quandoUsar": "Quando seus prompts funcionam 'às vezes': o curso ensina a diagnosticar por que um prompt falha e a estruturá-lo para ser confiável — essencial antes de colocar prompts em produção.",
@@ -311,7 +510,12 @@
       "instalacao": "git clone https://github.com/anthropics/prompt-eng-interactive-tutorial.git e abra os notebooks — ou use a versão em Google Sheets indicada no README",
       "exemploUso": "No capítulo de few-shot, você reescreve um prompt de classificação que errava 30% dos casos e vê a taxa cair adicionando 3 exemplos bem escolhidos.",
       "promptInicial": "Utilize a Skill Prompt Engineering Interactive Tutorial para executar a revisão e o aprimoramento dos prompts deste projeto aplicando as técnicas do curso. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["prompts", "ia", "api", "produto-ia"]
+      "recomendadoPara": [
+        "prompts",
+        "ia",
+        "api",
+        "produto-ia"
+      ]
     },
     {
       "id": "claude-code-router",
@@ -322,8 +526,17 @@
       "atualizadoEm": "2026-07-15",
       "licenca": "MIT",
       "linguagem": "TypeScript",
-      "categorias": ["tokens", "automacao"],
-      "tags": ["roteamento", "multi-modelo", "custo", "proxy", "background-tasks"],
+      "categorias": [
+        "tokens",
+        "automacao"
+      ],
+      "tags": [
+        "roteamento",
+        "multi-modelo",
+        "custo",
+        "proxy",
+        "background-tasks"
+      ],
       "destaque": false,
       "paraQueServe": "Camada de roteamento local que direciona cada requisição do Claude Code para o modelo mais adequado: tarefas pesadas para modelos fortes, tarefas triviais (background, resumo) para modelos baratos ou locais.",
       "quandoUsar": "Quando a conta de tokens importa: uso intenso diário, times com orçamento, ou quando você quer usar modelos diferentes por tipo de tarefa sem trocar de ferramenta.",
@@ -343,7 +556,12 @@
         "analise": "Visibilidade de qual modelo atende cada tarefa"
       },
       "promptInicial": "Utilize a Skill Claude Code Router para executar a configuração de roteamento de modelos deste ambiente, otimizando custo por tipo de tarefa. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["custo", "contexto", "automacao", "time"]
+      "recomendadoPara": [
+        "custo",
+        "contexto",
+        "automacao",
+        "time"
+      ]
     },
     {
       "id": "claude-code-templates",
@@ -354,8 +572,19 @@
       "atualizadoEm": "2026-07-15",
       "licenca": "MIT",
       "linguagem": "Python",
-      "categorias": ["automacao", "programacao", "tokens"],
-      "tags": ["cli", "templates", "analytics", "hooks", "comandos", "setup"],
+      "categorias": [
+        "automacao",
+        "programacao",
+        "tokens"
+      ],
+      "tags": [
+        "cli",
+        "templates",
+        "analytics",
+        "hooks",
+        "comandos",
+        "setup"
+      ],
       "destaque": false,
       "paraQueServe": "CLI que instala em segundos centenas de componentes prontos para o Claude Code — agentes, comandos, hooks, MCPs e configurações por framework — além de um dashboard local de analytics das suas sessões.",
       "quandoUsar": "Ao configurar o Claude Code num projeto novo (React, Django, Rails...) ou quando quiser monitorar uso, custo e desempenho das suas sessões em um painel local.",
@@ -376,7 +605,13 @@
       "instalacao": "npx claude-code-templates@latest (assistente interativo; use --analytics para o dashboard local)",
       "exemploUso": "Num projeto Django novo: npx claude-code-templates@latest, escolha o template Django e ganhe CLAUDE.md, comandos e hooks calibrados para a stack.",
       "promptInicial": "Utilize a Skill Claude Code Templates para executar a configuração inicial deste projeto com os templates adequados à stack. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["setup", "frontend", "backend", "produtividade", "custo"]
+      "recomendadoPara": [
+        "setup",
+        "frontend",
+        "backend",
+        "produtividade",
+        "custo"
+      ]
     },
     {
       "id": "awesome-agent-skills",
@@ -387,8 +622,18 @@
       "atualizadoEm": "2026-07-10",
       "licenca": "MIT",
       "linguagem": "—",
-      "categorias": ["pesquisa", "documentacao"],
-      "tags": ["awesome-list", "skills-oficiais", "curadoria", "vercel", "stripe", "cloudflare"],
+      "categorias": [
+        "pesquisa",
+        "documentacao"
+      ],
+      "tags": [
+        "awesome-list",
+        "skills-oficiais",
+        "curadoria",
+        "vercel",
+        "stripe",
+        "cloudflare"
+      ],
       "destaque": true,
       "paraQueServe": "Maior diretório curado de skills de agentes: mais de 1.000 skills, incluindo as publicadas oficialmente por times como Anthropic, Vercel, Stripe, Cloudflare, Sentry e Figma, organizadas por categoria.",
       "quandoUsar": "Como primeiro lugar para procurar uma skill antes de escrever a sua: se você integra com um serviço grande, provavelmente já existe skill oficial do próprio time listada aqui.",
@@ -408,7 +653,12 @@
       "instalacao": "Não requer instalação: navegue pelo índice e siga as instruções da skill escolhida (em geral, copiar a pasta para .claude/skills/ ou instalar via plugin).",
       "exemploUso": "Precisa integrar pagamentos? A skill oficial da Stripe listada no índice ensina o agente a usar a API atual, com os fluxos recomendados pelo próprio time da Stripe.",
       "promptInicial": "Utilize a Skill Awesome Agent Skills para executar a busca da skill mais adequada a esta integração antes de implementá-la manualmente. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["integracao", "api", "pesquisa", "saas"]
+      "recomendadoPara": [
+        "integracao",
+        "api",
+        "pesquisa",
+        "saas"
+      ]
     },
     {
       "id": "claude-task-master",
@@ -419,8 +669,18 @@
       "atualizadoEm": "2026-04-28",
       "licenca": "MIT com Commons Clause",
       "linguagem": "JavaScript",
-      "categorias": ["planejamento", "automacao"],
-      "tags": ["prd", "tarefas", "backlog", "mcp", "dependencias", "roadmap"],
+      "categorias": [
+        "planejamento",
+        "automacao"
+      ],
+      "tags": [
+        "prd",
+        "tarefas",
+        "backlog",
+        "mcp",
+        "dependencias",
+        "roadmap"
+      ],
       "destaque": false,
       "paraQueServe": "Sistema de gestão de tarefas por IA: converte um PRD em backlog estruturado com dependências, prioridades e subtarefas, e alimenta o agente com a próxima tarefa certa a cada passo.",
       "quandoUsar": "Em projetos com dezenas de tarefas interdependentes, quando o agente começa a se perder no que já foi feito e no que vem a seguir — o Task Master vira a memória de trabalho do projeto.",
@@ -441,7 +701,13 @@
       "instalacao": "npm i -g task-master-ai e task-master init — ou adicione como servidor MCP no seu editor (ver README)",
       "exemploUso": "task-master parse-prd ./prd.txt gera o backlog; a cada 'próxima tarefa', o agente recebe a tarefa desbloqueada de maior prioridade com contexto para implementá-la.",
       "promptInicial": "Utilize a Skill Task Master para executar a decomposição deste PRD em tarefas com dependências e conduzir a implementação tarefa a tarefa. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["saas", "mvp", "planejamento", "backend", "frontend"]
+      "recomendadoPara": [
+        "saas",
+        "mvp",
+        "planejamento",
+        "backend",
+        "frontend"
+      ]
     },
     {
       "id": "superclaude",
@@ -452,8 +718,18 @@
       "atualizadoEm": "2026-06-13",
       "licenca": "MIT",
       "linguagem": "Python",
-      "categorias": ["prompts", "programacao", "multiagentes"],
-      "tags": ["personas", "comandos", "metodologia", "flags", "configuracao"],
+      "categorias": [
+        "prompts",
+        "programacao",
+        "multiagentes"
+      ],
+      "tags": [
+        "personas",
+        "comandos",
+        "metodologia",
+        "flags",
+        "configuracao"
+      ],
       "destaque": false,
       "paraQueServe": "Framework de configuração que adiciona ao Claude Code comandos especializados, personas cognitivas (arquiteto, analista, mentor, refatorador...) e metodologias de trabalho acionáveis por flags.",
       "quandoUsar": "Quando você repete os mesmos tipos de pedido e quer transformá-los em comandos consistentes — ou quer alternar o 'modo de pensar' do modelo (profundidade, persona, formato) sem reescrever prompts.",
@@ -474,7 +750,12 @@
       "instalacao": "pipx install SuperClaude e SuperClaude install (ou pip install SuperClaude; veja o README para o instalador interativo)",
       "exemploUso": "/sc:analyze --persona-architect no seu backend devolve análise arquitetural estruturada; /sc:improve aplica refatorações com a persona de qualidade.",
       "promptInicial": "Utilize a Skill SuperClaude Framework para executar esta análise com a persona e o comando adequados ao objetivo. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["prompts", "produtividade", "time", "revisao"]
+      "recomendadoPara": [
+        "prompts",
+        "produtividade",
+        "time",
+        "revisao"
+      ]
     },
     {
       "id": "awesome-cc-subagents",
@@ -485,8 +766,17 @@
       "atualizadoEm": "2026-07-10",
       "licenca": "MIT",
       "linguagem": "Shell",
-      "categorias": ["multiagentes", "programacao"],
-      "tags": ["subagentes", "colecao", "especialistas", "categorias", "production-ready"],
+      "categorias": [
+        "multiagentes",
+        "programacao"
+      ],
+      "tags": [
+        "subagentes",
+        "colecao",
+        "especialistas",
+        "categorias",
+        "production-ready"
+      ],
       "destaque": false,
       "paraQueServe": "Coleção de mais de 100 subagentes especializados e categorizados — de engenharia de dados a DevOps, de revisão de código a produto — prontos para copiar para o seu Claude Code.",
       "quandoUsar": "Quando você precisa de um especialista pontual (ex.: revisor de Terraform, analista de dados, engenheiro de acessibilidade) e quer um prompt de subagente maduro em vez de escrever o seu do zero.",
@@ -507,7 +797,13 @@
       "instalacao": "Clone o repositório e copie os subagentes desejados para .claude/agents/ do projeto (ou ~/.claude/agents/ para uso global).",
       "exemploUso": "Copie database-optimizer.md para .claude/agents/ e peça 'otimize as queries lentas do relatório' — o subagente assume com prompt de DBA.",
       "promptInicial": "Utilize a Skill Awesome Claude Code Subagents para executar esta tarefa acionando o subagente especialista correspondente. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["multiagentes", "backend", "devops", "dados", "revisao"]
+      "recomendadoPara": [
+        "multiagentes",
+        "backend",
+        "devops",
+        "dados",
+        "revisao"
+      ]
     },
     {
       "id": "alireza-claude-skills",
@@ -518,8 +814,19 @@
       "atualizadoEm": "2026-07-14",
       "licenca": "MIT",
       "linguagem": "Python",
-      "categorias": ["escrita", "automacao", "programacao"],
-      "tags": ["colecao", "marketing", "produto", "compliance", "negocios", "multi-dominio"],
+      "categorias": [
+        "escrita",
+        "automacao",
+        "programacao"
+      ],
+      "tags": [
+        "colecao",
+        "marketing",
+        "produto",
+        "compliance",
+        "negocios",
+        "multi-dominio"
+      ],
       "destaque": false,
       "paraQueServe": "Biblioteca com centenas de skills, agentes e comandos cobrindo além de engenharia: marketing, produto, compliance, finanças, operações e produtividade pessoal — para usar o Claude como equipe multidisciplinar.",
       "quandoUsar": "Quando o trabalho vai além do código: escrever material de lançamento, revisar contrato sob um checklist, montar análise financeira ou padronizar processos de negócio com o mesmo agente que desenvolve.",
@@ -540,7 +847,13 @@
       "instalacao": "Clone o repositório e copie as skills desejadas para .claude/skills/ (o README traz a estrutura e opções de instalação por agente).",
       "exemploUso": "Com a skill de lançamento de produto, peça o kit completo de um release: anúncio, changelog, e-mail e post — todos seguindo o mesmo tom e estrutura.",
       "promptInicial": "Utilize a Skill Claude Skills (alirezarezvani) para executar esta tarefa com a skill do domínio correspondente. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["conteudo", "startup", "produto", "escritorio", "automacao"]
+      "recomendadoPara": [
+        "conteudo",
+        "startup",
+        "produto",
+        "escritorio",
+        "automacao"
+      ]
     },
     {
       "id": "n8n-mcp",
@@ -551,8 +864,17 @@
       "atualizadoEm": "2026-07-14",
       "licenca": "MIT",
       "linguagem": "TypeScript",
-      "categorias": ["automacao", "documentacao"],
-      "tags": ["n8n", "workflows", "mcp", "integracao", "no-code"],
+      "categorias": [
+        "automacao",
+        "documentacao"
+      ],
+      "tags": [
+        "n8n",
+        "workflows",
+        "mcp",
+        "integracao",
+        "no-code"
+      ],
       "destaque": false,
       "paraQueServe": "Servidor MCP que dá ao Claude conhecimento profundo dos nós do n8n (documentação, propriedades, operações) para construir e validar workflows de automação por conversa.",
       "quandoUsar": "Quando você automatiza processos com n8n: em vez de montar workflows nó a nó na interface, descreve o processo e o Claude gera o workflow correto, com os nós e parâmetros certos.",
@@ -572,7 +894,12 @@
       "instalacao": "claude mcp add n8n-mcp -- npx n8n-mcp (configure as variáveis do seu n8n conforme o README para recursos de gestão)",
       "exemploUso": "'Crie um workflow: novo lead no formulário → valida e-mail → cria card no CRM → notifica no Slack' — o JSON do workflow sai pronto para importar.",
       "promptInicial": "Utilize a Skill n8n-MCP para executar a criação deste workflow de automação com os nós e parâmetros corretos. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["automacao", "integracao", "no-code", "api"]
+      "recomendadoPara": [
+        "automacao",
+        "integracao",
+        "no-code",
+        "api"
+      ]
     },
     {
       "id": "ccusage",
@@ -583,8 +910,16 @@
       "atualizadoEm": "2026-07-15",
       "licenca": "Ver repositório",
       "linguagem": "Rust",
-      "categorias": ["tokens"],
-      "tags": ["cli", "custos", "relatorios", "monitoramento", "jsonl"],
+      "categorias": [
+        "tokens"
+      ],
+      "tags": [
+        "cli",
+        "custos",
+        "relatorios",
+        "monitoramento",
+        "jsonl"
+      ],
       "destaque": false,
       "paraQueServe": "CLI que analisa os logs locais do Claude Code e mostra relatórios de consumo de tokens e custo estimado por dia, sessão, projeto e janela de billing.",
       "quandoUsar": "Quando você quer saber para onde os tokens estão indo: qual projeto consome mais, quanto custaria em API o seu uso do plano, e se o ritmo atual vai estourar o limite da janela.",
@@ -604,7 +939,11 @@
       "instalacao": "npx ccusage@latest (ou instale globalmente; subcomandos: daily, monthly, session, blocks --live)",
       "exemploUso": "npx ccusage blocks --live durante uma sessão pesada mostra o consumo da janela atual e a projeção de estouro antes que aconteça.",
       "promptInicial": "Utilize a Skill ccusage para executar uma análise do consumo de tokens deste ambiente e identificar os maiores focos de custo. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["custo", "contexto", "time"]
+      "recomendadoPara": [
+        "custo",
+        "contexto",
+        "time"
+      ]
     },
     {
       "id": "figma-context-mcp",
@@ -615,8 +954,17 @@
       "atualizadoEm": "2026-07-03",
       "licenca": "MIT",
       "linguagem": "TypeScript",
-      "categorias": ["design", "programacao"],
-      "tags": ["figma", "design-to-code", "mcp", "layout", "ui"],
+      "categorias": [
+        "design",
+        "programacao"
+      ],
+      "tags": [
+        "figma",
+        "design-to-code",
+        "mcp",
+        "layout",
+        "ui"
+      ],
       "destaque": false,
       "paraQueServe": "Servidor MCP que entrega ao agente os dados estruturados de layout do Figma (hierarquia, espaçamentos, cores, tipografia) simplificados para implementação fiel de telas.",
       "quandoUsar": "Sempre que for implementar uma tela a partir de um design no Figma: cole o link do frame e o agente implementa com as medidas reais, em vez de adivinhar a partir de um screenshot.",
@@ -637,7 +985,12 @@
       "instalacao": "claude mcp add figma -- npx -y figma-developer-mcp --stdio (requer FIGMA_API_KEY; veja o README do Framelink)",
       "exemploUso": "'Implemente este frame em React com Tailwind: [link do Figma]' — o componente sai com os tokens de espaçamento e cor exatos do design.",
       "promptInicial": "Utilize a Skill Figma Context MCP para executar a implementação desta tela a partir dos dados reais do design no Figma. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["frontend", "design", "mobile", "saas"]
+      "recomendadoPara": [
+        "frontend",
+        "design",
+        "mobile",
+        "saas"
+      ]
     },
     {
       "id": "contains-studio-agents",
@@ -648,8 +1001,19 @@
       "atualizadoEm": "2025-07-28",
       "licenca": "Ver repositório",
       "linguagem": "Markdown",
-      "categorias": ["design", "multiagentes", "planejamento"],
-      "tags": ["estudio", "produto", "ux", "marketing", "prototipagem", "sprint"],
+      "categorias": [
+        "design",
+        "multiagentes",
+        "planejamento"
+      ],
+      "tags": [
+        "estudio",
+        "produto",
+        "ux",
+        "marketing",
+        "prototipagem",
+        "sprint"
+      ],
       "destaque": false,
       "paraQueServe": "Agentes organizados como departamentos de um estúdio de produto — design, engenharia, marketing, produto, operações e testes — voltados a prototipagem e lançamento rápidos.",
       "quandoUsar": "Em fase de descoberta e prototipagem: validar uma ideia em dias, com agente de UX desenhando fluxo, agente de brand definindo tom e agente de growth planejando lançamento.",
@@ -670,7 +1034,13 @@
       "instalacao": "Clone o repositório e copie as pastas de agentes desejadas para ~/.claude/agents/ (instruções no README).",
       "exemploUso": "Com o agente de UX research, peça 'avalie o fluxo de onboarding' e receba análise heurística com pontos de fricção priorizados.",
       "promptInicial": "Utilize a Skill Contains Studio Agents para executar esta etapa acionando o agente do departamento adequado. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["design", "mvp", "startup", "produto", "conteudo"]
+      "recomendadoPara": [
+        "design",
+        "mvp",
+        "startup",
+        "produto",
+        "conteudo"
+      ]
     },
     {
       "id": "claude-context",
@@ -681,8 +1051,19 @@
       "atualizadoEm": "2026-07-14",
       "licenca": "MIT",
       "linguagem": "TypeScript",
-      "categorias": ["tokens", "pesquisa", "programacao"],
-      "tags": ["busca-semantica", "embeddings", "vector-db", "codebase", "mcp", "indexacao"],
+      "categorias": [
+        "tokens",
+        "pesquisa",
+        "programacao"
+      ],
+      "tags": [
+        "busca-semantica",
+        "embeddings",
+        "vector-db",
+        "codebase",
+        "mcp",
+        "indexacao"
+      ],
       "destaque": false,
       "paraQueServe": "MCP de busca semântica de código: indexa o repositório inteiro em um banco vetorial e permite ao agente achar os trechos relevantes por significado, sem carregar a codebase no contexto.",
       "quandoUsar": "Em monorepos e codebases grandes, quando grep não basta ('onde tratamos retry de pagamento?') e carregar dezenas de arquivos no contexto seria caro ou impossível.",
@@ -703,7 +1084,13 @@
       "instalacao": "Adicione como MCP: npx @zilliz/claude-context-mcp@latest (requer chave de embedding — ex. OpenAI — e um Milvus/Zilliz Cloud; veja o README)",
       "exemploUso": "'Encontre onde aplicamos regras de desconto e me explique o fluxo' — a busca semântica retorna os trechos certos mesmo sem você saber os nomes dos arquivos.",
       "promptInicial": "Utilize a Skill Claude Context para executar a localização semântica do código relevante antes de qualquer modificação. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["backend", "monorepo", "contexto", "banco-de-dados", "legado"]
+      "recomendadoPara": [
+        "backend",
+        "monorepo",
+        "contexto",
+        "banco-de-dados",
+        "legado"
+      ]
     },
     {
       "id": "cc-usage-monitor",
@@ -714,8 +1101,16 @@
       "atualizadoEm": "2026-07-05",
       "licenca": "MIT",
       "linguagem": "Python",
-      "categorias": ["tokens"],
-      "tags": ["monitor", "tempo-real", "previsao", "limites", "terminal"],
+      "categorias": [
+        "tokens"
+      ],
+      "tags": [
+        "monitor",
+        "tempo-real",
+        "previsao",
+        "limites",
+        "terminal"
+      ],
       "destaque": false,
       "paraQueServe": "Monitor de terminal em tempo real do consumo do Claude Code, com previsões de quando o limite da janela será atingido e alertas antes de estourar.",
       "quandoUsar": "Em dias de uso intenso: deixe rodando num painel lateral e saiba, antes de começar uma tarefa grande, se o orçamento da janela atual comporta.",
@@ -735,7 +1130,11 @@
       "instalacao": "pip install claude-monitor (ou uv tool install claude-monitor) e execute claude-monitor no terminal",
       "exemploUso": "Antes de rodar uma migração longa, o monitor mostra que a janela atual está 70% consumida — você agenda para a próxima janela e evita interrupção no meio.",
       "promptInicial": "Utilize a Skill Claude Code Usage Monitor para executar o acompanhamento do consumo desta sessão e alertar sobre risco de limite. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["custo", "contexto", "time"]
+      "recomendadoPara": [
+        "custo",
+        "contexto",
+        "time"
+      ]
     },
     {
       "id": "cc-security-review",
@@ -746,8 +1145,17 @@
       "atualizadoEm": "2026-02-11",
       "licenca": "MIT",
       "linguagem": "Python",
-      "categorias": ["seguranca", "programacao"],
-      "tags": ["oficial", "github-action", "vulnerabilidades", "pull-request", "auditoria"],
+      "categorias": [
+        "seguranca",
+        "programacao"
+      ],
+      "tags": [
+        "oficial",
+        "github-action",
+        "vulnerabilidades",
+        "pull-request",
+        "auditoria"
+      ],
       "destaque": false,
       "paraQueServe": "GitHub Action oficial da Anthropic que roda análise de segurança com Claude em cada pull request, comentando vulnerabilidades encontradas com explicação e sugestão de correção.",
       "quandoUsar": "Em qualquer repositório que aceite PRs — especialmente com código de autenticação, pagamentos ou upload — para ter uma revisão de segurança automática antes do merge.",
@@ -767,7 +1175,13 @@
       "instalacao": "Adicione o workflow ao repositório usando a action anthropics/claude-code-security-review (exemplo de YAML no README; requer ANTHROPIC_API_KEY nos secrets).",
       "exemploUso": "Num PR que adiciona upload de arquivos, a action comenta: validação de tipo ausente e caminho não sanitizado — com o patch sugerido para ambos.",
       "promptInicial": "Utilize a Skill Claude Code Security Review para executar a auditoria de segurança destas alterações antes do merge. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["seguranca", "api", "saas", "backend", "ci"]
+      "recomendadoPara": [
+        "seguranca",
+        "api",
+        "saas",
+        "backend",
+        "ci"
+      ]
     },
     {
       "id": "oneredoak-workflows",
@@ -778,8 +1192,18 @@
       "atualizadoEm": "2025-09-14",
       "licenca": "MIT",
       "linguagem": "Markdown",
-      "categorias": ["design", "programacao", "seguranca"],
-      "tags": ["design-review", "playwright", "workflows", "ui-review", "acessibilidade"],
+      "categorias": [
+        "design",
+        "programacao",
+        "seguranca"
+      ],
+      "tags": [
+        "design-review",
+        "playwright",
+        "workflows",
+        "ui-review",
+        "acessibilidade"
+      ],
       "destaque": false,
       "paraQueServe": "Workflows testados em startup AI-native, com destaque para o de design review: o agente navega a interface com Playwright, avalia contra princípios de design e devolve revisão estruturada de UI/UX.",
       "quandoUsar": "Antes de mergear mudanças de interface: o workflow abre a tela real no navegador, verifica consistência visual, acessibilidade e estados de erro, e reporta como um design reviewer sênior.",
@@ -800,7 +1224,12 @@
       "instalacao": "Copie os comandos e workflows do repositório para .claude/commands/ do seu projeto (requer Playwright MCP para os fluxos de navegador).",
       "exemploUso": "/design-review após implementar uma tela: o agente navega o fluxo, tira screenshots e lista problemas de espaçamento, contraste e estados vazios com prioridade.",
       "promptInicial": "Utilize a Skill Claude Code Workflows (OneRedOak) para executar a revisão de design desta interface navegando pela aplicação real. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["frontend", "design", "saas", "revisao"]
+      "recomendadoPara": [
+        "frontend",
+        "design",
+        "saas",
+        "revisao"
+      ]
     },
     {
       "id": "spec-workflow",
@@ -811,8 +1240,18 @@
       "atualizadoEm": "2025-09-07",
       "licenca": "MIT",
       "linguagem": "TypeScript",
-      "categorias": ["planejamento", "documentacao", "programacao"],
-      "tags": ["spec-driven", "requisitos", "design-doc", "tarefas", "bugfix"],
+      "categorias": [
+        "planejamento",
+        "documentacao",
+        "programacao"
+      ],
+      "tags": [
+        "spec-driven",
+        "requisitos",
+        "design-doc",
+        "tarefas",
+        "bugfix"
+      ],
       "destaque": false,
       "paraQueServe": "Workflow de desenvolvimento dirigido por especificação: transforma um pedido de feature em Requisitos → Design → Tarefas → Implementação, e bugs em Reportar → Analisar → Corrigir → Verificar.",
       "quandoUsar": "Quando 'implementa a feature X' costuma virar código que não era o que você queria: o fluxo força alinhamento de requisitos e design antes de qualquer implementação.",
@@ -833,7 +1272,13 @@
       "instalacao": "npx @pimzino/claude-code-spec-workflow@latest setup no diretório do projeto (instala os comandos /spec-* e /bug-*)",
       "exemploUso": "/spec-create exportacao-csv 'exportar relatórios em CSV' gera requisitos para sua aprovação, depois design, depois tarefas — e só então implementa.",
       "promptInicial": "Utilize a Skill Claude Code Spec Workflow para executar esta feature pelo fluxo de especificação completo, com aprovação por fase. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["saas", "planejamento", "documentacao", "backend", "frontend"]
+      "recomendadoPara": [
+        "saas",
+        "planejamento",
+        "documentacao",
+        "backend",
+        "frontend"
+      ]
     },
     {
       "id": "tdd-guard",
@@ -844,8 +1289,18 @@
       "atualizadoEm": "2026-07-06",
       "licenca": "MIT",
       "linguagem": "TypeScript",
-      "categorias": ["testes", "programacao"],
-      "tags": ["tdd", "hooks", "enforcement", "vitest", "pytest", "qualidade"],
+      "categorias": [
+        "testes",
+        "programacao"
+      ],
+      "tags": [
+        "tdd",
+        "hooks",
+        "enforcement",
+        "vitest",
+        "pytest",
+        "qualidade"
+      ],
       "destaque": false,
       "paraQueServe": "Guard automatizado via hooks do Claude Code que bloqueia modificações de código sem teste falhando correspondente — TDD deixa de ser recomendação e vira regra imposta.",
       "quandoUsar": "Quando o agente (ou o time) 'esquece' o TDD sob pressão: o guard intercepta cada edição e recusa implementação que não tenha nascido de um teste vermelho.",
@@ -866,7 +1321,59 @@
       "instalacao": "npm install -g tdd-guard e configure o hook no settings do Claude Code conforme o README (mais o reporter do seu test runner).",
       "exemploUso": "O agente tenta editar payment.ts sem teste novo: o guard bloqueia e responde 'escreva primeiro um teste falhando' — o fluxo TDD se autocorrige.",
       "promptInicial": "Utilize a Skill TDD Guard para executar esta implementação sob disciplina estrita de TDD, com testes precedendo cada mudança. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
-      "recomendadoPara": ["testes", "backend", "api", "qualidade"]
+      "recomendadoPara": [
+        "testes",
+        "backend",
+        "api",
+        "qualidade"
+      ]
+    },
+    {
+      "id": "awesome-claude-skills",
+      "nome": "Awesome Claude Skills",
+      "autor": "travisvn",
+      "repo": "https://github.com/travisvn/awesome-claude-skills",
+      "stars": 14127,
+      "atualizadoEm": "2026-04-28",
+      "licenca": "Ver repositório",
+      "linguagem": "—",
+      "categorias": [
+        "pesquisa",
+        "documentacao"
+      ],
+      "tags": [
+        "awesome-list",
+        "curadoria",
+        "claude-desktop",
+        "skills",
+        "formato-skill"
+      ],
+      "destaque": false,
+      "paraQueServe": "Lista curada focada especificamente em Skills do Claude — incluindo as que rodam no Claude Desktop e no claude.ai, não só no Claude Code — com recursos sobre o formato SKILL.md e ferramentas para criá-las.",
+      "quandoUsar": "Quando você usa o Claude fora do terminal e quer skills que funcionem no app/web, ou quando vai escrever a sua própria skill e precisa de referências do formato e de exemplos bem estruturados.",
+      "beneficios": [
+        "Recorte específico de Skills, sem diluir com plugins e MCPs",
+        "Cobre Claude Desktop e claude.ai, não apenas o Claude Code",
+        "Reúne ferramentas de criação e validação de skills",
+        "Entradas descritas, facilitando escolher sem abrir cada repositório"
+      ],
+      "economiaTokens": "Escolher uma skill pronta e enxuta evita manter instruções longas e repetidas no seu CLAUDE.md ou no prompt de sistema.",
+      "qualidadeRespostas": "As skills listadas seguem o formato oficial, com instruções específicas que substituem prompts genéricos escritos às pressas.",
+      "multiAgentes": "Skills no formato padrão são portáveis: a mesma pasta serve o Claude Code, o Desktop e qualquer agente do seu pipeline.",
+      "melhorias": {
+        "produtividade": "Descoberta rápida de skills por caso de uso",
+        "escrita": "Referências de skills de redação e documentos",
+        "raciocinio": "Exemplos de skills que estruturam análise passo a passo"
+      },
+      "instalacao": "Não requer instalação: navegue pelo README e siga as instruções da skill escolhida (em geral, copiar a pasta para .claude/skills/ ou fazer upload no Claude Desktop).",
+      "exemploUso": "Antes de escrever uma skill de análise de contratos, você acha na lista uma equivalente, estuda o SKILL.md dela e adapta em vez de começar do zero.",
+      "promptInicial": "Utilize a Skill Awesome Claude Skills para executar a busca de uma skill existente que atenda a esta necessidade antes de criar uma nova. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "pesquisa",
+        "documentacao",
+        "escritorio",
+        "conteudo"
+      ]
     }
   ]
 }

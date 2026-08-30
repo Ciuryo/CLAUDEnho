@@ -270,7 +270,7 @@ button { font-family: inherit; }
 
 #campo-busca {
   width: 100%;
-  padding: 14px 18px 14px 46px;
+  padding: 14px 52px 14px 46px;
   font-size: 1rem;
   font-family: inherit;
   color: var(--tinta);
@@ -855,4 +855,121 @@ button { font-family: inherit; }
   .trilho { grid-auto-columns: 82vw; }
   .filtro select { min-width: 130px; }
   .card-acoes .btn-acao { flex: 1 1 calc(50% - 8px); justify-content: center; }
+}
+
+/* ============================================================
+   Componentes adicionados na revisão: atalho de busca, plano de
+   adoção do recomendador, frentes secundárias e aviso de dados.
+   ============================================================ */
+
+/* dica visual do atalho de teclado da busca */
+.atalho-busca {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1;
+  color: var(--tinta-3);
+  background: var(--superficie-2);
+  border: 1px solid var(--borda-forte);
+  border-radius: 5px;
+  padding: 4px 8px;
+  pointer-events: none;
+}
+
+/* aviso de dados possivelmente desatualizados */
+.aviso-dados { color: var(--ambar); }
+
+/* plano de adoção: a ordem aqui é informação, não decoração */
+.rec-intro p { margin: 0; }
+
+.rec-plano {
+  counter-reset: passo;
+  list-style: none;
+  margin: 18px 0 8px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rec-plano li {
+  counter-increment: passo;
+  position: relative;
+  flex: 1 1 165px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px 10px 32px;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+}
+
+.rec-plano li::before {
+  content: counter(passo);
+  position: absolute;
+  left: 12px;
+  top: 11px;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--acento);
+}
+
+.passo-titulo { font-size: 0.82rem; font-weight: 600; line-height: 1.3; }
+
+.passo-skill {
+  font-family: var(--mono);
+  font-size: 0.71rem;
+  color: var(--tinta-2);
+}
+
+.rec-plano-nota {
+  font-size: 0.8rem;
+  color: var(--tinta-3);
+  margin-top: 2px;
+}
+
+.rec-acoes-topo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* frentes complementares, recolhidas por padrão */
+.rec-secundarias {
+  margin-top: 26px;
+  border-top: 1px solid var(--borda);
+  padding-top: 10px;
+}
+
+.rec-secundarias > summary {
+  cursor: pointer;
+  padding: 6px 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--tinta-2);
+}
+
+.rec-secundarias > summary:hover { color: var(--acento); }
+
+.modal-chips { margin-top: 10px; }
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.btn:disabled:hover {
+  color: var(--tinta-2);
+  border-color: var(--borda-forte);
+}
+
+@media (max-width: 640px) {
+  .atalho-busca { display: none; }
+  .rec-plano li { flex-basis: 100%; }
 }

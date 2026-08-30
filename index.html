@@ -21,7 +21,7 @@
 
   <header class="topo">
     <div class="container topo-inner">
-      <a class="marca" href="#">
+      <a class="marca" href="#" id="link-topo">
         <span class="marca-simbolo" aria-hidden="true">❖</span>
         <span class="marca-texto">Biblioteca de Skills <em>para Claude</em></span>
       </a>
@@ -45,6 +45,7 @@
         <div class="busca-wrap">
           <span class="busca-icone" aria-hidden="true">⌕</span>
           <input id="campo-busca" type="search" placeholder="Buscar por nome, problema, tag… (ex.: TDD, tokens, Figma)" aria-label="Buscar skills">
+          <kbd class="atalho-busca" aria-hidden="true">/</kbd>
         </div>
         <p id="meta-dados" class="meta-dados"></p>
       </div>
@@ -107,7 +108,7 @@
       <div class="container">
         <div class="faixa-cab">
           <h2>Todas as skills</h2>
-          <p id="contagem-resultados"></p>
+          <p id="contagem-resultados" aria-live="polite"></p>
         </div>
 
         <div class="filtros" role="group" aria-label="Filtros do catálogo">
@@ -140,6 +141,7 @@
             <span>Ordenar por</span>
             <select id="filtro-ordem">
               <option value="popularidade">Popularidade (estrelas)</option>
+              <option value="relevancia">Relevância da busca</option>
               <option value="recentes">Atualização mais recente</option>
               <option value="nome">Nome (A–Z)</option>
             </select>
@@ -161,8 +163,7 @@
         As estrelas mudam constantemente — considere os números um retrato da data de coleta.
       </p>
       <p>
-        Para adicionar ou atualizar skills, edite <code>data/skills.json</code> e rode
-        <code>node scripts/build-data.mjs</code>. Instruções completas no <code>README.md</code>.
+        Para atualizar estrelas e datas: <code>node scripts/refresh-github.mjs</code>. Para adicionar skills, edite <code>data/skills.json</code> e rode <code>node scripts/build-data.mjs</code>. Detalhes no <code>README.md</code>.
       </p>
     </div>
   </footer>
