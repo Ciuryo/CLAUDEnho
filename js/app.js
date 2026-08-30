@@ -327,6 +327,7 @@
     if (estado.ordem !== PADRAO.ordem) p.push('ord=' + estado.ordem);
     if (estado.soFavoritas) p.push('fav=1');
     if (skillAberta) p.push('skill=' + skillAberta);
+    if (trilhaSelecionada) p.push('trilha=' + trilhaSelecionada);
     var hash = p.length ? '#' + p.join('&') : '';
     try {
       history.replaceState(null, '', location.pathname + location.search + hash);
@@ -337,10 +338,9 @@
 
   function lerHash() {
     var bruto = location.hash.replace(/^#/, '');
-    var conservarBusca = estado.busca;
     estado = Object.assign({}, PADRAO);
-    if (!bruto) { estado.busca = ''; return null; }
-    void conservarBusca;
+    trilhaSelecionada = null;
+    if (!bruto) return {};
     var p = {};
     bruto.split('&').forEach(function (par) {
       var i = par.indexOf('=');
@@ -354,19 +354,20 @@
     if (p.ord) estado.ordem = p.ord;
     if (p.fav === '1') estado.soFavoritas = true;
     lendoHash = false;
-    return p.skill || null;
+    return { skill: p.skill || null, trilha: p.trilha || null };
   }
 
   window.addEventListener('hashchange', function () {
-    var alvo = lerHash();
+    var link = lerHash();
     sincronizarControles();
     renderCatalogo();
-    if (alvo) {
-      var s = acharSkill(alvo);
-      if (s && skillAberta !== alvo) abrirModal(s);
+    if (link.skill) {
+      var s = acharSkill(link.skill);
+      if (s && skillAberta !== link.skill) abrirModal(s);
     } else if (!modal.hidden) {
       fecharModal();
     }
+    if (link.trilha) selecionarTrilha(link.trilha, { atualizarHash: false });
   });
 
   /* ---------- ligações dos filtros ---------- */
@@ -408,6 +409,7 @@
 
   var modal = $('#modal');
   var skillAberta = null;
+  var trilhaSelecionada = null;
   var focoAnterior = null;
 
   function secao(titulo, corpoHtml) {
@@ -508,6 +510,135 @@
       $('#campo-busca').select();
     }
   });
+
+  /* ---------- trilhas por perfil ---------- */
+
+  // Curadoria editorial (não deriva de palavras-chave): cada trilha é uma
+  // sequência fixa e testada de skills para um perfil real de usuário.
+  var TRILHAS = [
+    {
+      id: 'sem-terminal',
+      titulo: 'Nunca usei terminal',
+      icone: '🌱',
+      publico: 'Uso o Claude pelo site ou pelo app Desktop',
+      resumo: 'Comece sem precisar instalar nada além do Claude Desktop ou do claude.ai.',
+      passos: [
+        { skillId: 'anthropic-skills', motivo: 'Gera documentos Word, Excel e PowerPoint reais, direto no Desktop ou no site.' },
+        { skillId: 'prompt-eng-tutorial', motivo: 'Ensina a escrever pedidos que o Claude entende de primeira, sem tentativa e erro.' },
+        { skillId: 'awesome-claude-skills', motivo: 'Catálogo para descobrir mais skills que funcionam fora do terminal.' }
+      ]
+    },
+    {
+      id: 'primeira-semana-code',
+      titulo: 'Primeira semana no Claude Code',
+      icone: '⌨',
+      publico: 'Acabei de instalar o Claude Code no terminal',
+      resumo: 'A ordem que evita os erros mais comuns de quem está começando.',
+      passos: [
+        { skillId: 'claude-code-templates', motivo: 'Configura o projeto com boas práticas em um único comando.' },
+        { skillId: 'context7', motivo: 'Evita que o Claude sugira código de versões antigas das suas bibliotecas.' },
+        { skillId: 'superpowers', motivo: 'Ensina o Claude a planejar e testar antes de implementar.' },
+        { skillId: 'ccusage', motivo: 'Mostra para onde estão indo os seus tokens desde o primeiro dia.' }
+      ]
+    },
+    {
+      id: 'backend-api',
+      titulo: 'Dev backend / API',
+      icone: '⌘',
+      publico: 'Construo APIs, serviços ou lógica de servidor',
+      resumo: 'Contexto correto, revisão especializada e segurança em cada mudança.',
+      passos: [
+        { skillId: 'context7', motivo: 'Documentação real da versão exata das suas dependências.' },
+        { skillId: 'tdd-guard', motivo: 'Bloqueia código sem teste correspondente — TDD deixa de ser combinado.' },
+        { skillId: 'wshobson-agents', motivo: 'Aciona o revisor especialista certo automaticamente.' },
+        { skillId: 'cc-security-review', motivo: 'Audita vulnerabilidades antes do merge, direto no PR.' }
+      ]
+    },
+    {
+      id: 'frontend-ui',
+      titulo: 'Dev frontend / UI',
+      icone: '◐',
+      publico: 'Implemento telas, componentes e design systems',
+      resumo: 'Do Figma ao código fiel, com revisão visual automatizada.',
+      passos: [
+        { skillId: 'figma-context-mcp', motivo: 'Implementação fiel às medidas reais do design, sem adivinhação.' },
+        { skillId: 'context7', motivo: 'APIs corretas e atuais do seu framework de UI.' },
+        { skillId: 'oneredoak-workflows', motivo: 'Revisão de design navegando pela interface real no navegador.' },
+        { skillId: 'wshobson-agents', motivo: 'Revisor de código para o restante da implementação.' }
+      ]
+    },
+    {
+      id: 'lider-time',
+      titulo: 'Lidero um time ou vários projetos',
+      icone: '⬡',
+      publico: 'Preciso escalar o uso do Claude além de mim',
+      resumo: 'Controle de custo e trabalho paralelo entre vários agentes.',
+      passos: [
+        { skillId: 'claude-task-master', motivo: 'Backlog compartilhado para vários agentes puxarem tarefas sem colidir.' },
+        { skillId: 'ruflo', motivo: 'Orquestra agentes especializados trabalhando em paralelo.' },
+        { skillId: 'claude-code-router', motivo: 'Direciona tarefas simples para modelos mais baratos.' },
+        { skillId: 'cc-usage-monitor', motivo: 'Visibilidade de consumo em tempo real, com alerta antes de estourar.' }
+      ]
+    },
+    {
+      id: 'conteudo-negocio',
+      titulo: 'Escrevo e organizo conteúdo',
+      icone: '✎',
+      publico: 'Uso o Claude para textos, relatórios e materiais, não código',
+      resumo: 'Documentos profissionais e conteúdo com direção consistente.',
+      passos: [
+        { skillId: 'anthropic-skills', motivo: 'Gera .docx, .pptx e PDF formatados de verdade, não texto colado.' },
+        { skillId: 'alireza-claude-skills', motivo: 'Skills prontas de marketing, produto e comunicação de negócio.' },
+        { skillId: 'prompt-eng-tutorial', motivo: 'Prompts melhores para textos consistentes entre pedidos.' }
+      ]
+    }
+  ];
+
+  function trilhaCardHtml(t) {
+    return '<button type="button" class="trilha-card" data-trilha="' + escapeHtml(t.id) + '" aria-pressed="false">' +
+      '<span class="trilha-icone" aria-hidden="true">' + t.icone + '</span>' +
+      '<span class="trilha-titulo">' + escapeHtml(t.titulo) + '</span>' +
+      '<span class="trilha-publico">' + escapeHtml(t.publico) + '</span>' +
+    '</button>';
+  }
+
+  function renderTrilhas() {
+    $('#grade-trilhas').innerHTML = TRILHAS.map(trilhaCardHtml).join('');
+  }
+
+  function passoTrilhaHtml(passo) {
+    var s = acharSkill(passo.skillId);
+    if (!s) return '';
+    return '<li class="rec-item trilha-passo">' +
+      '<span class="rec-item-nome">' + escapeHtml(s.nome) + '</span>' +
+      '<span class="card-stats"><span class="stat-estrelas">★ ' + formatarEstrelas(s.stars) + '</span></span>' +
+      '<span class="rec-item-acoes">' +
+        '<button type="button" class="btn-acao" data-copiar-prompt="' + escapeHtml(s.id) + '">Copiar prompt</button>' +
+        '<button type="button" class="btn-acao principal" data-detalhes="' + escapeHtml(s.id) + '">Detalhes</button>' +
+      '</span>' +
+      '<span class="rec-item-desc">' + escapeHtml(passo.motivo) + '</span>' +
+    '</li>';
+  }
+
+  function selecionarTrilha(id, opcoes) {
+    var t = TRILHAS.find(function (x) { return x.id === id; });
+    if (!t) return;
+    trilhaSelecionada = id;
+    $$('.trilha-card').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.trilha === id));
+    });
+    var alvo = $('#resultado-trilha');
+    alvo.hidden = false;
+    alvo.innerHTML =
+      '<div class="rec-intro"><p><strong>' + escapeHtml(t.titulo) + '</strong> — ' + escapeHtml(t.resumo) + '</p></div>' +
+      '<ul class="trilha-lista">' + t.passos.map(passoTrilhaHtml).join('') + '</ul>' +
+      '<div class="rec-acoes-topo">' +
+        '<button type="button" class="btn btn-primario" id="btn-copiar-trilha" data-trilha-atual="' + escapeHtml(id) + '">' +
+          'Copiar prompts desta trilha</button>' +
+      '</div>';
+    if (!opcoes || opcoes.atualizarHash !== false) escreverHash();
+    if (!opcoes || opcoes.rolar !== false) alvo.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
 
   /* ---------- recomendação por tipo de projeto ---------- */
 
@@ -795,6 +926,21 @@
       }
       return;
     }
+    if ((alvo = e.target.closest('[data-trilha]'))) {
+      selecionarTrilha(alvo.dataset.trilha, { atualizarHash: true });
+      return;
+    }
+    if ((alvo = e.target.closest('#btn-copiar-trilha'))) {
+      var trilhaAtual = TRILHAS.find(function (t) { return t.id === alvo.dataset.trilhaAtual; });
+      if (trilhaAtual) {
+        var textosTrilha = trilhaAtual.passos.map(function (p, i) {
+          var sk = acharSkill(p.skillId);
+          return (i + 1) + '. ' + sk.nome + '\n' + sk.promptInicial;
+        });
+        copiarTexto(textosTrilha.join('\n\n'), alvo, textosTrilha.length + ' prompts da trilha copiados');
+      }
+      return;
+    }
     if ((alvo = e.target.closest('.chip[data-cat]'))) {
       estado.categoria = alvo.dataset.cat;
       $('#filtro-categoria').value = estado.categoria;
@@ -812,11 +958,12 @@
   /* ---------- inicialização ---------- */
 
   preencherFiltroCategorias();
-  var skillDoLink = lerHash();
+  var linkInicial = lerHash();
   sincronizarControles();
   atualizarContadorFavoritas();
   renderFaixas();
   renderCatalogo();
+  renderTrilhas();
 
   var diasDados = diasDesde(DB.coletadoEm);
   $('#meta-dados').innerHTML =
@@ -826,8 +973,9 @@
         Math.floor(diasDados / 30) + ' meses, as estrelas podem ter mudado</span>'
       : '');
 
-  if (skillDoLink) {
-    var alvoInicial = acharSkill(skillDoLink);
+  if (linkInicial.skill) {
+    var alvoInicial = acharSkill(linkInicial.skill);
     if (alvoInicial) abrirModal(alvoInicial);
   }
+  if (linkInicial.trilha) selecionarTrilha(linkInicial.trilha, { atualizarHash: false });
 })();

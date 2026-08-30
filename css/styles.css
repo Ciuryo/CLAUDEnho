@@ -973,3 +973,276 @@ button { font-family: inherit; }
   .atalho-busca { display: none; }
   .rec-plano li { flex-basis: 100%; }
 }
+
+/* ============================================================
+   Nav do topo e seção "Trilhas por perfil"
+   ============================================================ */
+
+.nav-topo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-topo a {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--tinta-2);
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.nav-topo a:hover,
+.nav-topo a:focus-visible {
+  color: var(--acento);
+  border-color: var(--borda);
+  background: var(--superficie);
+}
+
+.trilhas { padding: 12px 0 8px; }
+
+.trilhas-grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.trilha-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  text-align: left;
+  padding: 16px 18px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-g);
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.trilha-card:hover { border-color: var(--borda-forte); transform: translateY(-2px); }
+
+.trilha-card[aria-pressed="true"] {
+  border-color: var(--acento);
+  background: var(--acento-suave);
+}
+
+.trilha-icone { font-size: 1.3rem; }
+
+.trilha-titulo {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--tinta);
+}
+
+.trilha-publico {
+  font-size: 0.8rem;
+  color: var(--tinta-2);
+}
+
+/* passos de uma trilha: mesma base do .rec-item, com numeração por CSS counter */
+.trilha-lista {
+  counter-reset: trilha-passo;
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.trilha-passo {
+  counter-increment: trilha-passo;
+  position: relative;
+  padding-left: 42px;
+}
+
+.trilha-passo::before {
+  content: counter(trilha-passo);
+  position: absolute;
+  left: 14px;
+  top: 12px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--acento);
+}
+
+@media (max-width: 640px) {
+  .nav-topo a { padding: 6px 10px; font-size: 0.8rem; }
+  .trilhas-grade { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================================
+   Página guia.html (onboarding)
+   ============================================================ */
+
+.guia-hero { padding-bottom: 28px; }
+.guia-hero .hero-sub a { color: var(--acento); font-weight: 600; }
+
+.guia-largura {
+  max-width: 780px;
+}
+
+.guia-secao { padding: 40px 0; }
+.guia-secao-alt { background: var(--superficie); border-top: 1px solid var(--borda); border-bottom: 1px solid var(--borda); }
+
+.guia-secao h2 { font-size: 1.5rem; margin-bottom: 10px; }
+
+.guia-intro {
+  color: var(--tinta-2);
+  margin-bottom: 22px;
+  max-width: 65ch;
+}
+
+.guia-grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+
+.guia-card {
+  padding: 18px 20px;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-g);
+}
+
+.guia-secao-alt .guia-card { background: var(--fundo); }
+
+.guia-card h3 {
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.guia-tag {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--acento);
+  background: var(--acento-suave);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.guia-card p { font-size: 0.9rem; color: var(--tinta-2); }
+.guia-card strong { color: var(--tinta); }
+
+/* glossário */
+.guia-glossario {
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.glossario-item dt {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--tinta);
+}
+
+.glossario-item dd {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: var(--tinta-2);
+  max-width: 68ch;
+}
+
+/* passos numerados de instalação */
+.guia-passos {
+  counter-reset: guia-passo;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+}
+
+.guia-passos li {
+  counter-increment: guia-passo;
+  position: relative;
+  padding-left: 44px;
+}
+
+.guia-passos li::before {
+  content: counter(guia-passo);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--sobre-acento);
+  background: var(--acento);
+  border-radius: 50%;
+}
+
+.guia-passos strong { display: block; font-size: 1rem; margin-bottom: 4px; }
+.guia-passos p { color: var(--tinta-2); font-size: 0.9rem; }
+.guia-passos code { font-size: 0.82em; }
+
+/* FAQ */
+.guia-faq { display: grid; gap: 4px; }
+
+.guia-faq details {
+  border-bottom: 1px solid var(--borda);
+  padding: 14px 0;
+}
+
+.guia-faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.96rem;
+  color: var(--tinta);
+}
+
+.guia-faq summary:hover { color: var(--acento); }
+
+.guia-faq p {
+  margin-top: 10px;
+  color: var(--tinta-2);
+  font-size: 0.9rem;
+  max-width: 68ch;
+}
+
+.guia-faq a { color: var(--acento); font-weight: 600; }
+
+.guia-cta {
+  text-align: center;
+  padding: 52px 0 64px;
+}
+
+.guia-cta p {
+  color: var(--tinta-2);
+  margin: 10px auto 22px;
+  max-width: 50ch;
+}
+
+.guia-cta a.btn { text-decoration: none; }
+
+@media (max-width: 640px) {
+  .guia-secao { padding: 30px 0; }
+}
+
+/* cabeçalho mobile: evita quebra de linha da marca ao lado do nav */
+@media (max-width: 480px) {
+  .marca-texto em { display: none; }
+  .nav-topo a { padding: 6px 8px; font-size: 0.76rem; }
+}

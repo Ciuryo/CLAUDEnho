@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guia rápido para quem está começando com o Claude: o que é cada superfície, o que é uma Skill e como instalar a primeira.">
+  <title>Guia rápido — Biblioteca de Skills para Claude</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e7c66'/%3E%3Cpath d='M16 6l4.2 5.8L26 16l-5.8 4.2L16 26l-4.2-5.8L6 16l5.8-4.2z' fill='%23fff'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#f4f7f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1513" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('skills-lib-tema');
+        if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+      } catch (e) { /* armazenamento indisponível (ex.: iframe sandbox) */ }
+    })();
+  </script>
+</head>
+<body>
+
+  <header class="topo">
+    <div class="container topo-inner">
+      <a class="marca" href="index.html">
+        <span class="marca-simbolo" aria-hidden="true">❖</span>
+        <span class="marca-texto">Biblioteca de Skills <em>para Claude</em></span>
+      </a>
+      <nav class="nav-topo">
+        <a href="index.html">Catálogo</a>
+      </nav>
+      <button id="btn-tema" class="btn-tema" type="button" aria-label="Alternar tema claro/escuro">
+        <span class="tema-icone-claro" aria-hidden="true">☀</span>
+        <span class="tema-icone-escuro" aria-hidden="true">☾</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero guia-hero">
+      <div class="container">
+        <p class="eyebrow">Comece aqui</p>
+        <h1>Guia rápido para quem está começando</h1>
+        <p class="hero-sub">
+          Se os termos "Skill", "Claude Code" ou "MCP" ainda não fazem muito sentido, este guia
+          resolve isso em poucos minutos — antes de você voltar ao <a href="index.html">catálogo</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="guia-secao">
+      <div class="container guia-largura">
+        <h2>As três formas de usar o Claude</h2>
+        <p class="guia-intro">
+          As skills deste catálogo funcionam em superfícies diferentes — vale saber qual é a sua
+          antes de instalar qualquer coisa.
+        </p>
+        <div class="guia-grade">
+          <article class="guia-card">
+            <h3>claude.ai <span class="guia-tag">navegador</span></h3>
+            <p>O site e o app do Claude. Não precisa instalar nada no computador. Boa parte das
+            skills oficiais da Anthropic (gerar documentos Word, Excel, PDF) funciona aqui.</p>
+          </article>
+          <article class="guia-card">
+            <h3>Claude Desktop <span class="guia-tag">aplicativo</span></h3>
+            <p>Aplicativo para Windows/Mac. Mesma conversa do claude.ai, mas com acesso a servidores
+            MCP instalados localmente — por exemplo, para ler arquivos do seu computador.</p>
+          </article>
+          <article class="guia-card">
+            <h3>Claude Code <span class="guia-tag">terminal</span></h3>
+            <p>Ferramenta de linha de comando para programar. É onde a <strong>maioria das skills
+            deste catálogo</strong> roda — elas leem e editam arquivos do seu projeto diretamente.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="guia-secao guia-secao-alt">
+      <div class="container guia-largura">
+        <h2>Glossário: os termos que aparecem nos cards</h2>
+        <dl class="guia-glossario">
+          <div class="glossario-item">
+            <dt>Skill</dt>
+            <dd>Um pacote de instruções (e às vezes scripts) que ensina o Claude a fazer uma tarefa
+            específica bem feita — por exemplo, gerar um .pptx com formatação correta. É o que este
+            catálogo cataloga.</dd>
+          </div>
+          <div class="glossario-item">
+            <dt>Subagente</dt>
+            <dd>Um "assistente" com personalidade e escopo próprios (ex.: revisor de segurança) que o
+            Claude Code aciona para uma parte da tarefa e depois volta o controle para a conversa
+            principal.</dd>
+          </div>
+          <div class="glossario-item">
+            <dt>Servidor MCP</dt>
+            <dd>Uma ponte entre o Claude e um sistema externo — Figma, um banco de dados, o n8n. Depois
+            de configurado, o Claude passa a "enxergar" aquele sistema durante a conversa.</dd>
+          </div>
+          <div class="glossario-item">
+            <dt>Plugin</dt>
+            <dd>Um pacote que agrupa várias skills, subagentes e comandos prontos, instalado de uma vez
+            só no Claude Code (comando <code>/plugin</code>).</dd>
+          </div>
+          <div class="glossario-item">
+            <dt>Slash command</dt>
+            <dd>Um atalho que você digita no Claude Code começando com <code>/</code> (ex.:
+            <code>/security-review</code>) para disparar um fluxo pronto.</dd>
+          </div>
+          <div class="glossario-item">
+            <dt>Hook</dt>
+            <dd>Uma regra automática que roda em resposta a uma ação do Claude Code — por exemplo,
+            bloquear uma edição que não veio acompanhada de teste (é o que o TDD Guard faz).</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="guia-secao">
+      <div class="container guia-largura">
+        <h2>Instale sua primeira skill em 3 passos</h2>
+        <p class="guia-intro">Usando o Claude Code como exemplo, porque é onde a maioria das skills do catálogo roda.</p>
+        <ol class="guia-passos">
+          <li>
+            <strong>Escolha uma skill no catálogo</strong>
+            <p>Abra o <a href="index.html">catálogo</a>, use a busca ou os filtros, e clique em
+            "Detalhes" na que resolver o seu problema.</p>
+          </li>
+          <li>
+            <strong>Siga a instalação e copie o prompt inicial</strong>
+            <p>Cada skill tem seus próprios passos de instalação (geralmente um comando de terminal) e
+            um prompt pronto — use os botões "Copiar instalação" e "Copiar prompt" no modal de detalhes.</p>
+          </li>
+          <li>
+            <strong>Cole o prompt no Claude Code e descreva sua tarefa real</strong>
+            <p>O prompt copiado já inclui instruções para o Claude analisar o contexto do seu projeto
+            antes de agir — é só completar com o que você precisa fazer.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="guia-secao guia-secao-alt">
+      <div class="container guia-largura">
+        <h2>Perguntas frequentes</h2>
+        <div class="guia-faq">
+          <details>
+            <summary>Preciso pagar para usar essas skills?</summary>
+            <p>As skills em si são gratuitas e de código aberto — o que você paga é o seu plano do
+            Claude (há um nível gratuito). Algumas skills usam serviços de terceiros (ex.: uma chave de
+            API do Figma) que podem ter custo próprio; isso está descrito na instalação de cada uma.</p>
+          </details>
+          <details>
+            <summary>Preciso saber programar?</summary>
+            <p>Para as skills que rodam em claude.ai ou no Claude Desktop, não. Para as que rodam no
+            Claude Code, ajuda saber usar o terminal, mas a maior parte da instalação é copiar e colar
+            um comando pronto — o catálogo já te dá o comando exato.</p>
+          </details>
+          <details>
+            <summary>Funciona no Windows?</summary>
+            <p>O Claude Code roda em Windows (nativo ou via WSL), macOS e Linux. Skills baseadas em
+            comandos de terminal funcionam nos três; verifique a nota de instalação de cada uma se
+            tiver dúvida.</p>
+          </details>
+          <details>
+            <summary>Qual a diferença entre uma skill e um subagente?</summary>
+            <p>Uma skill ensina o Claude a executar uma tarefa (o "como fazer"). Um subagente é um
+            especialista com escopo próprio que o Claude aciona para cuidar de uma parte do trabalho
+            (o "quem faz"). Muitos pacotes do catálogo trazem os dois juntos.</p>
+          </details>
+          <details>
+            <summary>Posso usar várias skills ao mesmo tempo?</summary>
+            <p>Sim — é o caso mais comum. As <a href="index.html#trilhas">trilhas por perfil</a> do
+            catálogo já sugerem combinações testadas, em ordem de instalação.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="guia-secao guia-cta">
+      <div class="container guia-largura">
+        <h2>Pronto para escolher suas skills?</h2>
+        <p>Volte ao catálogo e clique numa <a href="index.html#trilhas">trilha por perfil</a>, ou
+        descreva seu projeto no recomendador.</p>
+        <a class="btn btn-primario" href="index.html">Ir para o catálogo</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>Guia complementar ao <a href="index.html">catálogo de skills</a>. Dúvidas técnicas sobre uma
+      skill específica: veja a instalação e o repositório dela no card correspondente.</p>
+    </div>
+  </footer>
+
+  <script src="js/tema.js"></script>
+</body>
+</html>
