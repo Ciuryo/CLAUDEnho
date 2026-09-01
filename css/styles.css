@@ -1567,3 +1567,36 @@ button { font-family: inherit; }
 .wt-arquivo { font-size: 1.6rem; flex: none; }
 .wt-resultado strong { display: block; font-size: 0.96rem; }
 .wt-resultado-dica { font-size: 0.82rem; color: var(--tinta-2); }
+
+/* ============================================================
+   Guia: nota "Skill = Habilidade" (nome no app em português)
+   ============================================================ */
+
+.dt-nota {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--acento);
+  background: var(--acento-suave);
+  padding: 2px 8px;
+  border-radius: 999px;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+.destaque-nome {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 0 0 22px;
+  padding: 14px 16px;
+  background: color-mix(in srgb, var(--ambar) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ambar) 45%, transparent);
+  border-radius: var(--raio);
+  font-size: 0.94rem;
+  color: var(--tinta);
+}
+
+.destaque-icone { font-size: 1.25rem; flex: none; line-height: 1.2; }
