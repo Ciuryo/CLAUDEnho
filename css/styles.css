@@ -1450,3 +1450,120 @@ button { font-family: inherit; }
 }
 
 .uso-nota strong { color: var(--tinta); }
+
+/* ============================================================
+   Guia: exemplo guiado do começo ao fim (walkthrough)
+   ============================================================ */
+
+.walkthrough {
+  counter-reset: wt;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.wt-passo {
+  counter-increment: wt;
+  position: relative;
+  padding: 16px 18px 16px 52px;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-g);
+}
+
+.wt-passo::before {
+  content: counter(wt);
+  position: absolute;
+  left: 14px;
+  top: 16px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--sobre-acento);
+  background: var(--acento);
+  border-radius: 50%;
+}
+
+.wt-passo > p { font-size: 0.94rem; }
+.wt-passo > p + p { margin-top: 8px; }
+
+/* etiqueta "onde você está" */
+.wt-onde {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.wt-onde::before { content: ""; width: 7px; height: 7px; border-radius: 50%; }
+
+.wt-onde.catalogo {
+  color: var(--ambar);
+  background: color-mix(in srgb, var(--ambar) 14%, transparent);
+}
+.wt-onde.catalogo::before { background: var(--ambar); }
+
+.wt-onde.claude {
+  color: var(--acento);
+  background: var(--acento-suave);
+}
+.wt-onde.claude::before { background: var(--acento); }
+
+/* mock de mensagem digitada no Claude */
+.wt-chat {
+  margin-top: 12px;
+  padding: 14px 16px;
+  background: var(--superficie);
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--raio);
+  border-top-left-radius: 4px;
+}
+
+.wt-chat-rot {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tinta-3);
+  margin-bottom: 8px;
+}
+
+.wt-chat p { font-size: 0.92rem; color: var(--tinta); }
+.wt-chat-notas {
+  margin-top: 8px;
+  padding-left: 4px;
+  color: var(--tinta-2);
+  font-style: italic;
+}
+
+/* cartão do arquivo resultante */
+.wt-resultado {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--acento-suave);
+  border: 1px solid var(--acento);
+  border-radius: var(--raio);
+}
+
+.wt-arquivo { font-size: 1.6rem; flex: none; }
+.wt-resultado strong { display: block; font-size: 0.96rem; }
+.wt-resultado-dica { font-size: 0.82rem; color: var(--tinta-2); }
