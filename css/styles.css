@@ -1600,3 +1600,56 @@ button { font-family: inherit; }
 }
 
 .destaque-icone { font-size: 1.25rem; flex: none; line-height: 1.2; }
+
+/* ============================================================
+   Guia: criar a sua própria habilidade (mock do formulário)
+   ============================================================ */
+
+.guia-sub {
+  font-size: 1.12rem;
+  margin: 30px 0 4px;
+}
+
+.form-mock {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  background: var(--fundo);
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--raio-g);
+}
+
+.fm-campo { display: grid; gap: 4px; }
+
+.fm-rot {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tinta-3);
+}
+
+.fm-valor {
+  padding: 10px 12px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  font-size: 0.92rem;
+  color: var(--tinta);
+}
+
+.fm-mono { font-family: var(--mono); font-size: 0.86rem; }
+
+.fm-dica { font-size: 0.82rem; color: var(--tinta-2); }
+.fm-dica strong { color: var(--tinta); }
+
+.fm-acao {
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px solid var(--borda);
+  font-size: 0.92rem;
+  color: var(--tinta-2);
+}
+
+.fm-acao strong { color: var(--acento); }
