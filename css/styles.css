@@ -1653,3 +1653,83 @@ button { font-family: inherit; }
 }
 
 .fm-acao strong { color: var(--acento); }
+
+/* ============================================================
+   Página prompts.html: template de prompt, cards de modelo
+   ============================================================ */
+
+.prompt-template {
+  display: grid;
+  gap: 8px;
+  padding: 18px 20px;
+  background: var(--fundo);
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--raio-g);
+  margin-bottom: 8px;
+}
+
+.prompt-template p { font-size: 0.94rem; color: var(--tinta-2); }
+.prompt-template strong { color: var(--tinta); }
+
+.pt-rot {
+  display: inline-block;
+  min-width: 92px;
+  font-weight: 700;
+  color: var(--acento);
+}
+
+/* cards de modelo */
+.modelos-grade { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+.modelo-card { display: flex; flex-direction: column; gap: 8px; }
+
+.modelo-destaque {
+  border-color: var(--acento);
+  box-shadow: 0 0 0 1px var(--acento) inset;
+}
+
+.modelo-versao {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--tinta-3);
+  margin-top: -4px;
+}
+
+.modelo-meta {
+  margin-top: auto;
+  padding-top: 6px;
+  font-size: 0.82rem;
+  color: var(--tinta-2);
+}
+
+.modelo-rodape {
+  margin-top: 18px;
+  font-size: 0.82rem;
+  color: var(--tinta-3);
+  border-top: 1px solid var(--borda);
+  padding-top: 14px;
+}
+.modelo-rodape strong { color: var(--tinta-2); }
+
+/* exemplos rápidos de escolha */
+.tarefa-lista { display: grid; gap: 10px; margin-top: 4px; }
+.tarefa-lista p { font-size: 0.9rem; color: var(--tinta-2); }
+
+.tarefa-modelo {
+  display: inline-block;
+  min-width: 58px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.tarefa-modelo.th { color: var(--acento); background: var(--acento-suave); }
+.tarefa-modelo.ts { color: var(--sobre-acento); background: var(--acento); }
+.tarefa-modelo.to { color: var(--ambar); background: color-mix(in srgb, var(--ambar) 16%, transparent); }
