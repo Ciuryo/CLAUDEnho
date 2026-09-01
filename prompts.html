@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Como escrever prompts melhores para o Claude e qual modelo (Opus, Sonnet, Haiku) usar em cada tipo de tarefa.">
+  <title>Prompts e modelos — Biblioteca de Skills para Claude</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e7c66'/%3E%3Cpath d='M16 6l4.2 5.8L26 16l-5.8 4.2L16 26l-4.2-5.8L6 16l5.8-4.2z' fill='%23fff'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#f4f7f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1513" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('skills-lib-tema');
+        if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+      } catch (e) { /* armazenamento indisponível */ }
+    })();
+  </script>
+</head>
+<body>
+
+  <header class="topo">
+    <div class="container topo-inner">
+      <a class="marca" href="index.html">
+        <span class="marca-simbolo" aria-hidden="true">❖</span>
+        <span class="marca-texto">Biblioteca de Skills <em>para Claude</em></span>
+      </a>
+      <nav class="nav-topo">
+        <a href="index.html">Catálogo</a>
+        <a href="guia.html">Guia rápido</a>
+      </nav>
+      <button id="btn-tema" class="btn-tema" type="button" aria-label="Alternar tema claro/escuro">
+        <span class="tema-icone-claro" aria-hidden="true">☀</span>
+        <span class="tema-icone-escuro" aria-hidden="true">☾</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero guia-hero">
+      <div class="container">
+        <p class="eyebrow">Prompts e modelos</p>
+        <h1>Escreva prompts melhores e escolha o modelo certo</h1>
+        <p class="hero-sub">
+          Duas coisas que melhoram muito qualquer resposta do Claude: <strong>como você pede</strong>
+          e <strong>qual modelo</strong> você usa. Aqui vai o essencial, em linguagem simples.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Parte 1: escrever prompts ===== -->
+    <section class="guia-secao">
+      <div class="container guia-largura">
+        <h2>Como escrever um prompt melhor</h2>
+        <p class="guia-intro">
+          "Prompt" é só o nome do que você digita para o Claude. Um bom prompt não precisa ser
+          técnico — precisa ser <strong>claro</strong>. Estes oito hábitos resolvem a maioria dos casos:
+        </p>
+
+        <div class="guia-grade">
+          <article class="guia-card">
+            <h3>1. Diga o objetivo e o contexto</h3>
+            <p>Explique quem você é, para quê e qual resultado espera. "Sou dono de uma padaria e quero
+            um texto para o Instagram" já muda tudo.</p>
+          </article>
+          <article class="guia-card">
+            <h3>2. Seja específico</h3>
+            <p>Troque "escreva sobre marketing" por "3 dicas de marketing para uma padaria de bairro,
+            em tom simples". Quanto mais concreto, melhor a resposta.</p>
+          </article>
+          <article class="guia-card">
+            <h3>3. Peça o formato</h3>
+            <p>Diga como quer o resultado: lista, tabela, e-mail, número de parágrafos, tom de voz.
+            O Claude entrega no formato que você pedir.</p>
+          </article>
+          <article class="guia-card">
+            <h3>4. Dê um exemplo</h3>
+            <p>Mostre um exemplo do que considera uma boa resposta. O Claude imita o padrão — é a forma
+            mais rápida de acertar o estilo.</p>
+          </article>
+          <article class="guia-card">
+            <h3>5. Forneça o material</h3>
+            <p>Cole o texto, os dados ou o arquivo em vez de esperar que ele adivinhe. Resposta boa
+            precisa de matéria-prima boa.</p>
+          </article>
+          <article class="guia-card">
+            <h3>6. Peça para raciocinar</h3>
+            <p>Em tarefas difíceis, acrescente "pense passo a passo antes de responder". Isso reduz
+            erros em contas, lógica e decisões.</p>
+          </article>
+          <article class="guia-card">
+            <h3>7. Diga os limites</h3>
+            <p>"Não invente dados", "no máximo 200 palavras", "não fuja do tema". Dizer o que evitar é
+            tão útil quanto dizer o que fazer.</p>
+          </article>
+          <article class="guia-card">
+            <h3>8. Vá ajustando</h3>
+            <p>Se não veio como queria, diga o que mudar ("mais curto", "tom mais formal") em vez de
+            recomeçar. O Claude lembra da conversa.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="guia-secao guia-secao-alt">
+      <div class="container guia-largura">
+        <h2>O mesmo pedido, antes e depois</h2>
+        <p class="guia-intro">Veja como um prompt vago vira um prompt que traz o que você realmente quer:</p>
+
+        <div class="guia-comparacoes">
+          <article class="comparacao">
+            <div class="comparacao-lados">
+              <div class="lado lado-sem">
+                <span class="lado-rotulo">Prompt fraco</span>
+                <p>"escreva sobre nossa empresa"</p>
+              </div>
+              <div class="lado lado-com">
+                <span class="lado-rotulo">Prompt melhor</span>
+                <p>"Escreva 2 parágrafos para a página inicial do site da nossa padaria artesanal.
+                Tom acolhedor, destacando pães de fermentação natural e atendimento de bairro. Público:
+                famílias da vizinhança. No máximo 120 palavras."</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="guia-sub">Um modelo de prompt para copiar e adaptar</h3>
+        <p class="guia-intro">Quando a tarefa é importante, preencha estes cinco campos — nesta ordem:</p>
+        <div class="prompt-template">
+          <p><span class="pt-rot">Contexto:</span> quem você é e sobre o que é.</p>
+          <p><span class="pt-rot">Objetivo:</span> o que você quer que o Claude produza.</p>
+          <p><span class="pt-rot">Formato:</span> lista / tabela / e-mail / nº de parágrafos / tom.</p>
+          <p><span class="pt-rot">Material:</span> cole aqui o texto, os dados ou um exemplo.</p>
+          <p><span class="pt-rot">Limites:</span> o que evitar (não inventar dados, tamanho máximo…).</p>
+        </div>
+        <p class="uso-nota">
+          <span aria-hidden="true">📚</span> Quer se aprofundar? No <a href="index.html#skill=prompt-eng-tutorial">catálogo</a>
+          há a skill <strong>Prompt Engineering Interactive Tutorial</strong>, o curso oficial da
+          Anthropic sobre como escrever prompts — com exercícios práticos.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Parte 2: qual modelo usar ===== -->
+    <section class="guia-secao">
+      <div class="container guia-largura">
+        <h2>Qual modelo do Claude usar em cada tarefa</h2>
+        <p class="guia-intro">
+          O Claude é uma <strong>família de modelos</strong>. No app, você escolhe qual usar (em geral
+          num menu no topo da conversa). A regra é simples: <strong>quanto mais difícil a tarefa, mais
+          potente o modelo</strong>; quanto mais simples e repetitiva, mais vale um modelo rápido e
+          econômico. Hoje são três níveis:
+        </p>
+
+        <div class="guia-grade modelos-grade">
+          <article class="guia-card modelo-card">
+            <h3>Haiku <span class="guia-tag">rápido</span></h3>
+            <p class="modelo-versao">versão atual: Haiku 4.5</p>
+            <p><strong>O mais rápido e econômico.</strong> Ideal para tarefas simples e em volume:
+            perguntas rápidas, organizar uma lista, classificar ou etiquetar itens, rascunhos curtos,
+            respostas objetivas.</p>
+            <p class="modelo-meta">⚡ resposta quase instantânea · 💲 menor custo</p>
+          </article>
+          <article class="guia-card modelo-card modelo-destaque">
+            <h3>Sonnet <span class="guia-tag">equilibrado</span></h3>
+            <p class="modelo-versao">versão atual: Sonnet 5</p>
+            <p><strong>Bom para quase tudo no dia a dia.</strong> Escrever e revisar textos, programar
+            tarefas comuns, resumir documentos, análises de rotina. Melhor equilíbrio entre qualidade,
+            velocidade e custo.</p>
+            <p class="modelo-meta">⚖️ equilíbrio · ✅ boa escolha padrão</p>
+          </article>
+          <article class="guia-card modelo-card">
+            <h3>Opus <span class="guia-tag">potente</span></h3>
+            <p class="modelo-versao">versão atual: Opus 5</p>
+            <p><strong>O mais capaz, para o que é difícil de verdade.</strong> Raciocínio complexo,
+            código difícil ou arquitetura, análise de documentos longos, decisões importantes, tarefas
+            longas em que o Claude trabalha em muitas etapas.</p>
+            <p class="modelo-meta">🧠 mais capaz · 🐢 mais lento e caro</p>
+          </article>
+        </div>
+
+        <p class="uso-nota">
+          <span aria-hidden="true">🧭</span> <strong>Na dúvida, comece no Sonnet.</strong> Se a resposta
+          ficar aquém numa tarefa difícil, suba para o <strong>Opus</strong>. Se for algo simples e você
+          quer velocidade, use o <strong>Haiku</strong>. Você pode trocar de modelo a qualquer momento.
+        </p>
+
+        <div class="guia-comparacoes" style="margin-top:18px">
+          <article class="comparacao">
+            <p class="comparacao-cenario"><span class="cenario-emoji" aria-hidden="true">🎯</span>
+            <span>Exemplos rápidos de escolha</span></p>
+            <div class="tarefa-lista">
+              <p><span class="tarefa-modelo th">Haiku</span> "resuma este e-mail em 2 linhas" · "classifique estes comentários em positivo/negativo"</p>
+              <p><span class="tarefa-modelo ts">Sonnet</span> "escreva um artigo de blog sobre X" · "crie e comente esta função" · "monte uma planilha de orçamento"</p>
+              <p><span class="tarefa-modelo to">Opus</span> "revise a arquitetura deste sistema" · "analise este contrato de 40 páginas" · "resolva este bug complexo"</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="modelo-rodape">
+          Disponível em setembro de 2026. O menu do app pode mostrar nomes ou versões diferentes
+          conforme o seu plano, e existem modelos ainda mais avançados (como o <strong>Fable</strong>)
+          para casos extremos de raciocínio — mas, para o dia a dia, os três níveis acima cobrem tudo.
+          Se você usa o Claude pela <strong>API</strong> (programando), o custo por uso cresce do Haiku
+          (mais barato) ao Opus/Fable (mais caros).
+        </p>
+      </div>
+    </section>
+
+    <section class="guia-secao guia-secao-alt guia-cta">
+      <div class="container guia-largura">
+        <h2>Agora é só praticar</h2>
+        <p>Escolha uma skill no catálogo, copie o prompt inicial dela e adapte usando os hábitos acima.</p>
+        <a class="btn btn-primario" href="index.html">Ir para o catálogo</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>Página complementar ao <a href="index.html">catálogo de skills</a> e ao
+      <a href="guia.html">guia rápido</a>. As recomendações de modelo refletem a família do Claude
+      disponível na data indicada acima.</p>
+    </div>
+  </footer>
+
+  <script src="js/tema.js"></script>
+</body>
+</html>
