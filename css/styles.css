@@ -1733,3 +1733,17 @@ button { font-family: inherit; }
 .tarefa-modelo.th { color: var(--acento); background: var(--acento-suave); }
 .tarefa-modelo.ts { color: var(--sobre-acento); background: var(--acento); }
 .tarefa-modelo.to { color: var(--ambar); background: color-mix(in srgb, var(--ambar) 16%, transparent); }
+
+/* dica de fechamento dos exemplos por tarefa */
+.tarefa-dica {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--borda);
+  font-size: 0.88rem;
+  color: var(--tinta-2);
+}
+.tarefa-dica strong { color: var(--tinta); }
+
+/* com listas mais longas, a pílula fica no topo da linha */
+.tarefa-lista p { display: flex; gap: 4px; align-items: baseline; flex-wrap: wrap; }
+.tarefa-lista .tarefa-modelo { align-self: flex-start; }
