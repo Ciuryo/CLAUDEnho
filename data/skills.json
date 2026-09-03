@@ -116,7 +116,9 @@
         "testes",
         "planejamento",
         "mvp"
-      ]
+      ],
+      "tipo": "skill",
+      "facilidade": "medio"
     },
     {
       "id": "anthropic-skills",
@@ -168,7 +170,9 @@
         "saas",
         "dados",
         "escritorio"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "facil"
     },
     {
       "id": "ruflo",
@@ -217,7 +221,9 @@
         "backend",
         "migracao",
         "automacao"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "context7",
@@ -267,7 +273,9 @@
         "saas",
         "integracao",
         "documentacao"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "bmad-method",
@@ -317,7 +325,9 @@
         "startup",
         "planejamento",
         "greenfield"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "awesome-claude-code",
@@ -364,7 +374,9 @@
         "produtividade",
         "cli",
         "configuracao"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "facil"
     },
     {
       "id": "claude-cookbooks",
@@ -415,7 +427,9 @@
         "integracao",
         "pesquisa",
         "ia"
-      ]
+      ],
+      "tipo": "curso",
+      "facilidade": "tecnico"
     },
     {
       "id": "wshobson-agents",
@@ -467,7 +481,9 @@
         "seguranca",
         "multiagentes",
         "revisao"
-      ]
+      ],
+      "tipo": "skill",
+      "facilidade": "medio"
     },
     {
       "id": "prompt-eng-tutorial",
@@ -515,7 +531,9 @@
         "ia",
         "api",
         "produto-ia"
-      ]
+      ],
+      "tipo": "curso",
+      "facilidade": "facil"
     },
     {
       "id": "claude-code-router",
@@ -561,7 +579,9 @@
         "contexto",
         "automacao",
         "time"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "tecnico"
     },
     {
       "id": "claude-code-templates",
@@ -611,7 +631,9 @@
         "backend",
         "produtividade",
         "custo"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "awesome-agent-skills",
@@ -658,7 +680,9 @@
         "api",
         "pesquisa",
         "saas"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "facil"
     },
     {
       "id": "claude-task-master",
@@ -707,7 +731,9 @@
         "planejamento",
         "backend",
         "frontend"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "superclaude",
@@ -755,7 +781,9 @@
         "produtividade",
         "time",
         "revisao"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "awesome-cc-subagents",
@@ -803,7 +831,9 @@
         "devops",
         "dados",
         "revisao"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "medio"
     },
     {
       "id": "alireza-claude-skills",
@@ -853,7 +883,9 @@
         "produto",
         "escritorio",
         "automacao"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "medio"
     },
     {
       "id": "n8n-mcp",
@@ -899,7 +931,9 @@
         "integracao",
         "no-code",
         "api"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "ccusage",
@@ -943,7 +977,9 @@
         "custo",
         "contexto",
         "time"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "figma-context-mcp",
@@ -990,7 +1026,9 @@
         "design",
         "mobile",
         "saas"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "tecnico"
     },
     {
       "id": "contains-studio-agents",
@@ -1040,7 +1078,9 @@
         "startup",
         "produto",
         "conteudo"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "medio"
     },
     {
       "id": "claude-context",
@@ -1090,7 +1130,9 @@
         "contexto",
         "banco-de-dados",
         "legado"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "tecnico"
     },
     {
       "id": "cc-usage-monitor",
@@ -1134,7 +1176,9 @@
         "custo",
         "contexto",
         "time"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "cc-security-review",
@@ -1181,7 +1225,9 @@
         "saas",
         "backend",
         "ci"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "tecnico"
     },
     {
       "id": "oneredoak-workflows",
@@ -1229,7 +1275,9 @@
         "design",
         "saas",
         "revisao"
-      ]
+      ],
+      "tipo": "skill",
+      "facilidade": "tecnico"
     },
     {
       "id": "spec-workflow",
@@ -1278,7 +1326,9 @@
         "documentacao",
         "backend",
         "frontend"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "tdd-guard",
@@ -1326,7 +1376,9 @@
         "backend",
         "api",
         "qualidade"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "tecnico"
     },
     {
       "id": "awesome-claude-skills",
@@ -1373,7 +1425,30 @@
         "documentacao",
         "escritorio",
         "conteudo"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "facil"
     }
-  ]
+  ],
+  "tipos": {
+    "skill": "Skill",
+    "ferramenta": "Ferramenta",
+    "colecao": "Coleção",
+    "curso": "Curso"
+  },
+  "facilidades": {
+    "facil": {
+      "rotulo": "Sem terminal",
+      "ajuda": "Dá para usar no app do Claude ou só navegando — nada para instalar no terminal."
+    },
+    "medio": {
+      "rotulo": "Um comando",
+      "ajuda": "Precisa colar um comando pronto (no Claude Code ou no terminal)."
+    },
+    "tecnico": {
+      "rotulo": "Técnico",
+      "ajuda": "Precisa configurar ambiente, chaves de API ou integração contínua."
+    }
+  },
+  "linksVerificadosEm": "2026-09-03"
 }

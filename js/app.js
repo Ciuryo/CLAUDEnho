@@ -17,6 +17,8 @@
   var SKILLS = DB.skills.slice();
   var CATEGORIAS = {};
   DB.categorias.forEach(function (c) { CATEGORIAS[c.id] = c; });
+  var TIPOS = DB.tipos || {};
+  var FACILIDADES = DB.facilidades || {};
 
   var CHAVE_FAVORITAS = 'skills-lib-favoritas';
   var CHAVE_TEMA = 'skills-lib-tema';
@@ -67,6 +69,8 @@
   }
 
   function dataBR(iso) { return iso.split('-').reverse().join('/'); }
+
+  function mesesTexto(n) { return n + (n === 1 ? ' mês' : ' meses'); }
 
   /* ---------- toast (feedback visual) ---------- */
 
@@ -157,6 +161,17 @@
 
   /* ---------- render de cards ---------- */
 
+  // Selos que respondem "o que é isso?" e "eu consigo usar?" — o que mais
+  // trava quem está chegando agora no ecossistema.
+  function selosHtml(skill) {
+    var f = FACILIDADES[skill.facilidade];
+    return '<div class="card-selos">' +
+      '<span class="selo selo-tipo">' + escapeHtml(TIPOS[skill.tipo] || skill.tipo) + '</span>' +
+      (f ? '<span class="selo selo-' + escapeHtml(skill.facilidade) + '" title="' + escapeHtml(f.ajuda) + '">' +
+        escapeHtml(f.rotulo) + '</span>' : '') +
+    '</div>';
+  }
+
   function chipsCategorias(skill) {
     return skill.categorias.map(function (cid) {
       var c = CATEGORIAS[cid];
@@ -189,6 +204,7 @@
         botaoFavHtml(skill) +
       '</div>' +
       statsHtml(skill) +
+      selosHtml(skill) +
       '<div class="card-chips">' + chipsCategorias(skill) + '</div>' +
       '<p class="card-desc">' + escapeHtml(skill.paraQueServe) + '</p>' +
       (mini ? '' :
@@ -222,7 +238,7 @@
 
   var PADRAO = {
     busca: '', categoria: '', minEstrelas: 0,
-    atualizadaEmDias: 0, ordem: 'popularidade', soFavoritas: false
+    atualizadaEmDias: 0, ordem: 'popularidade', soFavoritas: false, facilidade: ''
   };
   var estado = Object.assign({}, PADRAO);
 
@@ -239,6 +255,7 @@
   function textoBuscavel(s) {
     return normalizar([
       s.nome, s.autor, s.paraQueServe, s.quandoUsar, s.tags.join(' '),
+      TIPOS[s.tipo] || '', (FACILIDADES[s.facilidade] || {}).rotulo || '',
       s.categorias.map(function (c) { return CATEGORIAS[c] ? CATEGORIAS[c].nome : c; }).join(' ')
     ].join(' '));
   }
@@ -247,6 +264,7 @@
     var termo = normalizar(estado.busca);
     var lista = SKILLS.filter(function (s) {
       if (estado.categoria && s.categorias.indexOf(estado.categoria) === -1) return false;
+      if (estado.facilidade && s.facilidade !== estado.facilidade) return false;
       if (s.stars < estado.minEstrelas) return false;
       if (estado.atualizadaEmDias && diasDesde(s.atualizadoEm) > estado.atualizadaEmDias) return false;
       if (estado.soFavoritas && !favoritas.has(s.id)) return false;
@@ -273,6 +291,7 @@
     var partes = [];
     if (estado.busca) partes.push('busca "' + estado.busca + '"');
     if (estado.categoria && CATEGORIAS[estado.categoria]) partes.push(CATEGORIAS[estado.categoria].nome);
+    if (estado.facilidade && FACILIDADES[estado.facilidade]) partes.push(FACILIDADES[estado.facilidade].rotulo);
     if (estado.minEstrelas) partes.push(formatarEstrelas(estado.minEstrelas) + '+ estrelas');
     if (estado.atualizadaEmDias) partes.push('atualizadas em ' + estado.atualizadaEmDias + ' dias');
     if (estado.soFavoritas) partes.push('só favoritas');
@@ -288,6 +307,18 @@
       lista.length + ' de ' + SKILLS.length + ' skills' + (desc ? ' · ' + desc : '');
     $('#btn-limpar').disabled = !desc;
     escreverHash();
+  }
+
+  function preencherFiltroFacilidade() {
+    var sel = $('#filtro-facilidade');
+    var contagem = {};
+    SKILLS.forEach(function (s) { contagem[s.facilidade] = (contagem[s.facilidade] || 0) + 1; });
+    Object.keys(FACILIDADES).forEach(function (id) {
+      var opt = document.createElement('option');
+      opt.value = id;
+      opt.textContent = FACILIDADES[id].rotulo + ' (' + (contagem[id] || 0) + ')';
+      sel.appendChild(opt);
+    });
   }
 
   function preencherFiltroCategorias() {
@@ -307,6 +338,7 @@
   function sincronizarControles() {
     $('#campo-busca').value = estado.busca;
     $('#filtro-categoria').value = estado.categoria;
+    $('#filtro-facilidade').value = estado.facilidade;
     $('#filtro-estrelas').value = String(estado.minEstrelas);
     $('#filtro-atualizacao').value = estado.atualizadaEmDias ? String(estado.atualizadaEmDias) : '';
     $('#filtro-ordem').value = estado.ordem;
@@ -322,6 +354,7 @@
     var p = [];
     if (estado.busca) p.push('q=' + encodeURIComponent(estado.busca));
     if (estado.categoria) p.push('cat=' + estado.categoria);
+    if (estado.facilidade) p.push('facil=' + estado.facilidade);
     if (estado.minEstrelas) p.push('min=' + estado.minEstrelas);
     if (estado.atualizadaEmDias) p.push('dias=' + estado.atualizadaEmDias);
     if (estado.ordem !== PADRAO.ordem) p.push('ord=' + estado.ordem);
@@ -349,6 +382,7 @@
     lendoHash = true;
     if (p.q) estado.busca = p.q;
     if (p.cat && CATEGORIAS[p.cat]) estado.categoria = p.cat;
+    if (p.facil && FACILIDADES[p.facil]) estado.facilidade = p.facil;
     if (p.min) estado.minEstrelas = parseInt(p.min, 10) || 0;
     if (p.dias) estado.atualizadaEmDias = parseInt(p.dias, 10) || 0;
     if (p.ord) estado.ordem = p.ord;
@@ -383,6 +417,9 @@
   });
   $('#filtro-categoria').addEventListener('change', function (e) {
     estado.categoria = e.target.value; renderCatalogo();
+  });
+  $('#filtro-facilidade').addEventListener('change', function (e) {
+    estado.facilidade = e.target.value; renderCatalogo();
   });
   $('#filtro-estrelas').addEventListener('change', function (e) {
     estado.minEstrelas = parseInt(e.target.value, 10) || 0; renderCatalogo();
@@ -440,6 +477,12 @@
         '</div>' +
         '<div class="card-chips modal-chips">' + chipsCategorias(skill) + '</div>' +
       '</div>' +
+      (FACILIDADES[skill.facilidade]
+        ? '<p class="modal-facilidade selo-' + escapeHtml(skill.facilidade) + '-borda">' +
+          '<strong>' + escapeHtml(TIPOS[skill.tipo] || skill.tipo) + ' · ' +
+          escapeHtml(FACILIDADES[skill.facilidade].rotulo) + '</strong> — ' +
+          escapeHtml(FACILIDADES[skill.facilidade].ajuda) + '</p>'
+        : '') +
       secao('Para que serve', '<p>' + escapeHtml(skill.paraQueServe) + '</p>') +
       secao('Quando usar', '<p>' + escapeHtml(skill.quandoUsar) + '</p>') +
       secao('Principais benefícios', beneficios ? '<ul>' + beneficios + '</ul>' : '') +
@@ -944,6 +987,7 @@
     if ((alvo = e.target.closest('.chip[data-cat]'))) {
       estado.categoria = alvo.dataset.cat;
       $('#filtro-categoria').value = estado.categoria;
+    $('#filtro-facilidade').value = estado.facilidade;
       if (!modal.hidden) fecharModal();
       renderCatalogo();
       document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
@@ -958,6 +1002,7 @@
   /* ---------- inicialização ---------- */
 
   preencherFiltroCategorias();
+  preencherFiltroFacilidade();
   var linkInicial = lerHash();
   sincronizarControles();
   atualizarContadorFavoritas();
@@ -968,9 +1013,10 @@
   var diasDados = diasDesde(DB.coletadoEm);
   $('#meta-dados').innerHTML =
     escapeHtml(SKILLS.length + ' skills · ' + DB.categorias.length + ' categorias · dados do GitHub de ' + dataBR(DB.coletadoEm)) +
+    (DB.linksVerificadosEm ? escapeHtml(' · links conferidos em ' + dataBR(DB.linksVerificadosEm)) : '') +
     (diasDados > 45
       ? ' <span class="aviso-dados" title="Rode: node scripts/refresh-github.mjs">· coletados há ' +
-        Math.floor(diasDados / 30) + ' meses, as estrelas podem ter mudado</span>'
+        mesesTexto(Math.floor(diasDados / 30)) + ', as estrelas podem ter mudado</span>'
       : '');
 
   if (linkInicial.skill) {
