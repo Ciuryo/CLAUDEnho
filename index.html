@@ -62,6 +62,11 @@
           <input id="campo-busca" type="search" placeholder="Buscar por nome, problema, tag… (ex.: TDD, tokens, Figma)" aria-label="Buscar skills">
           <kbd class="atalho-busca" aria-hidden="true">/</kbd>
         </div>
+        <p class="atalho-iniciante">
+          <span aria-hidden="true">👋</span> Chegou agora? Veja só o que
+          <a href="#facil=facil">dá para usar sem terminal</a>, ou comece pelo
+          <a href="guia.html">guia rápido</a>.
+        </p>
         <p id="meta-dados" class="meta-dados"></p>
       </div>
     </section>
@@ -139,6 +144,12 @@
         </div>
 
         <div class="filtros" role="group" aria-label="Filtros do catálogo">
+          <label class="filtro">
+            <span>Facilidade</span>
+            <select id="filtro-facilidade">
+              <option value="">Qualquer</option>
+            </select>
+          </label>
           <label class="filtro">
             <span>Categoria</span>
             <select id="filtro-categoria">

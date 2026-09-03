@@ -117,7 +117,9 @@ window.SKILLS_DB = {
         "testes",
         "planejamento",
         "mvp"
-      ]
+      ],
+      "tipo": "skill",
+      "facilidade": "medio"
     },
     {
       "id": "anthropic-skills",
@@ -169,7 +171,9 @@ window.SKILLS_DB = {
         "saas",
         "dados",
         "escritorio"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "facil"
     },
     {
       "id": "ruflo",
@@ -218,7 +222,9 @@ window.SKILLS_DB = {
         "backend",
         "migracao",
         "automacao"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "context7",
@@ -268,7 +274,9 @@ window.SKILLS_DB = {
         "saas",
         "integracao",
         "documentacao"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "bmad-method",
@@ -318,7 +326,9 @@ window.SKILLS_DB = {
         "startup",
         "planejamento",
         "greenfield"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "awesome-claude-code",
@@ -365,7 +375,9 @@ window.SKILLS_DB = {
         "produtividade",
         "cli",
         "configuracao"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "facil"
     },
     {
       "id": "claude-cookbooks",
@@ -416,7 +428,9 @@ window.SKILLS_DB = {
         "integracao",
         "pesquisa",
         "ia"
-      ]
+      ],
+      "tipo": "curso",
+      "facilidade": "tecnico"
     },
     {
       "id": "wshobson-agents",
@@ -468,7 +482,9 @@ window.SKILLS_DB = {
         "seguranca",
         "multiagentes",
         "revisao"
-      ]
+      ],
+      "tipo": "skill",
+      "facilidade": "medio"
     },
     {
       "id": "prompt-eng-tutorial",
@@ -516,7 +532,9 @@ window.SKILLS_DB = {
         "ia",
         "api",
         "produto-ia"
-      ]
+      ],
+      "tipo": "curso",
+      "facilidade": "facil"
     },
     {
       "id": "claude-code-router",
@@ -562,7 +580,9 @@ window.SKILLS_DB = {
         "contexto",
         "automacao",
         "time"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "tecnico"
     },
     {
       "id": "claude-code-templates",
@@ -612,7 +632,9 @@ window.SKILLS_DB = {
         "backend",
         "produtividade",
         "custo"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "awesome-agent-skills",
@@ -659,7 +681,9 @@ window.SKILLS_DB = {
         "api",
         "pesquisa",
         "saas"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "facil"
     },
     {
       "id": "claude-task-master",
@@ -708,7 +732,9 @@ window.SKILLS_DB = {
         "planejamento",
         "backend",
         "frontend"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "superclaude",
@@ -756,7 +782,9 @@ window.SKILLS_DB = {
         "produtividade",
         "time",
         "revisao"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "awesome-cc-subagents",
@@ -804,7 +832,9 @@ window.SKILLS_DB = {
         "devops",
         "dados",
         "revisao"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "medio"
     },
     {
       "id": "alireza-claude-skills",
@@ -854,7 +884,9 @@ window.SKILLS_DB = {
         "produto",
         "escritorio",
         "automacao"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "medio"
     },
     {
       "id": "n8n-mcp",
@@ -900,7 +932,9 @@ window.SKILLS_DB = {
         "integracao",
         "no-code",
         "api"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "ccusage",
@@ -944,7 +978,9 @@ window.SKILLS_DB = {
         "custo",
         "contexto",
         "time"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "figma-context-mcp",
@@ -991,7 +1027,9 @@ window.SKILLS_DB = {
         "design",
         "mobile",
         "saas"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "tecnico"
     },
     {
       "id": "contains-studio-agents",
@@ -1041,7 +1079,9 @@ window.SKILLS_DB = {
         "startup",
         "produto",
         "conteudo"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "medio"
     },
     {
       "id": "claude-context",
@@ -1091,7 +1131,9 @@ window.SKILLS_DB = {
         "contexto",
         "banco-de-dados",
         "legado"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "tecnico"
     },
     {
       "id": "cc-usage-monitor",
@@ -1135,7 +1177,9 @@ window.SKILLS_DB = {
         "custo",
         "contexto",
         "time"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "cc-security-review",
@@ -1182,7 +1226,9 @@ window.SKILLS_DB = {
         "saas",
         "backend",
         "ci"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "tecnico"
     },
     {
       "id": "oneredoak-workflows",
@@ -1230,7 +1276,9 @@ window.SKILLS_DB = {
         "design",
         "saas",
         "revisao"
-      ]
+      ],
+      "tipo": "skill",
+      "facilidade": "tecnico"
     },
     {
       "id": "spec-workflow",
@@ -1279,7 +1327,9 @@ window.SKILLS_DB = {
         "documentacao",
         "backend",
         "frontend"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "medio"
     },
     {
       "id": "tdd-guard",
@@ -1327,7 +1377,9 @@ window.SKILLS_DB = {
         "backend",
         "api",
         "qualidade"
-      ]
+      ],
+      "tipo": "ferramenta",
+      "facilidade": "tecnico"
     },
     {
       "id": "awesome-claude-skills",
@@ -1374,7 +1426,30 @@ window.SKILLS_DB = {
         "documentacao",
         "escritorio",
         "conteudo"
-      ]
+      ],
+      "tipo": "colecao",
+      "facilidade": "facil"
     }
-  ]
+  ],
+  "tipos": {
+    "skill": "Skill",
+    "ferramenta": "Ferramenta",
+    "colecao": "Coleção",
+    "curso": "Curso"
+  },
+  "facilidades": {
+    "facil": {
+      "rotulo": "Sem terminal",
+      "ajuda": "Dá para usar no app do Claude ou só navegando — nada para instalar no terminal."
+    },
+    "medio": {
+      "rotulo": "Um comando",
+      "ajuda": "Precisa colar um comando pronto (no Claude Code ou no terminal)."
+    },
+    "tecnico": {
+      "rotulo": "Técnico",
+      "ajuda": "Precisa configurar ambiente, chaves de API ou integração contínua."
+    }
+  },
+  "linksVerificadosEm": "2026-09-03"
 };

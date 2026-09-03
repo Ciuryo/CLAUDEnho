@@ -22,7 +22,7 @@ const db = JSON.parse(raw); // valida o JSON antes de gerar
 
 const ids = new Set();
 for (const s of db.skills) {
-  for (const campo of ['id', 'nome', 'repo', 'stars', 'atualizadoEm', 'categorias', 'promptInicial', 'instalacao']) {
+  for (const campo of ['id', 'nome', 'repo', 'stars', 'atualizadoEm', 'categorias', 'promptInicial', 'instalacao', 'tipo', 'facilidade']) {
     if (s[campo] === undefined) {
       throw new Error(`Skill "${s.id ?? s.nome}" sem o campo obrigatório "${campo}"`);
     }
@@ -33,6 +33,8 @@ for (const s of db.skills) {
   for (const c of s.categorias) {
     if (!catsValidas.has(c)) throw new Error(`Skill "${s.id}": categoria desconhecida "${c}"`);
   }
+  if (!db.tipos[s.tipo]) throw new Error(`Skill "${s.id}": tipo desconhecido "${s.tipo}"`);
+  if (!db.facilidades[s.facilidade]) throw new Error(`Skill "${s.id}": facilidade desconhecida "${s.facilidade}"`);
 }
 
 const banner = '// ARQUIVO GERADO — não edite à mão. Edite data/skills.json e rode: node scripts/build-data.mjs\n';

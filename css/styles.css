@@ -1747,3 +1747,78 @@ button { font-family: inherit; }
 /* com listas mais longas, a pílula fica no topo da linha */
 .tarefa-lista p { display: flex; gap: 4px; align-items: baseline; flex-wrap: wrap; }
 .tarefa-lista .tarefa-modelo { align-self: flex-start; }
+
+/* ============================================================
+   Selos de tipo/facilidade e atalho para iniciantes
+   ============================================================ */
+
+.card-selos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.selo {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 9px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+
+.selo-tipo {
+  color: var(--tinta-2);
+  background: var(--superficie-2);
+  border-color: var(--borda);
+}
+
+/* facilidade: verde = dá pra usar hoje, âmbar = um comando, cinza = técnico */
+.selo-facil {
+  color: var(--acento);
+  background: var(--acento-suave);
+  border-color: var(--acento);
+}
+
+.selo-medio {
+  color: var(--ambar);
+  background: color-mix(in srgb, var(--ambar) 14%, transparent);
+  border-color: color-mix(in srgb, var(--ambar) 45%, transparent);
+}
+
+.selo-tecnico {
+  color: var(--tinta-3);
+  background: transparent;
+  border-color: var(--borda-forte);
+}
+
+.atalho-iniciante {
+  margin-top: 14px;
+  font-size: 0.9rem;
+  color: var(--tinta-2);
+}
+
+.atalho-iniciante a {
+  color: var(--acento);
+  font-weight: 600;
+}
+
+/* explicação da facilidade dentro do modal */
+.modal-facilidade {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: var(--raio);
+  border: 1px solid var(--borda);
+  border-left-width: 3px;
+  background: var(--fundo);
+  font-size: 0.9rem;
+  color: var(--tinta-2);
+}
+
+.modal-facilidade strong { color: var(--tinta); }
+
+.selo-facil-borda { border-left-color: var(--acento); }
+.selo-medio-borda { border-left-color: var(--ambar); }
+.selo-tecnico-borda { border-left-color: var(--borda-forte); }
