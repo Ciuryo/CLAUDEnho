@@ -28,7 +28,6 @@
       </a>
       <nav class="nav-topo">
         <a href="index.html">Catálogo</a>
-        <a href="guia.html">Guia rápido</a>
         <a href="prompts.html">Prompts e modelos</a>
       </nav>
       <button id="btn-tema" class="btn-tema" type="button" aria-label="Alternar tema claro/escuro">
@@ -426,57 +425,154 @@
       <div class="container guia-largura">
         <h2>Criar a sua própria habilidade (relaxa, é tranquilo)</h2>
         <p class="guia-intro">
-          Você <strong>não precisa saber programar</strong>. Em
-          <strong>Configurações → Habilidades</strong>, clique no botão <strong>"Adicionar"</strong> —
-          aparecem três opções:
+          Você <strong>não precisa saber programar</strong>. Se toda semana você pede a mesma coisa
+          ao Claude — "responde esse cliente", "resume essa reunião", "formata esse relatório" —
+          dá para transformar isso numa habilidade e parar de repetir as instruções.
+        </p>
+
+        <h3 class="guia-sub">Primeiro: qual das três formas usar?</h3>
+        <p class="guia-intro">
+          Em <strong>Configurações → Habilidades</strong>, o botão <strong>"Adicionar"</strong> abre
+          três opções. Elas servem para coisas diferentes:
         </p>
 
         <div class="guia-grade">
           <article class="guia-card">
-            <h3>Fazer upload de habilidade</h3>
-            <p>Para quando você <strong>baixou uma habilidade pronta</strong> (por exemplo, de um
-            repositório aqui do catálogo). Você envia a pasta e ela passa a aparecer na sua lista.</p>
+            <h3>Criar com o Claude <span class="selo-rec">comece por aqui</span></h3>
+            <p>Você <strong>descreve o que quer</strong> e o próprio Claude escreve a habilidade
+            pronta. É o caminho mais fácil se você nunca criou uma.</p>
           </article>
           <article class="guia-card">
             <h3>Criar uma habilidade</h3>
-            <p>Você mesmo escreve, preenchendo um formulário simples (veja abaixo). Bom quando você
-            repete sempre o mesmo tipo de pedido e quer transformá-lo numa habilidade fixa.</p>
+            <p>Você mesmo preenche três campos. Use quando já sabe exatamente as regras que quer —
+            dá mais controle sobre o texto.</p>
           </article>
           <article class="guia-card">
-            <h3>Criar com o Claude</h3>
-            <p>O mais fácil: você <strong>descreve o que quer</strong> e o próprio Claude monta a
-            habilidade para você, já com as instruções escritas.</p>
+            <h3>Fazer upload de habilidade</h3>
+            <p>Para uma habilidade <strong>pronta que você baixou</strong> (de um repositório deste
+            catálogo, por exemplo). Você envia a pasta e ela entra na sua lista.</p>
           </article>
         </div>
 
-        <h3 class="guia-sub">Exemplo: criando "à mão" em 3 campos</h3>
+        <h3 class="guia-sub">Caminho fácil: deixe o Claude escrever</h3>
+        <ol class="walkthrough">
+          <li class="wt-passo">
+            <p>Em <strong>Configurações → Habilidades</strong>, clique em <strong>"Adicionar"</strong>
+            e escolha <strong>"Criar com o Claude"</strong>.</p>
+          </li>
+          <li class="wt-passo">
+            <p>Descreva, com suas palavras, o que você quer que ela faça — e quando. Algo assim:</p>
+            <div class="wt-chat">
+              <span class="wt-chat-rot" aria-hidden="true">Você escreve</span>
+              <p>Quero uma habilidade que responda e-mails de clientes no tom da minha empresa:
+              cordial, direto, sem jargão, sempre agradecendo o contato no começo.</p>
+            </div>
+          </li>
+          <li class="wt-passo">
+            <p>O Claude devolve o <strong>nome</strong>, a <strong>descrição</strong> e as
+            <strong>instruções</strong> já escritas. Leia e peça ajustes se quiser ("deixe o tom mais
+            formal", "acrescente que nunca prometa prazo").</p>
+          </li>
+          <li class="wt-passo">
+            <p>Clique em <strong>"Criar"</strong>. Pronto — ela aparece na sua lista de habilidades.</p>
+          </li>
+        </ol>
+
+        <h3 class="guia-sub">Caminho manual: você preenche os três campos</h3>
+        <ol class="walkthrough">
+          <li class="wt-passo">
+            <p>Em <strong>Configurações → Habilidades</strong>, clique em <strong>"Adicionar"</strong>
+            e escolha <strong>"Criar uma habilidade"</strong>. Abre uma janela com três campos.</p>
+          </li>
+          <li class="wt-passo">
+            <p><strong>Nome da skill</strong> — um apelido curto, sem espaços e sem acento. Serve só
+            para você identificar na lista. Ex.: <code>resposta-cliente</code>.</p>
+          </li>
+          <li class="wt-passo">
+            <p><strong>Descrição</strong> — aqui você diz <strong>quando</strong> o Claude deve usar
+            essa habilidade sozinho. É o campo que faz ela "acordar" na hora certa, então escreva
+            pensando na situação: <em>"Use quando eu pedir para responder um cliente"</em>.</p>
+          </li>
+          <li class="wt-passo">
+            <p><strong>Instruções</strong> — o campo grande, onde você diz <strong>o que fazer</strong>.
+            Escreva como se estivesse treinando um funcionário novo: as regras, o tom, o formato e o
+            que evitar.</p>
+          </li>
+          <li class="wt-passo">
+            <p>Se a habilidade precisar de algum arquivo de apoio (um modelo de documento, uma tabela
+            de preços), use <strong>"+ Adicionar arquivo"</strong>. É opcional — pode pular.</p>
+          </li>
+          <li class="wt-passo">
+            <p>Clique em <strong>"Criar"</strong>. Se quiser guardar para terminar depois, use
+            <strong>"Rascunho"</strong>.</p>
+          </li>
+        </ol>
+
+        <h3 class="guia-sub">Exemplo completo: uma habilidade de resposta a clientes</h3>
         <p class="guia-intro">
-          Ao escolher <strong>"Criar uma habilidade"</strong>, abre uma janela com três coisas para
-          preencher. Veja um exemplo de uma habilidade de relatório semanal:
+          Do preenchimento ao resultado — este é o exemplo inteiro, pronto para você copiar e adaptar
+          ao seu caso:
         </p>
 
         <div class="form-mock">
           <div class="fm-campo">
             <span class="fm-rot">Nome da skill</span>
-            <p class="fm-valor fm-mono">relatorio-status-semanal</p>
-            <span class="fm-dica">Um apelido curto, sem espaços — só para identificar.</span>
+            <p class="fm-valor fm-mono">resposta-cliente</p>
           </div>
           <div class="fm-campo">
             <span class="fm-rot">Descrição</span>
-            <p class="fm-valor">Gerar relatórios de status semanais do trabalho recente. Use quando
-            solicitado atualizações ou resumos de progresso.</p>
-            <span class="fm-dica">Diz ao Claude <strong>quando</strong> usar esta habilidade sozinho.</span>
+            <p class="fm-valor">Escrever respostas para clientes no tom da minha empresa. Use quando eu
+            pedir para responder um e-mail, uma mensagem ou uma avaliação de cliente.</p>
           </div>
           <div class="fm-campo">
             <span class="fm-rot">Instruções</span>
-            <p class="fm-valor">Resuma meu trabalho recente em três seções: conquistas, obstáculos e
-            próximos passos. Mantenha o tom profissional, mas não rígido.</p>
-            <span class="fm-dica">Diz ao Claude <strong>o que fazer</strong> — como se explicasse a um
-            colega novo.</span>
+            <p class="fm-valor">Responda sempre em português, em tom cordial e direto.<br>
+            Comece agradecendo o contato do cliente.<br>
+            Explique a solução em no máximo três parágrafos curtos, sem jargão técnico.<br>
+            Se for uma reclamação, reconheça o problema antes de propor a solução.<br>
+            Termine oferecendo ajuda adicional e assine como "Equipe Padaria do Bairro".<br>
+            Nunca prometa prazo ou desconto que eu não tenha dito no pedido.</p>
           </div>
-          <p class="fm-acao">Depois é só clicar em <strong>"Criar"</strong>. Pronto: sua habilidade
-          aparece na lista e o Claude a usa quando o pedido combinar.</p>
         </div>
+
+        <p class="guia-intro" style="margin-top:18px">
+          Criada a habilidade, é só usar na conversa normalmente — sem repetir nenhuma dessas regras:
+        </p>
+
+        <div class="wt-chat">
+          <span class="wt-chat-rot" aria-hidden="true">Você escreve no Claude</span>
+          <p>Responde este e-mail do cliente:</p>
+          <p class="wt-chat-notas">"Comprei um bolo ontem para uma festa e ele chegou amassado.
+          Estou bem chateada, foi para o aniversário da minha filha."</p>
+        </div>
+
+        <div class="wt-resultado">
+          <span class="wt-arquivo" aria-hidden="true">✉️</span>
+          <div>
+            <strong>O Claude responde já no seu padrão</strong>
+            <span class="wt-resultado-dica">Agradece o contato, reconhece o problema, propõe a
+            solução em parágrafos curtos e assina como "Equipe Padaria do Bairro" — porque foi isso
+            que você escreveu nas instruções.</span>
+          </div>
+        </div>
+
+        <h3 class="guia-sub">Três dicas para as instruções ficarem boas</h3>
+        <div class="guia-mitos">
+          <p><span class="mito-check" aria-hidden="true">✓</span> <span><strong>Escreva como se
+          explicasse a um funcionário novo.</strong> Nada de linguagem técnica — frases simples,
+          uma regra por linha.</span></p>
+          <p><span class="mito-check" aria-hidden="true">✓</span> <span><strong>Diga o formato e o
+          tamanho.</strong> "Três parágrafos curtos" funciona muito melhor do que "seja breve".</span></p>
+          <p><span class="mito-check" aria-hidden="true">✓</span> <span><strong>Diga também o que
+          NÃO fazer.</strong> "Nunca prometa prazo" evita justamente o erro que mais incomodaria
+          você.</span></p>
+        </div>
+
+        <p class="uso-nota">
+          <span aria-hidden="true">🔧</span> <strong>Não ficou como você queria?</strong> Volte em
+          Configurações → Habilidades, abra a habilidade e edite as instruções. Ajustar depois de
+          testar é o normal — ninguém acerta tudo de primeira.
+        </p>
       </div>
     </section>
 
