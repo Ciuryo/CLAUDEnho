@@ -1822,3 +1822,28 @@ button { font-family: inherit; }
 .selo-facil-borda { border-left-color: var(--acento); }
 .selo-medio-borda { border-left-color: var(--ambar); }
 .selo-tecnico-borda { border-left-color: var(--borda-forte); }
+
+/* selo "comece por aqui" no card recomendado da criação de habilidade */
+.selo-rec {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--sobre-acento);
+  background: var(--acento);
+  padding: 3px 8px;
+  border-radius: 999px;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+/* passos sem etiqueta de tela usam o espaço todo */
+.wt-passo > p:first-child { margin-top: 0; }
+
+/* cabeçalho nunca empurra o botão de tema para fora da tela */
+.topo-inner { min-width: 0; }
+.marca { min-width: 0; flex-shrink: 1; }
+.nav-topo { min-width: 0; flex-shrink: 1; flex-wrap: wrap; justify-content: flex-end; }
+.btn-tema { flex: none; }
