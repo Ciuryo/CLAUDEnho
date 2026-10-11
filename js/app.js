@@ -1012,11 +1012,11 @@
 
   var diasDados = diasDesde(DB.coletadoEm);
   $('#meta-dados').innerHTML =
-    escapeHtml(SKILLS.length + ' skills · ' + DB.categorias.length + ' categorias · dados do GitHub de ' + dataBR(DB.coletadoEm)) +
-    (DB.linksVerificadosEm ? escapeHtml(' · links conferidos em ' + dataBR(DB.linksVerificadosEm)) : '') +
+    escapeHtml(SKILLS.length + ' skills · ' + DB.categorias.length + ' categorias · estrelas de ' + dataBR(DB.coletadoEm)) +
+    (DB.linksVerificadosEm ? escapeHtml(' · datas e links conferidos em ' + dataBR(DB.linksVerificadosEm)) : '') +
     (diasDados > 45
-      ? ' <span class="aviso-dados" title="Rode: node scripts/refresh-github.mjs">· coletados há ' +
-        mesesTexto(Math.floor(diasDados / 30)) + ', as estrelas podem ter mudado</span>'
+      ? ' <span class="aviso-dados" title="Rode: node scripts/refresh-github.mjs">· estrelas coletadas há ' +
+        mesesTexto(Math.floor(diasDados / 30)) + ', podem ter mudado</span>'
       : '');
 
   if (linkInicial.skill) {
