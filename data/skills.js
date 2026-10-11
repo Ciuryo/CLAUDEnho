@@ -72,7 +72,7 @@ window.SKILLS_DB = {
       "autor": "obra",
       "repo": "https://github.com/obra/superpowers",
       "stars": 255013,
-      "atualizadoEm": "2026-07-14",
+      "atualizadoEm": "2026-10-10",
       "licenca": "MIT",
       "linguagem": "Shell",
       "categorias": [
@@ -127,7 +127,7 @@ window.SKILLS_DB = {
       "autor": "anthropics",
       "repo": "https://github.com/anthropics/skills",
       "stars": 161267,
-      "atualizadoEm": "2026-07-13",
+      "atualizadoEm": "2026-10-09",
       "licenca": "Apache-2.0 (maioria das skills)",
       "linguagem": "Python",
       "categorias": [
@@ -181,7 +181,7 @@ window.SKILLS_DB = {
       "autor": "ruvnet",
       "repo": "https://github.com/ruvnet/ruflo",
       "stars": 64465,
-      "atualizadoEm": "2026-07-14",
+      "atualizadoEm": "2026-10-11",
       "licenca": "MIT",
       "linguagem": "TypeScript",
       "categorias": [
@@ -232,7 +232,7 @@ window.SKILLS_DB = {
       "autor": "upstash",
       "repo": "https://github.com/upstash/context7",
       "stars": 59125,
-      "atualizadoEm": "2026-07-13",
+      "atualizadoEm": "2026-10-09",
       "licenca": "MIT",
       "linguagem": "TypeScript",
       "categorias": [
@@ -284,7 +284,7 @@ window.SKILLS_DB = {
       "autor": "bmad-code-org",
       "repo": "https://github.com/bmad-code-org/BMAD-METHOD",
       "stars": 50613,
-      "atualizadoEm": "2026-07-14",
+      "atualizadoEm": "2026-10-06",
       "licenca": "Ver repositório",
       "linguagem": "JavaScript",
       "categorias": [
@@ -336,7 +336,7 @@ window.SKILLS_DB = {
       "autor": "hesreallyhim",
       "repo": "https://github.com/hesreallyhim/awesome-claude-code",
       "stars": 50062,
-      "atualizadoEm": "2026-07-15",
+      "atualizadoEm": "2026-10-11",
       "licenca": "Ver repositório",
       "linguagem": "Python",
       "categorias": [
@@ -385,7 +385,7 @@ window.SKILLS_DB = {
       "autor": "anthropics",
       "repo": "https://github.com/anthropics/claude-cookbooks",
       "stars": 48873,
-      "atualizadoEm": "2026-07-13",
+      "atualizadoEm": "2026-10-10",
       "licenca": "MIT",
       "linguagem": "Jupyter Notebook",
       "categorias": [
@@ -438,7 +438,7 @@ window.SKILLS_DB = {
       "autor": "wshobson",
       "repo": "https://github.com/wshobson/agents",
       "stars": 37924,
-      "atualizadoEm": "2026-07-14",
+      "atualizadoEm": "2026-10-04",
       "licenca": "MIT",
       "linguagem": "Python",
       "categorias": [
@@ -542,7 +542,7 @@ window.SKILLS_DB = {
       "autor": "musistudio",
       "repo": "https://github.com/musistudio/claude-code-router",
       "stars": 35806,
-      "atualizadoEm": "2026-07-15",
+      "atualizadoEm": "2026-10-10",
       "licenca": "MIT",
       "linguagem": "TypeScript",
       "categorias": [
@@ -590,7 +590,7 @@ window.SKILLS_DB = {
       "autor": "davila7",
       "repo": "https://github.com/davila7/claude-code-templates",
       "stars": 29517,
-      "atualizadoEm": "2026-07-15",
+      "atualizadoEm": "2026-10-11",
       "licenca": "MIT",
       "linguagem": "Python",
       "categorias": [
@@ -642,7 +642,7 @@ window.SKILLS_DB = {
       "autor": "VoltAgent",
       "repo": "https://github.com/VoltAgent/awesome-agent-skills",
       "stars": 28128,
-      "atualizadoEm": "2026-07-10",
+      "atualizadoEm": "2026-10-11",
       "licenca": "MIT",
       "linguagem": "—",
       "categorias": [
@@ -742,7 +742,7 @@ window.SKILLS_DB = {
       "autor": "SuperClaude-Org",
       "repo": "https://github.com/SuperClaude-Org/SuperClaude_Framework",
       "stars": 23563,
-      "atualizadoEm": "2026-06-13",
+      "atualizadoEm": "2026-09-27",
       "licenca": "MIT",
       "linguagem": "Python",
       "categorias": [
@@ -792,7 +792,7 @@ window.SKILLS_DB = {
       "autor": "VoltAgent",
       "repo": "https://github.com/VoltAgent/awesome-claude-code-subagents",
       "stars": 23333,
-      "atualizadoEm": "2026-07-10",
+      "atualizadoEm": "2026-10-11",
       "licenca": "MIT",
       "linguagem": "Shell",
       "categorias": [
@@ -842,7 +842,7 @@ window.SKILLS_DB = {
       "autor": "alirezarezvani",
       "repo": "https://github.com/alirezarezvani/claude-skills",
       "stars": 22605,
-      "atualizadoEm": "2026-07-14",
+      "atualizadoEm": "2026-08-26",
       "licenca": "MIT",
       "linguagem": "Python",
       "categorias": [
@@ -894,7 +894,7 @@ window.SKILLS_DB = {
       "autor": "czlonkowski",
       "repo": "https://github.com/czlonkowski/n8n-mcp",
       "stars": 22284,
-      "atualizadoEm": "2026-07-14",
+      "atualizadoEm": "2026-10-06",
       "licenca": "MIT",
       "linguagem": "TypeScript",
       "categorias": [
@@ -942,7 +942,7 @@ window.SKILLS_DB = {
       "autor": "ccusage",
       "repo": "https://github.com/ccusage/ccusage",
       "stars": 17176,
-      "atualizadoEm": "2026-07-15",
+      "atualizadoEm": "2026-10-11",
       "licenca": "Ver repositório",
       "linguagem": "Rust",
       "categorias": [
@@ -1236,7 +1236,7 @@ window.SKILLS_DB = {
       "autor": "OneRedOak",
       "repo": "https://github.com/OneRedOak/claude-code-workflows",
       "stars": 3881,
-      "atualizadoEm": "2025-09-14",
+      "atualizadoEm": "2026-10-09",
       "licenca": "MIT",
       "linguagem": "Markdown",
       "categorias": [
@@ -1337,7 +1337,7 @@ window.SKILLS_DB = {
       "autor": "nizos",
       "repo": "https://github.com/nizos/tdd-guard",
       "stars": 2264,
-      "atualizadoEm": "2026-07-06",
+      "atualizadoEm": "2026-10-05",
       "licenca": "MIT",
       "linguagem": "TypeScript",
       "categorias": [
@@ -1451,5 +1451,5 @@ window.SKILLS_DB = {
       "ajuda": "Precisa configurar ambiente, chaves de API ou integração contínua."
     }
   },
-  "linksVerificadosEm": "2026-09-03"
+  "linksVerificadosEm": "2026-10-11"
 };

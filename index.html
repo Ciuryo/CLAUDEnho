@@ -197,11 +197,14 @@
   <footer class="rodape">
     <div class="container">
       <p>
-        Dados (estrelas, descrições, datas e licenças) coletados da API pública do GitHub.
-        As estrelas mudam constantemente — considere os números um retrato da data de coleta.
+        Estrelas e licenças vêm da API pública do GitHub; datas de atualização e links são
+        conferidos direto nos repositórios. As estrelas mudam todo dia — considere os números
+        um retrato da data de coleta indicada no topo.
       </p>
       <p>
-        Para atualizar estrelas e datas: <code>node scripts/refresh-github.mjs</code>. Para adicionar skills, edite <code>data/skills.json</code> e rode <code>node scripts/build-data.mjs</code>. Detalhes no <code>README.md</code>.
+        Para atualizar: <code>node scripts/refresh-github.mjs</code> e depois
+        <code>node scripts/build-data.mjs</code>. Para adicionar uma skill, inclua-a em
+        <code>data/skills.json</code> e rode o mesmo <code>build-data.mjs</code>, que avisa se faltar algum campo.
       </p>
     </div>
   </footer>
