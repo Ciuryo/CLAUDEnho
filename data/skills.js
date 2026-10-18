@@ -1,7 +1,7 @@
 // ARQUIVO GERADO — não edite à mão. Edite data/skills.json e rode: node scripts/build-data.mjs
 window.SKILLS_DB = {
   "versao": "1.0.0",
-  "coletadoEm": "2026-07-15",
+  "coletadoEm": "2026-10-18",
   "fonteDados": "API pública do GitHub (api.github.com) — estrelas, descrições, datas e licenças coletadas em 2026-07-15",
   "categorias": [
     {
@@ -71,7 +71,7 @@ window.SKILLS_DB = {
       "nome": "Superpowers",
       "autor": "obra",
       "repo": "https://github.com/obra/superpowers",
-      "stars": 255013,
+      "stars": 301232,
       "atualizadoEm": "2026-10-10",
       "licenca": "MIT",
       "linguagem": "Shell",
@@ -126,7 +126,7 @@ window.SKILLS_DB = {
       "nome": "Agent Skills (oficial Anthropic)",
       "autor": "anthropics",
       "repo": "https://github.com/anthropics/skills",
-      "stars": 161267,
+      "stars": 181797,
       "atualizadoEm": "2026-10-09",
       "licenca": "Apache-2.0 (maioria das skills)",
       "linguagem": "Python",
@@ -180,8 +180,8 @@ window.SKILLS_DB = {
       "nome": "Ruflo (ex Claude-Flow)",
       "autor": "ruvnet",
       "repo": "https://github.com/ruvnet/ruflo",
-      "stars": 64465,
-      "atualizadoEm": "2026-10-11",
+      "stars": 76073,
+      "atualizadoEm": "2026-10-18",
       "licenca": "MIT",
       "linguagem": "TypeScript",
       "categorias": [
@@ -231,8 +231,8 @@ window.SKILLS_DB = {
       "nome": "Context7",
       "autor": "upstash",
       "repo": "https://github.com/upstash/context7",
-      "stars": 59125,
-      "atualizadoEm": "2026-10-09",
+      "stars": 63209,
+      "atualizadoEm": "2026-10-17",
       "licenca": "MIT",
       "linguagem": "TypeScript",
       "categorias": [
@@ -283,8 +283,8 @@ window.SKILLS_DB = {
       "nome": "BMAD-METHOD",
       "autor": "bmad-code-org",
       "repo": "https://github.com/bmad-code-org/BMAD-METHOD",
-      "stars": 50613,
-      "atualizadoEm": "2026-10-06",
+      "stars": 54268,
+      "atualizadoEm": "2026-10-16",
       "licenca": "Ver repositório",
       "linguagem": "JavaScript",
       "categorias": [
@@ -335,8 +335,8 @@ window.SKILLS_DB = {
       "nome": "Awesome Claude Code",
       "autor": "hesreallyhim",
       "repo": "https://github.com/hesreallyhim/awesome-claude-code",
-      "stars": 50062,
-      "atualizadoEm": "2026-10-11",
+      "stars": 55910,
+      "atualizadoEm": "2026-10-18",
       "licenca": "Ver repositório",
       "linguagem": "Python",
       "categorias": [
@@ -384,8 +384,8 @@ window.SKILLS_DB = {
       "nome": "Claude Cookbooks",
       "autor": "anthropics",
       "repo": "https://github.com/anthropics/claude-cookbooks",
-      "stars": 48873,
-      "atualizadoEm": "2026-10-10",
+      "stars": 53529,
+      "atualizadoEm": "2026-10-17",
       "licenca": "MIT",
       "linguagem": "Jupyter Notebook",
       "categorias": [
@@ -437,8 +437,8 @@ window.SKILLS_DB = {
       "nome": "Agents (wshobson)",
       "autor": "wshobson",
       "repo": "https://github.com/wshobson/agents",
-      "stars": 37924,
-      "atualizadoEm": "2026-10-04",
+      "stars": 40975,
+      "atualizadoEm": "2026-10-17",
       "licenca": "MIT",
       "linguagem": "Python",
       "categorias": [
@@ -491,7 +491,7 @@ window.SKILLS_DB = {
       "nome": "Prompt Engineering Interactive Tutorial",
       "autor": "anthropics",
       "repo": "https://github.com/anthropics/prompt-eng-interactive-tutorial",
-      "stars": 37048,
+      "stars": 38623,
       "atualizadoEm": "2026-03-01",
       "licenca": "Ver repositório",
       "linguagem": "Jupyter Notebook",
@@ -541,7 +541,7 @@ window.SKILLS_DB = {
       "nome": "Claude Code Router",
       "autor": "musistudio",
       "repo": "https://github.com/musistudio/claude-code-router",
-      "stars": 35806,
+      "stars": 37722,
       "atualizadoEm": "2026-10-10",
       "licenca": "MIT",
       "linguagem": "TypeScript",
@@ -589,8 +589,8 @@ window.SKILLS_DB = {
       "nome": "Claude Code Templates",
       "autor": "davila7",
       "repo": "https://github.com/davila7/claude-code-templates",
-      "stars": 29517,
-      "atualizadoEm": "2026-10-11",
+      "stars": 32713,
+      "atualizadoEm": "2026-10-18",
       "licenca": "MIT",
       "linguagem": "Python",
       "categorias": [
@@ -641,8 +641,8 @@ window.SKILLS_DB = {
       "nome": "Awesome Agent Skills",
       "autor": "VoltAgent",
       "repo": "https://github.com/VoltAgent/awesome-agent-skills",
-      "stars": 28128,
-      "atualizadoEm": "2026-10-11",
+      "stars": 35900,
+      "atualizadoEm": "2026-10-15",
       "licenca": "MIT",
       "linguagem": "—",
       "categorias": [
@@ -690,7 +690,7 @@ window.SKILLS_DB = {
       "nome": "Task Master",
       "autor": "eyaltoledano",
       "repo": "https://github.com/eyaltoledano/claude-task-master",
-      "stars": 27857,
+      "stars": 28238,
       "atualizadoEm": "2026-04-28",
       "licenca": "MIT com Commons Clause",
       "linguagem": "JavaScript",
@@ -741,7 +741,7 @@ window.SKILLS_DB = {
       "nome": "SuperClaude Framework",
       "autor": "SuperClaude-Org",
       "repo": "https://github.com/SuperClaude-Org/SuperClaude_Framework",
-      "stars": 23563,
+      "stars": 23905,
       "atualizadoEm": "2026-09-27",
       "licenca": "MIT",
       "linguagem": "Python",
@@ -791,7 +791,7 @@ window.SKILLS_DB = {
       "nome": "Awesome Claude Code Subagents",
       "autor": "VoltAgent",
       "repo": "https://github.com/VoltAgent/awesome-claude-code-subagents",
-      "stars": 23333,
+      "stars": 25797,
       "atualizadoEm": "2026-10-11",
       "licenca": "MIT",
       "linguagem": "Shell",
@@ -841,7 +841,7 @@ window.SKILLS_DB = {
       "nome": "Claude Skills (alirezarezvani)",
       "autor": "alirezarezvani",
       "repo": "https://github.com/alirezarezvani/claude-skills",
-      "stars": 22605,
+      "stars": 28333,
       "atualizadoEm": "2026-08-26",
       "licenca": "MIT",
       "linguagem": "Python",
@@ -893,8 +893,8 @@ window.SKILLS_DB = {
       "nome": "n8n-MCP",
       "autor": "czlonkowski",
       "repo": "https://github.com/czlonkowski/n8n-mcp",
-      "stars": 22284,
-      "atualizadoEm": "2026-10-06",
+      "stars": 23095,
+      "atualizadoEm": "2026-10-15",
       "licenca": "MIT",
       "linguagem": "TypeScript",
       "categorias": [
@@ -941,8 +941,8 @@ window.SKILLS_DB = {
       "nome": "ccusage",
       "autor": "ccusage",
       "repo": "https://github.com/ccusage/ccusage",
-      "stars": 17176,
-      "atualizadoEm": "2026-10-11",
+      "stars": 19045,
+      "atualizadoEm": "2026-10-18",
       "licenca": "Ver repositório",
       "linguagem": "Rust",
       "categorias": [
@@ -987,7 +987,7 @@ window.SKILLS_DB = {
       "nome": "Figma Context MCP (Framelink)",
       "autor": "GLips",
       "repo": "https://github.com/GLips/Figma-Context-MCP",
-      "stars": 15399,
+      "stars": 16001,
       "atualizadoEm": "2026-07-03",
       "licenca": "MIT",
       "linguagem": "TypeScript",
@@ -1036,7 +1036,7 @@ window.SKILLS_DB = {
       "nome": "Contains Studio Agents",
       "autor": "contains-studio",
       "repo": "https://github.com/contains-studio/agents",
-      "stars": 12401,
+      "stars": 12420,
       "atualizadoEm": "2025-07-28",
       "licenca": "Ver repositório",
       "linguagem": "Markdown",
@@ -1088,7 +1088,7 @@ window.SKILLS_DB = {
       "nome": "Claude Context",
       "autor": "zilliztech",
       "repo": "https://github.com/zilliztech/claude-context",
-      "stars": 12138,
+      "stars": 12621,
       "atualizadoEm": "2026-07-14",
       "licenca": "MIT",
       "linguagem": "TypeScript",
@@ -1140,7 +1140,7 @@ window.SKILLS_DB = {
       "nome": "Claude Code Usage Monitor",
       "autor": "Maciek-roboblog",
       "repo": "https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor",
-      "stars": 8446,
+      "stars": 8747,
       "atualizadoEm": "2026-07-05",
       "licenca": "MIT",
       "linguagem": "Python",
@@ -1186,7 +1186,7 @@ window.SKILLS_DB = {
       "nome": "Claude Code Security Review",
       "autor": "anthropics",
       "repo": "https://github.com/anthropics/claude-code-security-review",
-      "stars": 5545,
+      "stars": 6413,
       "atualizadoEm": "2026-02-11",
       "licenca": "MIT",
       "linguagem": "Python",
@@ -1235,7 +1235,7 @@ window.SKILLS_DB = {
       "nome": "Claude Code Workflows (OneRedOak)",
       "autor": "OneRedOak",
       "repo": "https://github.com/OneRedOak/claude-code-workflows",
-      "stars": 3881,
+      "stars": 3905,
       "atualizadoEm": "2026-10-09",
       "licenca": "MIT",
       "linguagem": "Markdown",
@@ -1285,7 +1285,7 @@ window.SKILLS_DB = {
       "nome": "Claude Code Spec Workflow",
       "autor": "Pimzino",
       "repo": "https://github.com/Pimzino/claude-code-spec-workflow",
-      "stars": 3794,
+      "stars": 3860,
       "atualizadoEm": "2025-09-07",
       "licenca": "MIT",
       "linguagem": "TypeScript",
@@ -1336,8 +1336,8 @@ window.SKILLS_DB = {
       "nome": "TDD Guard",
       "autor": "nizos",
       "repo": "https://github.com/nizos/tdd-guard",
-      "stars": 2264,
-      "atualizadoEm": "2026-10-05",
+      "stars": 2361,
+      "atualizadoEm": "2026-10-12",
       "licenca": "MIT",
       "linguagem": "TypeScript",
       "categorias": [
@@ -1386,7 +1386,7 @@ window.SKILLS_DB = {
       "nome": "Awesome Claude Skills",
       "autor": "travisvn",
       "repo": "https://github.com/travisvn/awesome-claude-skills",
-      "stars": 14127,
+      "stars": 15449,
       "atualizadoEm": "2026-04-28",
       "licenca": "Ver repositório",
       "linguagem": "—",
@@ -1429,6 +1429,635 @@ window.SKILLS_DB = {
       ],
       "tipo": "colecao",
       "facilidade": "facil"
+    },
+    {
+      "id": "claude-plugins-official",
+      "nome": "Claude Plugins (diretório oficial)",
+      "autor": "anthropics",
+      "repo": "https://github.com/anthropics/claude-plugins-official",
+      "stars": 41770,
+      "atualizadoEm": "2026-10-16",
+      "licenca": "Apache-2.0",
+      "linguagem": "—",
+      "categorias": [
+        "pesquisa",
+        "programacao",
+        "automacao"
+      ],
+      "tags": [
+        "oficial",
+        "plugins",
+        "marketplace",
+        "curadoria",
+        "anthropic"
+      ],
+      "destaque": true,
+      "tipo": "colecao",
+      "facilidade": "medio",
+      "paraQueServe": "Diretório oficial, mantido pela Anthropic, de plugins para o Claude Code. Reúne plugins internos da própria Anthropic e de parceiros, que passam por critérios de qualidade e segurança antes de entrar.",
+      "quandoUsar": "Quando você quer instalar plugins com mais confiança do que pegando um repositório qualquer: é o primeiro lugar para procurar, antes das listas da comunidade.",
+      "beneficios": [
+        "Mantido pela Anthropic, com plugins internos e de parceiros",
+        "Plugins de terceiros passam por critérios de qualidade e segurança",
+        "Instalação em um comando dentro do Claude Code",
+        "Dá para navegar pela própria interface, em /plugin > Discover"
+      ],
+      "economiaTokens": "Plugins empacotam skills e comandos prontos, e o Claude carrega cada skill só quando a tarefa pede — em vez de você colar instruções longas em toda conversa.",
+      "qualidadeRespostas": "Plugins curados trazem fluxos já testados, o que reduz respostas improvisadas em tarefas que se repetem.",
+      "multiAgentes": "Muitos plugins incluem subagentes prontos, que o Claude Code aciona para partes específicas do trabalho.",
+      "melhorias": {
+        "produtividade": "Achar e instalar ferramentas confiáveis sem pesquisa manual",
+        "programacao": "Fluxos de desenvolvimento prontos e revisados"
+      },
+      "instalacao": "No Claude Code: /plugin install NOME-DO-PLUGIN@claude-plugins-official — ou navegue em /plugin > Discover. O próprio README pede que você confie no plugin antes de instalar.",
+      "exemploUso": "Abra /plugin > Discover, escolha um plugin do diretório oficial e instale: os comandos e skills dele ficam disponíveis na mesma hora.",
+      "promptInicial": "Utilize a Skill Claude Plugins (diretório oficial) para executar a escolha e a instalação do plugin mais adequado a esta tarefa. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "setup",
+        "programacao",
+        "produtividade"
+      ]
+    },
+    {
+      "id": "knowledge-work-plugins",
+      "nome": "Knowledge Work Plugins (oficial Anthropic)",
+      "autor": "anthropics",
+      "repo": "https://github.com/anthropics/knowledge-work-plugins",
+      "stars": 30010,
+      "atualizadoEm": "2026-10-16",
+      "licenca": "Apache-2.0",
+      "linguagem": "—",
+      "categorias": [
+        "escrita",
+        "automacao",
+        "pesquisa"
+      ],
+      "tags": [
+        "oficial",
+        "cowork",
+        "plugins",
+        "negocios",
+        "vendas",
+        "juridico",
+        "financas"
+      ],
+      "destaque": true,
+      "tipo": "colecao",
+      "facilidade": "facil",
+      "paraQueServe": "Plugins oficiais da Anthropic que transformam o Claude num especialista por função — produtividade, vendas, atendimento, produto, marketing, jurídico, finanças, dados e pesquisa — com skills, comandos e conexões com as ferramentas de cada área.",
+      "quandoUsar": "Quando você não programa e usa o Claude no trabalho do dia a dia: preparar uma reunião de vendas, revisar um contrato, responder chamados de suporte ou fechar um relatório financeiro.",
+      "beneficios": [
+        "Feito para o Cowork: instala pelo app, sem terminal",
+        "11 plugins prontos, um por área de trabalho",
+        "Conecta a ferramentas como Slack, Notion, HubSpot e Microsoft 365",
+        "Tudo em arquivos de texto: dá para adaptar ao jeito da sua empresa"
+      ],
+      "economiaTokens": "Cada plugin carrega só o conhecimento da sua área, e as skills entram em ação apenas quando a tarefa combina — sem você repetir o contexto da empresa em toda conversa.",
+      "qualidadeRespostas": "As skills trazem boas práticas e o passo a passo de cada função, então o resultado sai no formato que a área espera: uma proposta comercial, um parecer, um fechamento contábil.",
+      "multiAgentes": "Os plugins incluem subagentes e comandos por função, que podem ser combinados num fluxo maior.",
+      "melhorias": {
+        "escrita": "Documentos de cada área no formato certo",
+        "produtividade": "Tarefas recorrentes viram um comando",
+        "analise": "Informações das ferramentas da empresa reunidas numa resposta"
+      },
+      "instalacao": "No Cowork: instale pelo site claude.com/plugins. No Claude Code: claude plugin marketplace add anthropics/knowledge-work-plugins e depois claude plugin install sales@knowledge-work-plugins (troque sales pela área que quiser).",
+      "exemploUso": "Com o plugin de vendas, peça para preparar uma reunião com um cliente: o Claude pesquisa a empresa, revisa o histórico e monta a pauta. Também há comandos diretos, como /sales:call-prep.",
+      "promptInicial": "Utilize a Skill Knowledge Work Plugins para executar esta tarefa da minha área de trabalho seguindo as boas práticas do plugin correspondente. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "escritorio",
+        "conteudo",
+        "negocios",
+        "produtividade"
+      ]
+    },
+    {
+      "id": "mattpocock-skills",
+      "nome": "Skills for Real Engineers (Matt Pocock)",
+      "autor": "mattpocock",
+      "repo": "https://github.com/mattpocock/skills",
+      "stars": 295127,
+      "atualizadoEm": "2026-10-09",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "programacao",
+        "planejamento"
+      ],
+      "tags": [
+        "engenharia",
+        "composavel",
+        "plugin",
+        "triagem",
+        "documentacao-viva"
+      ],
+      "destaque": false,
+      "tipo": "skill",
+      "facilidade": "medio",
+      "paraQueServe": "Skills pequenas e combináveis que Matt Pocock usa todo dia para fazer engenharia de verdade — não \"vibe coding\". A proposta é o oposto de um processo pesado: peças curtas que você entende, adapta e controla.",
+      "quandoUsar": "Quando frameworks completos como BMAD ou Spec-Kit parecem demais, e você quer peças avulsas, fáceis de ler e de modificar, para guiar o Claude na programação.",
+      "beneficios": [
+        "Skills curtas, legíveis e fáceis de adaptar",
+        "Baseadas em décadas de experiência de engenharia",
+        "Funcionam com qualquer modelo",
+        "Plugin no diretório oficial da Anthropic, que atualiza sozinho"
+      ],
+      "economiaTokens": "Skills pequenas e focadas ocupam pouco contexto e entram só quando a tarefa pede, ao contrário de metodologias que carregam um processo inteiro.",
+      "qualidadeRespostas": "Cada skill codifica uma prática de engenharia específica, deixando o Claude mais disciplinado sem engessar o fluxo.",
+      "multiAgentes": "Por serem combináveis, as skills podem ser distribuídas entre agentes diferentes do mesmo projeto.",
+      "melhorias": {
+        "programacao": "Práticas de engenharia aplicadas com consistência",
+        "raciocinio": "Mais questionamento antes de escrever código"
+      },
+      "instalacao": "No Claude Code: claude plugin install mattpocock-skills@claude-plugins-official (atualiza sozinho) e depois rode /setup-matt-pocock-skills. Para outros agentes: npx skills@latest add mattpocock/skills.",
+      "exemploUso": "Use a skill grill-with-docs para o Claude te sabatinar sobre uma funcionalidade antes de codar — e, de quebra, documentar o projeto. Na dúvida sobre qual usar, a skill ask-matt indica o fluxo certo para a sua situação.",
+      "promptInicial": "Utilize a Skill Skills for Real Engineers para executar esta tarefa de programação com as práticas de engenharia das skills, começando por questionar os requisitos. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "backend",
+        "frontend",
+        "programacao",
+        "revisao"
+      ]
+    },
+    {
+      "id": "addy-agent-skills",
+      "nome": "Agent Skills (Addy Osmani)",
+      "autor": "addyosmani",
+      "repo": "https://github.com/addyosmani/agent-skills",
+      "stars": 107852,
+      "atualizadoEm": "2026-10-13",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "programacao",
+        "testes",
+        "planejamento"
+      ],
+      "tags": [
+        "ciclo-de-vida",
+        "comandos",
+        "qualidade",
+        "performance-web",
+        "plugin"
+      ],
+      "destaque": false,
+      "tipo": "skill",
+      "facilidade": "medio",
+      "paraQueServe": "Skills de engenharia de nível produção, de Addy Osmani: codificam os fluxos e critérios de qualidade de engenheiros seniores em todo o ciclo — definir, planejar, construir, testar, revisar e publicar — com 9 comandos que ativam as skills certas.",
+      "quandoUsar": "Quando você quer que o Claude siga um ciclo de desenvolvimento completo e disciplinado: especificação antes do código, tarefas pequenas, testes como prova e revisão antes do merge.",
+      "beneficios": [
+        "9 comandos, um por fase: /spec, /plan, /build, /test, /review, /ship…",
+        "25 skills que também ativam sozinhas conforme o que você faz",
+        "Inclui auditoria de performance web e simplificação de código",
+        "Funciona em mais de 70 agentes, não só no Claude Code"
+      ],
+      "economiaTokens": "Ao dividir o trabalho em tarefas pequenas e atômicas, cada etapa usa um contexto menor e mais focado.",
+      "qualidadeRespostas": "Critérios de qualidade explícitos (testes, revisão, restrições) fazem o resultado ser provado, não só plausível.",
+      "multiAgentes": "O modo /build auto gera o plano e implementa todas as tarefas numa passada que você aprova uma vez.",
+      "melhorias": {
+        "programacao": "Ciclo completo com testes e revisão",
+        "raciocinio": "Especificação e plano antes do código",
+        "produtividade": "Uma fase por comando"
+      },
+      "instalacao": "No Claude Code: /plugin marketplace add addyosmani/agent-skills e depois /plugin install agent-skills@addy-agent-skills. Em qualquer agente: npx skills add addyosmani/agent-skills.",
+      "exemploUso": "Rode /spec para definir a funcionalidade, /plan para quebrar em tarefas, /build para implementar uma fatia por vez e /test para provar que funciona. A revisão do plugin é chamada como /agent-skills:review.",
+      "promptInicial": "Utilize a Skill Agent Skills (Addy Osmani) para executar esta funcionalidade pelo ciclo completo de especificação, plano, implementação, testes e revisão. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "saas",
+        "backend",
+        "frontend",
+        "testes",
+        "qualidade"
+      ]
+    },
+    {
+      "id": "scientific-agent-skills",
+      "nome": "Scientific Agent Skills",
+      "autor": "K-Dense-AI",
+      "repo": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "stars": 52257,
+      "atualizadoEm": "2026-10-12",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "pesquisa"
+      ],
+      "tags": [
+        "ciencia",
+        "pesquisa-academica",
+        "bioinformatica",
+        "pubmed",
+        "arxiv",
+        "dados"
+      ],
+      "destaque": false,
+      "tipo": "colecao",
+      "facilidade": "medio",
+      "paraQueServe": "Biblioteca com 177 skills científicas e de pesquisa, da K-Dense, cobrindo biologia, química, medicina, física, engenharia, ciências da Terra e análise de dados, com acesso a mais de 100 bases científicas. É descrita em um artigo publicado no arXiv.",
+      "quandoUsar": "Em pesquisa acadêmica ou científica: revisar literatura, consultar bases especializadas, analisar dados experimentais ou montar um fluxo de pesquisa reproduzível.",
+      "beneficios": [
+        "177 skills organizadas por área científica",
+        "Acesso a bases como PubMed, UniProt, ChEMBL e ClinicalTrials",
+        "Testes automáticos e varredura de segurança no repositório",
+        "Segue o padrão aberto Agent Skills"
+      ],
+      "economiaTokens": "O Claude carrega só a skill da disciplina em questão, em vez de você explicar o procedimento científico a cada conversa.",
+      "qualidadeRespostas": "As skills codificam procedimentos específicos de cada disciplina e consultam as bases de origem, reduzindo erros de método e referências inventadas.",
+      "multiAgentes": "As skills alimentam o K-Dense BYOK, um co-cientista de código aberto, e podem ser divididas entre agentes de pesquisa.",
+      "melhorias": {
+        "analise": "Procedimentos científicos por disciplina",
+        "raciocinio": "Pesquisa apoiada nas bases de origem",
+        "escrita": "Revisões de literatura com referências"
+      },
+      "instalacao": "npx skills add K-Dense-AI/scientific-agent-skills (o README traz as opções para Claude Code, Cursor, Codex e outros agentes).",
+      "exemploUso": "Peça uma revisão de literatura sobre uma proteína: o Claude consulta PubMed e UniProt pelas skills e organiza os achados com as referências de origem.",
+      "promptInicial": "Utilize a Skill Scientific Agent Skills para executar esta pesquisa científica consultando as bases especializadas e citando as fontes de origem. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "pesquisa",
+        "dados",
+        "academico"
+      ]
+    },
+    {
+      "id": "taste-skill",
+      "nome": "Taste Skill",
+      "autor": "Leonxlnx",
+      "repo": "https://github.com/Leonxlnx/taste-skill",
+      "stars": 98460,
+      "atualizadoEm": "2026-10-14",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "design"
+      ],
+      "tags": [
+        "direcao-de-arte",
+        "frontend",
+        "landing-page",
+        "fotos-reais",
+        "anti-template"
+      ],
+      "destaque": false,
+      "tipo": "skill",
+      "facilidade": "medio",
+      "paraQueServe": "Skills que dão \"bom gosto\" a agentes de código: em vez de montar a landing page genérica de sempre, o agente recebe uma direção de arte, usa fotos reais de acervos abertos (com crédito) e confere o próprio trabalho no navegador.",
+      "quandoUsar": "Quando o site ou a interface que o Claude gera sai com cara de template, e você quer um resultado com identidade visual de verdade.",
+      "beneficios": [
+        "Direção de arte definida antes do código",
+        "Fotos reais de acervos abertos, com créditos",
+        "O agente confere o resultado no navegador",
+        "Não instala nada extra nem pede chave de API"
+      ],
+      "economiaTokens": "Uma direção de arte definida desde o início evita rodadas e rodadas de \"deixa mais bonito\".",
+      "qualidadeRespostas": "O agente confere o próprio trabalho no navegador antes de entregar, pegando problemas visuais que só aparecem com a página renderizada.",
+      "multiAgentes": "As skills têm nome próprio (taste-skill:), então não colidem com as de outros plugins.",
+      "melhorias": {
+        "programacao": "Frontends com identidade visual",
+        "produtividade": "Menos idas e vindas de ajuste visual"
+      },
+      "instalacao": "No Claude Code: /plugin marketplace add Leonxlnx/taste-skill. Em qualquer agente: npx skills add https://github.com/Leonxlnx/taste-skill. A skill padrão precisa de Node 22+ e de Chrome, Edge ou Chromium instalado.",
+      "exemploUso": "Peça o site de um estúdio de arquitetura: o agente define uma direção de arte, busca fotos reais e confere a página no navegador antes de te entregar.",
+      "promptInicial": "Utilize a Skill Taste Skill para executar a criação desta página com uma direção de arte própria, conferindo o resultado no navegador. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "frontend",
+        "design",
+        "landing"
+      ]
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "nome": "UI UX Pro Max",
+      "autor": "nextlevelbuilder",
+      "repo": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "stars": 136896,
+      "atualizadoEm": "2026-10-15",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "design",
+        "programacao"
+      ],
+      "tags": [
+        "design-system",
+        "ui",
+        "ux",
+        "paleta",
+        "tipografia"
+      ],
+      "destaque": false,
+      "tipo": "skill",
+      "facilidade": "medio",
+      "paraQueServe": "Skill de inteligência de design para interfaces profissionais: um gerador de design system analisa o tipo de produto e devolve estilo, paleta, tipografia e regras de UX sob medida, com 192 regras por setor e dezenas de estilos pesquisáveis.",
+      "quandoUsar": "No começo de um produto ou de uma tela nova, quando você precisa de um visual coerente com o setor (uma clínica, um app de finanças, uma loja) em vez de cores e fontes escolhidas no chute.",
+      "beneficios": [
+        "Design system completo gerado em segundos",
+        "192 regras de design por setor",
+        "Estilos de interface pesquisáveis",
+        "Funciona com vários frameworks e plataformas"
+      ],
+      "economiaTokens": "Definir o design system antes evita refazer telas inteiras por inconsistência visual depois.",
+      "qualidadeRespostas": "Regras específicas por setor deixam as escolhas visuais justificadas, não arbitrárias.",
+      "multiAgentes": "O design system gerado vira a referência comum para todos os agentes que constroem telas do mesmo produto.",
+      "melhorias": {
+        "programacao": "Telas consistentes com um design system",
+        "analise": "Escolhas visuais justificadas pelo setor"
+      },
+      "instalacao": "No Claude Code: /plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill e depois /plugin install ui-ux-pro-max@ui-ux-pro-max-skill.",
+      "exemploUso": "Peça \"crie a landing page do meu spa\": a skill identifica o setor, propõe estilo, paleta e tipografia adequados, e só então o Claude constrói a página.",
+      "promptInicial": "Utilize a Skill UI UX Pro Max para executar a definição do design system deste produto antes de construir as telas. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "frontend",
+        "design",
+        "saas",
+        "mobile"
+      ]
+    },
+    {
+      "id": "archify",
+      "nome": "Archify",
+      "autor": "tt-a1i",
+      "repo": "https://github.com/tt-a1i/archify",
+      "stars": 84895,
+      "atualizadoEm": "2026-10-18",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "documentacao",
+        "design"
+      ],
+      "tags": [
+        "diagramas",
+        "arquitetura",
+        "visualizacao",
+        "onboarding"
+      ],
+      "destaque": false,
+      "tipo": "skill",
+      "facilidade": "medio",
+      "paraQueServe": "Transforma uma ideia, um plano ou um repositório inteiro num diagrama interativo: você descreve em uma frase e recebe um mapa navegável, com links para o código-fonte e caminhos que dá para seguir.",
+      "quandoUsar": "Para entender um projeto que você não conhece, explicar uma arquitetura para o time ou documentar um fluxo — sem desenhar caixinhas à mão.",
+      "beneficios": [
+        "Diagrama interativo a partir de uma frase",
+        "Cada parte do diagrama aponta para o código-fonte",
+        "Funciona em Claude Code, Cursor, Codex CLI e OpenCode",
+        "Exemplos interativos ao vivo no site do projeto"
+      ],
+      "economiaTokens": "Um mapa da arquitetura ajuda você (e o Claude) a ir direto ao ponto certo do código, em vez de abrir arquivo por arquivo.",
+      "qualidadeRespostas": "Explicações apoiadas num diagrama ligado ao código real são muito mais fáceis de conferir.",
+      "multiAgentes": "O diagrama vira documentação compartilhada, que outros agentes e pessoas do time podem consultar.",
+      "melhorias": {
+        "analise": "Entender projetos grandes de relance",
+        "escrita": "Documentação visual sem esforço",
+        "produtividade": "Onboarding mais rápido em código novo"
+      },
+      "instalacao": "npx skills add tt-a1i/archify -g (funciona com Claude Code, Cursor, Codex CLI e OpenCode).",
+      "exemploUso": "Envie: \"Use Archify para diagramar uma requisição web: o navegador chama a API, a API consulta o Redis e, se não achar, busca no PostgreSQL e preenche o cache.\"",
+      "promptInicial": "Utilize a Skill Archify para executar um diagrama interativo da arquitetura deste projeto, ligado ao código-fonte. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "documentacao",
+        "backend",
+        "legado",
+        "time"
+      ]
+    },
+    {
+      "id": "caveman",
+      "nome": "Caveman",
+      "autor": "JuliusBrussee",
+      "repo": "https://github.com/JuliusBrussee/caveman",
+      "stars": 113302,
+      "atualizadoEm": "2026-10-17",
+      "licenca": "Apache-2.0",
+      "linguagem": "—",
+      "categorias": [
+        "tokens",
+        "prompts"
+      ],
+      "tags": [
+        "economia",
+        "respostas-curtas",
+        "custo",
+        "verbosidade",
+        "plugin"
+      ],
+      "destaque": false,
+      "tipo": "skill",
+      "facilidade": "medio",
+      "paraQueServe": "Faz o agente falar menos e ler menos, sem perder precisão: respostas curtas e diretas, no estilo \"homem das cavernas\", com o código intacto. No exemplo do README, a mesma correção cai de 63 para 20 tokens.",
+      "quandoUsar": "Quando as respostas do Claude vêm compridas demais, você está batendo no limite de uso ou quer gastar menos sem trocar de modelo.",
+      "beneficios": [
+        "Respostas bem mais curtas, com o código exato",
+        "Também encolhe o que o agente lê (logs, JSON, saída de testes)",
+        "Citado pela Adobe Research e testado pela JetBrains",
+        "Código aberto, licença Apache-2.0"
+      ],
+      "economiaTokens": "É o propósito central. Segundo os testes publicados no README: 33,2% menos tokens de entrada por sessão, e um modo automático 54% mais barato com a mesma nota nas tarefas.",
+      "qualidadeRespostas": "Menos enchimento deixa a resposta mais fácil de ler — o raciocínio é o mesmo, só a forma fica enxuta.",
+      "multiAgentes": "Em fluxos com vários agentes, mensagens mais curtas entre eles reduzem o custo de cada troca.",
+      "melhorias": {
+        "produtividade": "Respostas que vão direto ao ponto",
+        "prompts": "Estilo de resposta controlado sem reescrever prompts"
+      },
+      "instalacao": "No Claude Code: claude plugin marketplace add JuliusBrussee/caveman && claude plugin install caveman@caveman. Em qualquer agente: npx skills add JuliusBrussee/caveman -g.",
+      "exemploUso": "Em vez de um parágrafo explicando por que um componente React renderiza de novo, você recebe: \"Nova referência de objeto a cada render, então o React renderiza de novo. Envolva a prop em useMemo.\"",
+      "promptInicial": "Utilize a Skill Caveman para executar esta tarefa com respostas curtas e diretas, mantendo o código e os dados exatos. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "custo",
+        "contexto",
+        "produtividade"
+      ]
+    },
+    {
+      "id": "humanizer",
+      "nome": "Humanizer",
+      "autor": "blader",
+      "repo": "https://github.com/blader/humanizer",
+      "stars": 57841,
+      "atualizadoEm": "2026-10-16",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "escrita"
+      ],
+      "tags": [
+        "texto-natural",
+        "revisao",
+        "redacao",
+        "wikipedia",
+        "plugin"
+      ],
+      "destaque": false,
+      "tipo": "skill",
+      "facilidade": "medio",
+      "paraQueServe": "Deixa um texto escrito por IA com cara de texto escrito por gente, sem mudar o que ele diz. É baseado no guia \"Sinais de escrita de IA\", que editores da Wikipedia usam para identificar textos gerados por máquina.",
+      "quandoUsar": "Antes de publicar um post, mandar um e-mail ou entregar um texto que o Claude ajudou a escrever, quando ele soa genérico, empolgado demais ou cheio de clichês de IA.",
+      "beneficios": [
+        "Tira os tiques típicos de texto de IA",
+        "Preserva o conteúdo original",
+        "Baseado num guia público da Wikipedia",
+        "Num teste cego relatado no README, a versão reescrita venceu 16 de 16 vezes"
+      ],
+      "economiaTokens": "Corta enchimento e exageros, então o texto final costuma sair mais curto.",
+      "qualidadeRespostas": "Textos mais naturais e diretos, que não cansam o leitor nem denunciam o uso de IA.",
+      "multiAgentes": "Pode ser a última etapa de um fluxo de conteúdo: um agente escreve, outro humaniza antes de publicar.",
+      "melhorias": {
+        "escrita": "Textos naturais e sem clichês",
+        "produtividade": "Menos tempo reescrevendo à mão"
+      },
+      "instalacao": "No Claude Code (versão 2.1.142 ou mais nova): /plugin marketplace add blader/humanizer e depois /plugin install humanizer@humanizer. O comando fica disponível como /humanizer:humanizer.",
+      "exemploUso": "\"Estou muito animado em anunciar que os rascunhos compartilhados finalmente chegaram! 🚀\" vira \"Os rascunhos compartilhados saíram hoje.\" — a mesma informação, sem o tom de propaganda.",
+      "promptInicial": "Utilize a Skill Humanizer para executar a revisão deste texto para que soe natural, sem alterar o conteúdo nem os fatos. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "conteudo",
+        "escritorio",
+        "marketing"
+      ]
+    },
+    {
+      "id": "skillspector",
+      "nome": "SkillSpector (NVIDIA)",
+      "autor": "NVIDIA",
+      "repo": "https://github.com/NVIDIA/SkillSpector",
+      "stars": 20438,
+      "atualizadoEm": "2026-10-16",
+      "licenca": "Apache-2.0",
+      "linguagem": "—",
+      "categorias": [
+        "seguranca"
+      ],
+      "tags": [
+        "scanner",
+        "vulnerabilidades",
+        "malware",
+        "auditoria",
+        "nvidia",
+        "mcp"
+      ],
+      "destaque": false,
+      "tipo": "ferramenta",
+      "facilidade": "tecnico",
+      "paraQueServe": "Scanner de segurança para skills de agentes, da NVIDIA: analisa uma skill antes de você instalar e aponta vulnerabilidades, padrões maliciosos e riscos. Responde à pergunta \"essa skill é segura para instalar?\".",
+      "quandoUsar": "Antes de instalar qualquer skill de origem desconhecida, principalmente as de listas da comunidade. Na pesquisa citada no README, 26,1% das skills analisadas tinham vulnerabilidades.",
+      "beneficios": [
+        "Verifica a skill antes da instalação",
+        "Faz parte do pipeline NVIDIA Verified Skills",
+        "Também roda como servidor MCP dentro do Claude Code",
+        "Código aberto, licença Apache-2.0"
+      ],
+      "economiaTokens": "Não atua em tokens: atua na segurança do que você instala.",
+      "qualidadeRespostas": "Indiretamente: evita que uma skill maliciosa ou mal escrita contamine o comportamento do Claude.",
+      "multiAgentes": "Pode ser o portão de entrada de um time: toda skill nova passa pelo scanner antes de chegar aos agentes.",
+      "melhorias": {
+        "analise": "Relatório de riscos antes de instalar",
+        "produtividade": "Checagem de segurança automatizada"
+      },
+      "instalacao": "uv tool install git+https://github.com/NVIDIA/skillspector.git e depois skillspector scan ./pasta-da-skill/. Para usar dentro do Claude Code via MCP, instale com o extra [mcp] e rode claude mcp add skillspector -- skillspector mcp.",
+      "exemploUso": "Baixou uma skill de uma lista da comunidade? Rode skillspector scan ./skill-baixada/ e leia o relatório antes de copiá-la para o Claude.",
+      "promptInicial": "Utilize a Skill SkillSpector para executar a análise de segurança desta skill antes da instalação, explicando cada risco encontrado. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "seguranca",
+        "time",
+        "auditoria"
+      ]
+    },
+    {
+      "id": "chrome-devtools-mcp",
+      "nome": "Chrome DevTools MCP",
+      "autor": "ChromeDevTools",
+      "repo": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "stars": 53737,
+      "atualizadoEm": "2026-10-16",
+      "licenca": "Apache-2.0",
+      "linguagem": "—",
+      "categorias": [
+        "testes",
+        "programacao"
+      ],
+      "tags": [
+        "oficial",
+        "navegador",
+        "depuracao",
+        "performance",
+        "automacao",
+        "mcp"
+      ],
+      "destaque": false,
+      "tipo": "ferramenta",
+      "facilidade": "medio",
+      "paraQueServe": "Servidor MCP oficial do time do Chrome DevTools: deixa o Claude controlar e inspecionar um Chrome de verdade — automatizar ações, depurar a fundo e analisar a performance da página.",
+      "quandoUsar": "Quando um bug só aparece no navegador, quando você quer que o Claude teste um fluxo clicando na página de verdade, ou quando a página está lenta e você precisa saber por quê.",
+      "beneficios": [
+        "Oficial, do time do Chrome DevTools",
+        "Insights de performance com o próprio DevTools",
+        "Automação confiável do navegador",
+        "Também tem uma linha de comando para usar sem MCP"
+      ],
+      "economiaTokens": "O Claude lê o estado real da página (console, rede, performance) em vez de você copiar e colar logs e prints na conversa.",
+      "qualidadeRespostas": "Diagnósticos baseados no que de fato acontece no navegador, não em suposições sobre o código.",
+      "multiAgentes": "Um agente de testes pode verificar a página no navegador enquanto outros implementam.",
+      "melhorias": {
+        "programacao": "Depuração com dados reais do navegador",
+        "analise": "Performance medida, não estimada",
+        "produtividade": "Testes de fluxo sem clicar à mão"
+      },
+      "instalacao": "No Claude Code: claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest — ou /plugin marketplace add ChromeDevTools/chrome-devtools-mcp e depois /plugin install chrome-devtools-mcp@chrome-devtools-plugins.",
+      "exemploUso": "Peça \"abra a página de checkout, preencha o formulário e descubra por que o botão de pagar não responde\": o Claude navega no Chrome, lê o console e aponta o erro.",
+      "promptInicial": "Utilize a Skill Chrome DevTools MCP para executar a depuração deste problema no navegador, com base no console, na rede e na performance reais da página. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "frontend",
+        "testes",
+        "qualidade",
+        "saas"
+      ]
+    },
+    {
+      "id": "marketingskills",
+      "nome": "Marketing Skills (Corey Haines)",
+      "autor": "coreyhaines31",
+      "repo": "https://github.com/coreyhaines31/marketingskills",
+      "stars": 55254,
+      "atualizadoEm": "2026-10-15",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "escrita",
+        "automacao"
+      ],
+      "tags": [
+        "marketing",
+        "cro",
+        "copywriting",
+        "seo",
+        "growth",
+        "analytics"
+      ],
+      "destaque": false,
+      "tipo": "colecao",
+      "facilidade": "medio",
+      "paraQueServe": "Coleção de skills de marketing para agentes: otimização de conversão, copywriting, SEO, analytics e growth. Feita para profissionais de marketing e fundadores que querem usar o Claude no trabalho de crescimento.",
+      "quandoUsar": "Quando você precisa melhorar uma landing page que não converte, escrever textos de venda, planejar SEO ou entender as métricas de um site.",
+      "beneficios": [
+        "Skills por tarefa: conversão, copy, SEO, analytics e growth",
+        "Dá para instalar só as que interessam",
+        "Guia para conectar suas contas de marketing com acesso limitado",
+        "Guia complementar para quem nunca usou o terminal"
+      ],
+      "economiaTokens": "Instalar só as skills que você usa mantém o contexto enxuto.",
+      "qualidadeRespostas": "As skills trazem métodos de marketing estabelecidos, então análise e texto seguem boas práticas em vez de conselhos genéricos.",
+      "multiAgentes": "Skills diferentes podem ficar com agentes diferentes: um cuida da copy, outro do SEO, outro dos números.",
+      "melhorias": {
+        "escrita": "Textos de venda com método",
+        "analise": "Leitura de métricas e de conversão",
+        "produtividade": "Rotinas de marketing aceleradas"
+      },
+      "instalacao": "No Claude Code: /plugin marketplace add coreyhaines31/marketingskills e depois /plugin install marketing-skills. Ou só as que quiser: npx skills add coreyhaines31/marketingskills --skill cro copywriting.",
+      "exemploUso": "Peça para revisar a landing page do seu produto com a skill de conversão: o Claude aponta o que atrapalha quem visita e sugere novas versões do título e do botão principal.",
+      "promptInicial": "Utilize a Skill Marketing Skills para executar a análise e a melhoria desta página ou campanha com os métodos de marketing das skills. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "marketing",
+        "conteudo",
+        "startup",
+        "produto"
+      ]
     }
   ],
   "tipos": {
@@ -1451,5 +2080,5 @@ window.SKILLS_DB = {
       "ajuda": "Precisa configurar ambiente, chaves de API ou integração contínua."
     }
   },
-  "linksVerificadosEm": "2026-10-11"
+  "linksVerificadosEm": "2026-10-18"
 };
