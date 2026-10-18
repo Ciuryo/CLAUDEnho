@@ -12,7 +12,7 @@
   <!-- prévia ao compartilhar o link -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Biblioteca de Skills para Claude">
-  <meta property="og:description" content="27 Skills curadas do ecossistema Claude, com dados do GitHub, busca, filtros e recomendação por tipo de projeto.">
+  <meta property="og:description" content="40 Skills curadas do ecossistema Claude, com dados do GitHub, busca, filtros e recomendação por tipo de projeto.">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary">
   <title>Biblioteca de Skills para Claude</title>
@@ -55,7 +55,8 @@
         <h1>As melhores Skills do ecossistema Claude, num só lugar</h1>
         <p class="hero-sub">
           Cada card explica qual problema a skill resolve, quando usar, como ela economiza tokens
-          e qual prompt usar para começar. Estrelas, descrições e datas vêm direto da API do GitHub.
+          e qual prompt usar para começar. Estrelas, licenças e datas vêm direto do GitHub, e as
+          explicações foram escritas a partir do README de cada repositório.
         </p>
         <div class="busca-wrap">
           <span class="busca-icone" aria-hidden="true">⌕</span>
@@ -197,9 +198,10 @@
   <footer class="rodape">
     <div class="container">
       <p>
-        Estrelas e licenças vêm da API pública do GitHub; datas de atualização e links são
-        conferidos direto nos repositórios. As estrelas mudam todo dia — considere os números
-        um retrato da data de coleta indicada no topo.
+        Estrelas e licenças vêm do GitHub (pela API pública ou pela própria página de cada
+        repositório); datas de atualização e links são conferidos direto nos repositórios.
+        As estrelas mudam todo dia — considere os números um retrato da data de coleta
+        indicada no topo.
       </p>
       <p>
         Para atualizar: <code>node scripts/refresh-github.mjs</code> e depois

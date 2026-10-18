@@ -469,7 +469,8 @@
     $('#modal-conteudo').innerHTML =
       '<div class="modal-cab">' +
         '<h2 id="modal-titulo">' + escapeHtml(skill.nome) + '</h2>' +
-        '<span class="autor">' + escapeHtml(skill.autor) + (skill.linguagem ? ' · ' + escapeHtml(skill.linguagem) : '') + '</span>' +
+        // "—" = o GitHub não indica linguagem (repositório só de Markdown, por exemplo)
+        '<span class="autor">' + escapeHtml(skill.autor) + (skill.linguagem && skill.linguagem !== '—' ? ' · ' + escapeHtml(skill.linguagem) : '') + '</span>' +
         '<div class="modal-stats">' +
           '<span class="stat-estrelas">★ ' + skill.stars.toLocaleString('pt-BR') + ' estrelas</span>' +
           '<span>↻ atualizado ' + dataRelativa(skill.atualizadoEm) + ' (' + escapeHtml(dataBR(skill.atualizadoEm)) + ')</span>' +
@@ -567,6 +568,7 @@
       resumo: 'Comece sem precisar instalar nada além do Claude Desktop ou do claude.ai.',
       passos: [
         { skillId: 'anthropic-skills', motivo: 'Gera documentos Word, Excel e PowerPoint reais, direto no Desktop ou no site.' },
+        { skillId: 'knowledge-work-plugins', motivo: 'Plugins oficiais por área de trabalho — vendas, jurídico, finanças, suporte — instalados pelo Cowork, sem terminal.' },
         { skillId: 'prompt-eng-tutorial', motivo: 'Ensina a escrever pedidos que o Claude entende de primeira, sem tentativa e erro.' },
         { skillId: 'awesome-claude-skills', motivo: 'Catálogo para descobrir mais skills que funcionam fora do terminal.' }
       ]
@@ -578,7 +580,7 @@
       publico: 'Acabei de instalar o Claude Code no terminal',
       resumo: 'A ordem que evita os erros mais comuns de quem está começando.',
       passos: [
-        { skillId: 'claude-code-templates', motivo: 'Configura o projeto com boas práticas em um único comando.' },
+        { skillId: 'claude-plugins-official', motivo: 'O diretório oficial da Anthropic: o lugar mais seguro para achar e instalar plugins.' },
         { skillId: 'context7', motivo: 'Evita que o Claude sugira código de versões antigas das suas bibliotecas.' },
         { skillId: 'superpowers', motivo: 'Ensina o Claude a planejar e testar antes de implementar.' },
         { skillId: 'ccusage', motivo: 'Mostra para onde estão indo os seus tokens desde o primeiro dia.' }
@@ -592,8 +594,8 @@
       resumo: 'Contexto correto, revisão especializada e segurança em cada mudança.',
       passos: [
         { skillId: 'context7', motivo: 'Documentação real da versão exata das suas dependências.' },
+        { skillId: 'addy-agent-skills', motivo: 'Um comando por fase — especificar, planejar, construir, testar e revisar.' },
         { skillId: 'tdd-guard', motivo: 'Bloqueia código sem teste correspondente — TDD deixa de ser combinado.' },
-        { skillId: 'wshobson-agents', motivo: 'Aciona o revisor especialista certo automaticamente.' },
         { skillId: 'cc-security-review', motivo: 'Audita vulnerabilidades antes do merge, direto no PR.' }
       ]
     },
@@ -605,9 +607,9 @@
       resumo: 'Do Figma ao código fiel, com revisão visual automatizada.',
       passos: [
         { skillId: 'figma-context-mcp', motivo: 'Implementação fiel às medidas reais do design, sem adivinhação.' },
-        { skillId: 'context7', motivo: 'APIs corretas e atuais do seu framework de UI.' },
-        { skillId: 'oneredoak-workflows', motivo: 'Revisão de design navegando pela interface real no navegador.' },
-        { skillId: 'wshobson-agents', motivo: 'Revisor de código para o restante da implementação.' }
+        { skillId: 'ui-ux-pro-max', motivo: 'Gera um design system coerente com o setor antes de construir as telas.' },
+        { skillId: 'chrome-devtools-mcp', motivo: 'O Claude depura no Chrome de verdade: console, rede e performance.' },
+        { skillId: 'oneredoak-workflows', motivo: 'Revisão de design navegando pela interface real no navegador.' }
       ]
     },
     {
@@ -620,7 +622,8 @@
         { skillId: 'claude-task-master', motivo: 'Backlog compartilhado para vários agentes puxarem tarefas sem colidir.' },
         { skillId: 'ruflo', motivo: 'Orquestra agentes especializados trabalhando em paralelo.' },
         { skillId: 'claude-code-router', motivo: 'Direciona tarefas simples para modelos mais baratos.' },
-        { skillId: 'cc-usage-monitor', motivo: 'Visibilidade de consumo em tempo real, com alerta antes de estourar.' }
+        { skillId: 'cc-usage-monitor', motivo: 'Visibilidade de consumo em tempo real, com alerta antes de estourar.' },
+        { skillId: 'skillspector', motivo: 'Antes de liberar uma skill para o time, verifica se ela é segura.' }
       ]
     },
     {
@@ -630,9 +633,10 @@
       publico: 'Uso o Claude para textos, relatórios e materiais, não código',
       resumo: 'Documentos profissionais e conteúdo com direção consistente.',
       passos: [
+        { skillId: 'knowledge-work-plugins', motivo: 'Plugins oficiais por função — marketing, vendas, jurídico — direto no Cowork.' },
         { skillId: 'anthropic-skills', motivo: 'Gera .docx, .pptx e PDF formatados de verdade, não texto colado.' },
-        { skillId: 'alireza-claude-skills', motivo: 'Skills prontas de marketing, produto e comunicação de negócio.' },
-        { skillId: 'prompt-eng-tutorial', motivo: 'Prompts melhores para textos consistentes entre pedidos.' }
+        { skillId: 'humanizer', motivo: 'Tira a cara de texto de IA antes de publicar ou enviar.' },
+        { skillId: 'marketingskills', motivo: 'Copy, SEO e conversão com método, não com palpite.' }
       ]
     }
   ];
@@ -691,9 +695,9 @@
   var AREAS_RECOMENDACAO = [
     {
       titulo: 'Gerenciamento de contexto e tokens', icone: '◌', base: true, ordemAdocao: 1,
-      gatilhos: ['token', 'contexto', 'custo', 'monorepo', 'legado', 'banco de dados', 'codebase', 'refator'],
+      gatilhos: ['token', 'contexto', 'custo', 'economi', 'monorepo', 'legado', 'banco de dados', 'codebase', 'refator'],
       motivo: 'Instale primeiro: documentação atualizada e busca semântica melhoram tudo o que vier depois.',
-      skills: ['context7', 'claude-context', 'ccusage', 'claude-code-router']
+      skills: ['context7', 'caveman', 'claude-context', 'ccusage', 'claude-code-router']
     },
     {
       titulo: 'Arquitetura e planejamento', icone: '▦', base: true, ordemAdocao: 2,
@@ -703,27 +707,27 @@
     },
     {
       titulo: 'Documentação', icone: '▤', base: true, ordemAdocao: 3,
-      gatilhos: ['documenta', 'docs', 'readme', 'spec', 'biblioteca', 'framework', 'manual'],
+      gatilhos: ['documenta', 'docs', 'readme', 'spec', 'biblioteca', 'framework', 'manual', 'diagrama', 'onboarding'],
       motivo: 'Docs atualizadas das dependências e specs geradas por fase do projeto.',
-      skills: ['context7', 'anthropic-skills', 'spec-workflow']
+      skills: ['context7', 'archify', 'anthropic-skills', 'spec-workflow']
     },
     {
       titulo: 'Programação e revisão de código', icone: '⌘', base: true, ordemAdocao: 4,
       gatilhos: ['codigo', 'revisao', 'refator', 'qualidade', 'backend', 'frontend', 'api', 'microservi'],
       motivo: 'Revisores especialistas encontram problemas antes do merge.',
-      skills: ['wshobson-agents', 'awesome-cc-subagents', 'superclaude']
+      skills: ['wshobson-agents', 'addy-agent-skills', 'mattpocock-skills', 'awesome-cc-subagents', 'superclaude']
     },
     {
       titulo: 'Testes e depuração', icone: '✓', base: true, ordemAdocao: 5,
-      gatilhos: ['teste', 'tdd', 'bug', 'depura', 'qualidade', 'ci', 'cobertura'],
+      gatilhos: ['teste', 'tdd', 'bug', 'depura', 'qualidade', 'ci', 'cobertura', 'navegador', 'e2e', 'performance'],
       motivo: 'Disciplina de testes imposta por ferramenta, não por lembrete.',
-      skills: ['tdd-guard', 'superpowers']
+      skills: ['tdd-guard', 'chrome-devtools-mcp', 'addy-agent-skills', 'superpowers']
     },
     {
       titulo: 'Segurança e auditoria', icone: '◉', base: true, ordemAdocao: 6,
       gatilhos: ['seguranca', 'auth', 'login', 'pagamento', 'lgpd', 'senha', 'upload', 'api', 'banco', 'dados sensiveis'],
       motivo: 'Auditoria automática de vulnerabilidades em cada mudança.',
-      skills: ['cc-security-review', 'wshobson-agents']
+      skills: ['cc-security-review', 'skillspector', 'wshobson-agents']
     },
     {
       titulo: 'Múltiplos agentes e orquestração', icone: '⬡', base: true, ordemAdocao: 7,
@@ -733,33 +737,33 @@
     },
     {
       titulo: 'Interface, UX e design', icone: '◐', base: false, ordemAdocao: 8,
-      gatilhos: ['frontend', 'front-end', 'ui', 'ux', 'design', 'figma', 'tela', 'interface', 'mobile', 'app', 'react', 'vue', 'angular', 'landing', 'site'],
+      gatilhos: ['frontend', 'front-end', 'ui', 'ux', 'design', 'figma', 'tela', 'interface', 'mobile', 'app', 'react', 'vue', 'angular', 'landing', 'site', 'visual'],
       motivo: 'Do Figma ao código fiel, com revisão de design automatizada.',
-      skills: ['figma-context-mcp', 'oneredoak-workflows', 'contains-studio-agents']
+      skills: ['figma-context-mcp', 'ui-ux-pro-max', 'taste-skill', 'oneredoak-workflows', 'contains-studio-agents']
     },
     {
       titulo: 'Automação e integrações', icone: '⚙', base: false, ordemAdocao: 9,
       gatilhos: ['integra', 'automa', 'webhook', 'n8n', 'workflow', 'crm', 'zapier', 'api', 'stripe', 'pagamento'],
       motivo: 'Automatize processos e use as skills oficiais dos serviços que você integra.',
-      skills: ['n8n-mcp', 'awesome-agent-skills', 'claude-code-templates']
+      skills: ['n8n-mcp', 'claude-plugins-official', 'awesome-agent-skills', 'claude-code-templates']
     },
     {
       titulo: 'Pesquisa e análise de dados', icone: '◈', base: false, ordemAdocao: 10,
-      gatilhos: ['dados', 'analise', 'rag', 'busca', 'dashboard', 'relatorio', 'pdf', 'ia', 'llm', 'machine learning', 'bi'],
+      gatilhos: ['dados', 'analise', 'rag', 'busca', 'dashboard', 'relatorio', 'pdf', 'ia', 'llm', 'machine learning', 'bi', 'pesquisa', 'cientific', 'ciencia', 'academic'],
       motivo: 'Padrões prontos de RAG, análise de documentos e avaliação.',
-      skills: ['claude-cookbooks', 'claude-context', 'awesome-claude-code']
+      skills: ['claude-cookbooks', 'scientific-agent-skills', 'claude-context', 'awesome-claude-code']
     },
     {
       titulo: 'Criação e melhoria de prompts', icone: '❝', base: false, ordemAdocao: 11,
       gatilhos: ['prompt', 'ia', 'llm', 'chatbot', 'assistente', 'gpt', 'claude api', 'agente de ia'],
       motivo: 'Prompts em produção merecem engenharia, não tentativa e erro.',
-      skills: ['prompt-eng-tutorial', 'superclaude']
+      skills: ['prompt-eng-tutorial', 'caveman', 'superclaude']
     },
     {
       titulo: 'Escrita e comunicação', icone: '✎', base: false, ordemAdocao: 12,
-      gatilhos: ['escrita', 'conteudo', 'marketing', 'relatorio', 'documento', 'apresentacao', 'blog', 'email', 'proposta'],
+      gatilhos: ['escrita', 'conteudo', 'marketing', 'relatorio', 'documento', 'apresentacao', 'blog', 'email', 'proposta', 'texto', 'redacao', 'copy', 'seo', 'vendas'],
       motivo: 'Documentos e conteúdo profissionais gerados como arquivos reais.',
-      skills: ['anthropic-skills', 'alireza-claude-skills', 'awesome-claude-skills']
+      skills: ['knowledge-work-plugins', 'humanizer', 'anthropic-skills', 'marketingskills', 'alireza-claude-skills']
     }
   ];
 
