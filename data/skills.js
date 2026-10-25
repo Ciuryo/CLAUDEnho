@@ -1032,56 +1032,56 @@ window.SKILLS_DB = {
       "facilidade": "tecnico"
     },
     {
-      "id": "contains-studio-agents",
-      "nome": "Contains Studio Agents",
-      "autor": "contains-studio",
-      "repo": "https://github.com/contains-studio/agents",
-      "stars": 12421,
-      "atualizadoEm": "2025-07-28",
-      "licenca": "Ver repositório",
-      "linguagem": "Markdown",
+      "id": "agency-agents",
+      "nome": "The Agency (Agency Agents)",
+      "autor": "msitarzewski",
+      "repo": "https://github.com/msitarzewski/agency-agents",
+      "stars": 0,
+      "atualizadoEm": "2026-10-24",
+      "licenca": "MIT",
+      "linguagem": "—",
       "categorias": [
-        "design",
         "multiagentes",
+        "design",
         "planejamento"
       ],
       "tags": [
-        "estudio",
-        "produto",
-        "ux",
+        "agencia",
+        "agentes",
+        "especialistas",
         "marketing",
-        "prototipagem",
-        "sprint"
+        "produto",
+        "subagentes"
       ],
       "destaque": false,
-      "paraQueServe": "Agentes organizados como departamentos de um estúdio de produto — design, engenharia, marketing, produto, operações e testes — voltados a prototipagem e lançamento rápidos.",
-      "quandoUsar": "Em fase de descoberta e prototipagem: validar uma ideia em dias, com agente de UX desenhando fluxo, agente de brand definindo tom e agente de growth planejando lançamento.",
+      "tipo": "colecao",
+      "facilidade": "medio",
+      "paraQueServe": "Uma agência inteira de especialistas em IA: mais de 230 agentes divididos em 18 divisões — engenharia, design, marketing, vendas, produto, testes, segurança, finanças e outras. Cada agente tem personalidade, jeito de trabalhar e entregas definidas.",
+      "quandoUsar": "Quando você quer montar um \"time\" para o projeto — alguém para o front, alguém para o back, alguém para o marketing — em vez de pedir tudo para um Claude genérico.",
       "beneficios": [
-        "Perspectiva de produto completa, não só engenharia",
-        "Agentes de design com critérios de UX explícitos",
-        "Formato .md simples de adaptar à sua marca",
-        "Pensado para ciclos rápidos de sprint"
+        "Mais de 230 agentes especializados, não modelos de prompt genéricos",
+        "Instale só as divisões que precisa (por exemplo, engenharia e segurança)",
+        "Tem app para macOS, Linux e Windows que instala os agentes com um clique",
+        "Também funciona no Cursor, Codex, Gemini CLI, Copilot e outros"
       ],
-      "economiaTokens": "Cada agente carrega apenas o playbook do seu departamento, mantendo os contextos curtos e específicos.",
-      "qualidadeRespostas": "Critérios de cada disciplina (heurísticas de UX, frameworks de growth) embutidos nos prompts elevam o nível das entregas.",
-      "multiAgentes": "Modelo mental de estúdio: os departamentos colaboram como um time multidisciplinar de verdade.",
+      "economiaTokens": "Cada agente traz só o conhecimento da sua especialidade, e você instala apenas as divisões que vai usar — sem carregar o catálogo inteiro.",
+      "qualidadeRespostas": "Cada agente tem missão, fluxo de trabalho, entregas e métricas de sucesso definidos, então o resultado sai no formato de quem é da área.",
+      "multiAgentes": "O README traz cenários prontos, como um MVP feito por Frontend Developer, Backend Architect, Growth Hacker, Rapid Prototyper e Reality Checker trabalhando juntos.",
       "melhorias": {
-        "escrita": "Copy e branding com direção consistente",
-        "analise": "Feedback de UX estruturado por heurísticas",
-        "produtividade": "Sprint de produto com todas as funções cobertas"
+        "produtividade": "Um especialista para cada parte do projeto",
+        "analise": "Checagem de qualidade antes de lançar (Reality Checker)",
+        "escrita": "Marketing e vendas com voz de especialista"
       },
-      "instalacao": "Clone o repositório e copie as pastas de agentes desejadas para ~/.claude/agents/ (instruções no README).",
-      "exemploUso": "Com o agente de UX research, peça 'avalie o fluxo de onboarding' e receba análise heurística com pontos de fricção priorizados.",
-      "promptInicial": "Utilize a Skill Contains Studio Agents para executar esta etapa acionando o agente do departamento adequado. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "instalacao": "Sem terminal: baixe o app Agency Agents (agencyagents.app) e instale os agentes no Claude Code com um clique. Pelo terminal, depois de clonar o repositório: ./scripts/install.sh --tool claude-code (ou só algumas divisões: --division engineering,security).",
+      "exemploUso": "Com os agentes instalados, peça: \"Ative o modo Frontend Developer e me ajude a criar um componente React\". Para um MVP, chame em sequência o Backend Architect, o Frontend Developer e o Reality Checker.",
+      "promptInicial": "Utilize a Skill The Agency para executar esta tarefa com os agentes especialistas mais adequados de cada área, dividindo o trabalho entre eles. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
       "recomendadoPara": [
         "design",
         "mvp",
         "startup",
         "produto",
         "conteudo"
-      ],
-      "tipo": "colecao",
-      "facilidade": "medio"
+      ]
     },
     {
       "id": "claude-context",
@@ -1281,14 +1281,14 @@ window.SKILLS_DB = {
       "facilidade": "tecnico"
     },
     {
-      "id": "spec-workflow",
-      "nome": "Claude Code Spec Workflow",
-      "autor": "Pimzino",
-      "repo": "https://github.com/Pimzino/claude-code-spec-workflow",
-      "stars": 3856,
-      "atualizadoEm": "2025-09-07",
+      "id": "spec-kit",
+      "nome": "Spec Kit (oficial GitHub)",
+      "autor": "github",
+      "repo": "https://github.com/github/spec-kit",
+      "stars": 0,
+      "atualizadoEm": "2026-10-23",
       "licenca": "MIT",
-      "linguagem": "TypeScript",
+      "linguagem": "—",
       "categorias": [
         "planejamento",
         "documentacao",
@@ -1296,40 +1296,41 @@ window.SKILLS_DB = {
       ],
       "tags": [
         "spec-driven",
+        "especificacao",
+        "oficial",
         "requisitos",
-        "design-doc",
         "tarefas",
         "bugfix"
       ],
       "destaque": false,
-      "paraQueServe": "Workflow de desenvolvimento dirigido por especificação: transforma um pedido de feature em Requisitos → Design → Tarefas → Implementação, e bugs em Reportar → Analisar → Corrigir → Verificar.",
-      "quandoUsar": "Quando 'implementa a feature X' costuma virar código que não era o que você queria: o fluxo força alinhamento de requisitos e design antes de qualquer implementação.",
+      "tipo": "ferramenta",
+      "facilidade": "tecnico",
+      "paraQueServe": "Kit de código aberto do GitHub para desenvolvimento guiado por especificação: você define o que construir e por quê, e o agente transforma a especificação em plano, tarefas e código funcionando. Também traz processos prontos para corrigir bugs e para avaliar ideias.",
+      "quandoUsar": "Quando uma funcionalidade é grande o bastante para merecer uma especificação antes do código, ou quando você quer decidir se uma ideia vale o investimento antes de começar.",
       "beneficios": [
-        "Documentos de requisitos e design gerados e aprovados por etapa",
-        "Tarefas rastreáveis derivadas do design aprovado",
-        "Fluxo dedicado e mais curto para correção de bugs",
-        "Dashboard opcional para acompanhar specs em andamento"
+        "Mantido pelo GitHub",
+        "Fluxo completo: princípios do projeto, especificação, plano, tarefas, implementação e convergência",
+        "Extensão de bugs que avalia a causa, corrige e confirma que o problema original sumiu",
+        "Funciona no Claude Code e em mais de 40 outros agentes"
       ],
-      "economiaTokens": "Errar na fase de spec custa parágrafos; errar na implementação custa sessões inteiras de retrabalho — o fluxo desloca o erro para a fase barata.",
-      "qualidadeRespostas": "Cada fase produz artefato revisável pelo humano, mantendo o modelo alinhado ao objetivo real em vez de à interpretação inicial.",
-      "multiAgentes": "Os documentos de spec viram contrato entre agentes: um planeja, outro implementa, outro verifica contra os requisitos.",
+      "economiaTokens": "Cada etapa deixa um documento no projeto (especificação, plano, tarefas), e o agente trabalha a partir dele em vez de reconstruir tudo. No Claude Code, a opção --no-model-invocation tira as descrições dos comandos do contexto até você chamá-los.",
+      "qualidadeRespostas": "O README pede para revisar o resultado de cada etapa antes de seguir, e o /speckit-converge repete implementação e verificação até o código bater com a especificação.",
+      "multiAgentes": "Dá para instalar mais de uma integração no mesmo projeto e trocar de agente sem refazer a especificação.",
       "melhorias": {
-        "escrita": "Specs e designs docs padronizados",
+        "escrita": "Especificações e planos padronizados",
         "raciocinio": "Requisitos explícitos antes de decisões técnicas",
         "produtividade": "Menos retrabalho por desalinhamento"
       },
-      "instalacao": "npx @pimzino/claude-code-spec-workflow@latest setup no diretório do projeto (instala os comandos /spec-* e /bug-*)",
-      "exemploUso": "/spec-create exportacao-csv 'exportar relatórios em CSV' gera requisitos para sua aprovação, depois design, depois tarefas — e só então implementa.",
-      "promptInicial": "Utilize a Skill Claude Code Spec Workflow para executar esta feature pelo fluxo de especificação completo, com aprovação por fase. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "instalacao": "Precisa de Python 3.11+ e do uv. No terminal: uv tool install specify-cli e depois specify init meu-projeto --integration claude (num projeto que já existe: specify init --here --force --integration claude). Os comandos aparecem no Claude Code como /speckit-specify, /speckit-plan e afins.",
+      "exemploUso": "No chat do Claude Code, um passo de cada vez: /speckit-constitution (princípios do projeto), /speckit-specify \"um organizador de fotos com álbuns por data\", /speckit-plan, /speckit-tasks, /speckit-implement e /speckit-converge — revisando cada resultado antes de seguir.",
+      "promptInicial": "Utilize a Skill Spec Kit para executar esta funcionalidade pelo fluxo de especificação, plano e tarefas, revisando cada etapa antes de implementar. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
       "recomendadoPara": [
         "saas",
         "planejamento",
         "documentacao",
         "backend",
         "frontend"
-      ],
-      "tipo": "ferramenta",
-      "facilidade": "medio"
+      ]
     },
     {
       "id": "tdd-guard",

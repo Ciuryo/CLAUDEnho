@@ -725,13 +725,13 @@
       titulo: 'Arquitetura e planejamento', icone: '▦', base: true, ordemAdocao: 2,
       gatilhos: ['arquitetura', 'planejamento', 'plano', 'mvp', 'produto', 'requisito', 'prd', 'roadmap', 'lancamento', 'saas', 'sistema', 'plataforma', 'startup'],
       motivo: 'Estruture requisitos, arquitetura e backlog antes de escrever código.',
-      skills: ['bmad-method', 'superpowers', 'planning-with-files', 'pm-skills', 'spec-workflow', 'claude-task-master']
+      skills: ['bmad-method', 'superpowers', 'planning-with-files', 'pm-skills', 'spec-kit', 'claude-task-master']
     },
     {
       titulo: 'Documentação', icone: '▤', base: true, ordemAdocao: 3,
       gatilhos: ['documenta', 'docs', 'readme', 'spec', 'biblioteca', 'framework', 'manual', 'diagrama', 'onboarding', 'obsidian', 'notas', 'mapa'],
       motivo: 'Docs atualizadas das dependências e specs geradas por fase do projeto.',
-      skills: ['context7', 'archify', 'graphify', 'obsidian-skills', 'anthropic-skills', 'spec-workflow']
+      skills: ['context7', 'archify', 'graphify', 'obsidian-skills', 'anthropic-skills', 'spec-kit']
     },
     {
       titulo: 'Programação e revisão de código', icone: '⌘', base: true, ordemAdocao: 4,
@@ -761,7 +761,7 @@
       titulo: 'Interface, UX e design', icone: '◐', base: false, ordemAdocao: 8,
       gatilhos: ['frontend', 'front-end', 'ui', 'ux', 'design', 'figma', 'tela', 'interface', 'mobile', 'app', 'react', 'vue', 'angular', 'landing', 'site', 'visual'],
       motivo: 'Do Figma ao código fiel, com revisão de design automatizada.',
-      skills: ['figma-context-mcp', 'ui-ux-pro-max', 'taste-skill', 'oneredoak-workflows', 'contains-studio-agents']
+      skills: ['figma-context-mcp', 'ui-ux-pro-max', 'taste-skill', 'oneredoak-workflows', 'agency-agents']
     },
     {
       titulo: 'Automação e integrações', icone: '⚙', base: false, ordemAdocao: 9,
