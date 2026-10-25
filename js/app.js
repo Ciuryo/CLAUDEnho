@@ -453,6 +453,12 @@
     return corpoHtml ? '<div class="modal-secao"><h3>' + titulo + '</h3>' + corpoHtml + '</div>' : '';
   }
 
+  // As chaves de "melhorias" no JSON não têm acento; estes são os rótulos exibidos.
+  var ROTULOS_MELHORIA = {
+    analise: 'Análise', programacao: 'Programação', raciocinio: 'Raciocínio',
+    documentacao: 'Documentação', seguranca: 'Segurança'
+  };
+
   function abrirModal(skill) {
     var beneficios = (skill.beneficios || []).map(function (b) {
       return '<li>' + escapeHtml(b) + '</li>';
@@ -461,7 +467,7 @@
     var melhorias = '';
     if (skill.melhorias) {
       melhorias = Object.keys(skill.melhorias).map(function (k) {
-        return '<div class="melhoria-linha"><span class="melhoria-chave">' + escapeHtml(k) + '</span>' +
+        return '<div class="melhoria-linha"><span class="melhoria-chave">' + escapeHtml(ROTULOS_MELHORIA[k] || k) + '</span>' +
           '<span>' + escapeHtml(skill.melhorias[k]) + '</span></div>';
       }).join('');
     }
@@ -570,6 +576,7 @@
         { skillId: 'anthropic-skills', motivo: 'Gera documentos Word, Excel e PowerPoint reais, direto no Desktop ou no site.' },
         { skillId: 'knowledge-work-plugins', motivo: 'Plugins oficiais por área de trabalho — vendas, jurídico, finanças, suporte — instalados pelo Cowork, sem terminal.' },
         { skillId: 'prompt-eng-tutorial', motivo: 'Ensina a escrever pedidos que o Claude entende de primeira, sem tentativa e erro.' },
+        { skillId: 'last30days', motivo: 'Pesquisa o que a internet discutiu nos últimos 30 dias — instala por upload, sem terminal.' },
         { skillId: 'awesome-claude-skills', motivo: 'Catálogo para descobrir mais skills que funcionam fora do terminal.' }
       ]
     },
@@ -583,7 +590,7 @@
         { skillId: 'claude-plugins-official', motivo: 'O diretório oficial da Anthropic: o lugar mais seguro para achar e instalar plugins.' },
         { skillId: 'context7', motivo: 'Evita que o Claude sugira código de versões antigas das suas bibliotecas.' },
         { skillId: 'superpowers', motivo: 'Ensina o Claude a planejar e testar antes de implementar.' },
-        { skillId: 'ccusage', motivo: 'Mostra para onde estão indo os seus tokens desde o primeiro dia.' }
+        { skillId: 'claude-hud', motivo: 'Mostra, embaixo da caixa de digitação, quanto do contexto e do limite você já usou.' }
       ]
     },
     {
@@ -596,7 +603,8 @@
         { skillId: 'context7', motivo: 'Documentação real da versão exata das suas dependências.' },
         { skillId: 'addy-agent-skills', motivo: 'Um comando por fase — especificar, planejar, construir, testar e revisar.' },
         { skillId: 'tdd-guard', motivo: 'Bloqueia código sem teste correspondente — TDD deixa de ser combinado.' },
-        { skillId: 'cc-security-review', motivo: 'Audita vulnerabilidades antes do merge, direto no PR.' }
+        { skillId: 'cc-security-review', motivo: 'Audita vulnerabilidades antes do merge, direto no PR.' },
+        { skillId: 'ponytail', motivo: 'Faz o Claude escrever só o código necessário, sem cortar validação nem testes.' }
       ]
     },
     {
@@ -636,7 +644,21 @@
         { skillId: 'knowledge-work-plugins', motivo: 'Plugins oficiais por função — marketing, vendas, jurídico — direto no Cowork.' },
         { skillId: 'anthropic-skills', motivo: 'Gera .docx, .pptx e PDF formatados de verdade, não texto colado.' },
         { skillId: 'humanizer', motivo: 'Tira a cara de texto de IA antes de publicar ou enviar.' },
-        { skillId: 'marketingskills', motivo: 'Copy, SEO e conversão com método, não com palpite.' }
+        { skillId: 'marketingskills', motivo: 'Copy, SEO e conversão com método, não com palpite.' },
+        { skillId: 'obsidian-skills', motivo: 'Organiza notas e pesquisas no Obsidian, com links entre elas.' }
+      ]
+    },
+    {
+      id: 'estudo-pesquisa',
+      titulo: 'Estudo ou faço pesquisa',
+      icone: '🎓',
+      publico: 'TCC, artigo, dissertação ou pesquisa de mercado',
+      resumo: 'Referências conferidas, estrutura guiada e pesquisa atualizada — com você decidindo.',
+      passos: [
+        { skillId: 'academic-research-skills', motivo: 'Do plano à revisão final de um artigo, parando para você confirmar cada etapa.' },
+        { skillId: 'scientific-agent-skills', motivo: 'Acesso a bases científicas como PubMed e arXiv, para buscar e analisar estudos.' },
+        { skillId: 'last30days', motivo: 'O que foi discutido sobre o tema no último mês, com as fontes.' },
+        { skillId: 'obsidian-skills', motivo: 'Fichamentos e notas organizados no Obsidian, com links entre as ideias.' }
       ]
     }
   ];
@@ -695,45 +717,45 @@
   var AREAS_RECOMENDACAO = [
     {
       titulo: 'Gerenciamento de contexto e tokens', icone: '◌', base: true, ordemAdocao: 1,
-      gatilhos: ['token', 'contexto', 'custo', 'economi', 'monorepo', 'legado', 'banco de dados', 'codebase', 'refator'],
+      gatilhos: ['token', 'contexto', 'custo', 'economi', 'memoria', 'esquec', 'monorepo', 'legado', 'banco de dados', 'codebase', 'refator'],
       motivo: 'Instale primeiro: documentação atualizada e busca semântica melhoram tudo o que vier depois.',
-      skills: ['context7', 'caveman', 'claude-context', 'ccusage', 'claude-code-router']
+      skills: ['context7', 'graphify', 'caveman', 'claude-mem', 'claude-hud', 'claude-context', 'ccusage', 'claude-code-router']
     },
     {
       titulo: 'Arquitetura e planejamento', icone: '▦', base: true, ordemAdocao: 2,
-      gatilhos: ['arquitetura', 'planejamento', 'mvp', 'produto', 'requisito', 'prd', 'roadmap', 'saas', 'sistema', 'plataforma', 'startup'],
+      gatilhos: ['arquitetura', 'planejamento', 'plano', 'mvp', 'produto', 'requisito', 'prd', 'roadmap', 'lancamento', 'saas', 'sistema', 'plataforma', 'startup'],
       motivo: 'Estruture requisitos, arquitetura e backlog antes de escrever código.',
-      skills: ['bmad-method', 'superpowers', 'spec-workflow', 'claude-task-master']
+      skills: ['bmad-method', 'superpowers', 'planning-with-files', 'pm-skills', 'spec-workflow', 'claude-task-master']
     },
     {
       titulo: 'Documentação', icone: '▤', base: true, ordemAdocao: 3,
-      gatilhos: ['documenta', 'docs', 'readme', 'spec', 'biblioteca', 'framework', 'manual', 'diagrama', 'onboarding'],
+      gatilhos: ['documenta', 'docs', 'readme', 'spec', 'biblioteca', 'framework', 'manual', 'diagrama', 'onboarding', 'obsidian', 'notas', 'mapa'],
       motivo: 'Docs atualizadas das dependências e specs geradas por fase do projeto.',
-      skills: ['context7', 'archify', 'anthropic-skills', 'spec-workflow']
+      skills: ['context7', 'archify', 'graphify', 'obsidian-skills', 'anthropic-skills', 'spec-workflow']
     },
     {
       titulo: 'Programação e revisão de código', icone: '⌘', base: true, ordemAdocao: 4,
       gatilhos: ['codigo', 'revisao', 'refator', 'qualidade', 'backend', 'frontend', 'api', 'microservi'],
       motivo: 'Revisores especialistas encontram problemas antes do merge.',
-      skills: ['wshobson-agents', 'addy-agent-skills', 'mattpocock-skills', 'awesome-cc-subagents', 'superclaude']
+      skills: ['wshobson-agents', 'ponytail', 'addy-agent-skills', 'ecc', 'mattpocock-skills', 'awesome-cc-subagents', 'superclaude']
     },
     {
       titulo: 'Testes e depuração', icone: '✓', base: true, ordemAdocao: 5,
       gatilhos: ['teste', 'tdd', 'bug', 'depura', 'qualidade', 'ci', 'cobertura', 'navegador', 'e2e', 'performance'],
       motivo: 'Disciplina de testes imposta por ferramenta, não por lembrete.',
-      skills: ['tdd-guard', 'chrome-devtools-mcp', 'addy-agent-skills', 'superpowers']
+      skills: ['tdd-guard', 'chrome-devtools-mcp', 'addy-agent-skills', 'superpowers', 'trailofbits-skills']
     },
     {
       titulo: 'Segurança e auditoria', icone: '◉', base: true, ordemAdocao: 6,
-      gatilhos: ['seguranca', 'auth', 'login', 'pagamento', 'lgpd', 'senha', 'upload', 'api', 'banco', 'dados sensiveis'],
+      gatilhos: ['seguranca', 'auth', 'login', 'pagamento', 'lgpd', 'senha', 'upload', 'api', 'banco', 'dados sensiveis', 'vulnerab', 'auditoria'],
       motivo: 'Auditoria automática de vulnerabilidades em cada mudança.',
-      skills: ['cc-security-review', 'skillspector', 'wshobson-agents']
+      skills: ['cc-security-review', 'trailofbits-skills', 'skillspector', 'ecc', 'wshobson-agents']
     },
     {
       titulo: 'Múltiplos agentes e orquestração', icone: '⬡', base: true, ordemAdocao: 7,
       gatilhos: ['agente', 'paralel', 'orquestr', 'swarm', 'equipe', 'time', 'migra', 'escala'],
       motivo: 'Divida o trabalho entre agentes especializados rodando em paralelo.',
-      skills: ['ruflo', 'wshobson-agents', 'awesome-cc-subagents']
+      skills: ['ruflo', 'ecc', 'wshobson-agents', 'awesome-cc-subagents']
     },
     {
       titulo: 'Interface, UX e design', icone: '◐', base: false, ordemAdocao: 8,
@@ -743,27 +765,33 @@
     },
     {
       titulo: 'Automação e integrações', icone: '⚙', base: false, ordemAdocao: 9,
-      gatilhos: ['integra', 'automa', 'webhook', 'n8n', 'workflow', 'crm', 'zapier', 'api', 'stripe', 'pagamento'],
+      gatilhos: ['integra', 'automa', 'webhook', 'n8n', 'workflow', 'crm', 'zapier', 'api', 'stripe', 'pagamento', 'github', 'pull request'],
       motivo: 'Automatize processos e use as skills oficiais dos serviços que você integra.',
-      skills: ['n8n-mcp', 'claude-plugins-official', 'awesome-agent-skills', 'claude-code-templates']
+      skills: ['n8n-mcp', 'github-mcp-server', 'claude-plugins-official', 'awesome-agent-skills', 'claude-code-templates']
     },
     {
       titulo: 'Pesquisa e análise de dados', icone: '◈', base: false, ordemAdocao: 10,
-      gatilhos: ['dados', 'analise', 'rag', 'busca', 'dashboard', 'relatorio', 'pdf', 'ia', 'llm', 'machine learning', 'bi', 'pesquisa', 'cientific', 'ciencia', 'academic'],
-      motivo: 'Padrões prontos de RAG, análise de documentos e avaliação.',
-      skills: ['claude-cookbooks', 'scientific-agent-skills', 'claude-context', 'awesome-claude-code']
+      gatilhos: ['dados', 'analise', 'rag', 'busca', 'dashboard', 'relatorio', 'pdf', 'ia', 'llm', 'machine learning', 'bi', 'pesquisa', 'tendencia', 'concorren', 'mercado'],
+      motivo: 'Pesquisa do que está acontecendo agora, padrões prontos de RAG e análise de documentos.',
+      skills: ['claude-cookbooks', 'last30days', 'scientific-agent-skills', 'claude-financial-services', 'claude-context', 'awesome-claude-code']
     },
     {
-      titulo: 'Criação e melhoria de prompts', icone: '❝', base: false, ordemAdocao: 11,
-      gatilhos: ['prompt', 'ia', 'llm', 'chatbot', 'assistente', 'gpt', 'claude api', 'agente de ia'],
+      titulo: 'Pesquisa acadêmica', icone: '🎓', base: false, ordemAdocao: 11,
+      gatilhos: ['academic', 'cientific', 'ciencia', 'tcc', 'monografia', 'dissertacao', 'tese', 'mestrado', 'doutorado', 'revisao de literatura', 'citac', 'bibliograf'],
+      motivo: 'Estrutura guiada, referências conferidas na fonte e acesso a bases científicas.',
+      skills: ['academic-research-skills', 'scientific-agent-skills', 'obsidian-skills']
+    },
+    {
+      titulo: 'Criação e melhoria de prompts', icone: '❝', base: false, ordemAdocao: 12,
+      gatilhos: ['prompt', 'ia', 'llm', 'chatbot', 'assistente', 'gpt', 'claude api', 'agente de ia', 'tdah'],
       motivo: 'Prompts em produção merecem engenharia, não tentativa e erro.',
-      skills: ['prompt-eng-tutorial', 'caveman', 'superclaude']
+      skills: ['prompt-eng-tutorial', 'i-have-adhd', 'caveman', 'superclaude']
     },
     {
-      titulo: 'Escrita e comunicação', icone: '✎', base: false, ordemAdocao: 12,
+      titulo: 'Escrita e comunicação', icone: '✎', base: false, ordemAdocao: 13,
       gatilhos: ['escrita', 'conteudo', 'marketing', 'relatorio', 'documento', 'apresentacao', 'blog', 'email', 'proposta', 'texto', 'redacao', 'copy', 'seo', 'vendas'],
       motivo: 'Documentos e conteúdo profissionais gerados como arquivos reais.',
-      skills: ['knowledge-work-plugins', 'humanizer', 'anthropic-skills', 'marketingskills', 'alireza-claude-skills']
+      skills: ['knowledge-work-plugins', 'humanizer', 'anthropic-skills', 'marketingskills', 'obsidian-skills', 'academic-research-skills', 'alireza-claude-skills']
     }
   ];
 

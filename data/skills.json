@@ -2057,6 +2057,675 @@
         "startup",
         "produto"
       ]
+    },
+    {
+      "id": "graphify",
+      "nome": "Graphify",
+      "autor": "Graphify-Labs",
+      "repo": "https://github.com/Graphify-Labs/graphify",
+      "stars": 0,
+      "atualizadoEm": "2026-10-23",
+      "licenca": "Apache-2.0",
+      "linguagem": "—",
+      "categorias": [
+        "tokens",
+        "documentacao",
+        "programacao"
+      ],
+      "tags": [
+        "grafo-de-conhecimento",
+        "codebase",
+        "tree-sitter",
+        "contexto",
+        "mapa-do-projeto"
+      ],
+      "destaque": false,
+      "tipo": "ferramenta",
+      "facilidade": "tecnico",
+      "paraQueServe": "Transforma o projeto inteiro — código, documentação, PDFs, imagens e vídeos — num grafo de conhecimento que o Claude consulta em vez de sair abrindo arquivo por arquivo. Você digita /graphify e ganha um mapa clicável do projeto.",
+      "quandoUsar": "Quando o projeto é grande ou desconhecido (um código legado, um monorepo, um repositório que você acabou de herdar) e o Claude gasta tempo e tokens procurando onde cada coisa está.",
+      "beneficios": [
+        "O código é mapeado no seu computador, sem IA e sem enviar nada para fora (usa tree-sitter)",
+        "Gera três arquivos: graph.html para explorar no navegador, GRAPH_REPORT.md com os destaques e graph.json com o grafo completo",
+        "Cada ligação vem marcada: lida direto do código ou deduzida pela ferramenta",
+        "Funciona no Claude Code e em mais de 20 outros assistentes"
+      ],
+      "economiaTokens": "Com o grafo pronto, o Claude faz perguntas pontuais a ele (graphify query) em vez de reler arquivos ou varrer tudo com grep. No Claude Code, um hook lembra o Claude de consultar o grafo antes de buscar arquivo por arquivo.",
+      "qualidadeRespostas": "Num teste pequeno publicado no README (6 perguntas sobre o ERPNext que cruzam várias partes do sistema), as respostas com o grafo cobriram 82% dos fatos-chave, contra 70,8% do caminho tradicional de buscar e ler arquivos.",
+      "multiAgentes": "O grafo fica salvo em graph.json, então qualquer agente do projeto pode consultá-lo sem reler os arquivos.",
+      "melhorias": {
+        "programacao": "Entender um código desconhecido bem mais rápido",
+        "documentacao": "Um mapa navegável do projeto, gerado sozinho",
+        "produtividade": "Menos arquivos abertos à toa"
+      },
+      "instalacao": "Precisa de Python 3.10+ e do uv. No terminal: uv tool install graphifyy e depois graphify install (ele detecta o seu assistente). Aí, no Claude Code: /graphify . — a versão paga na nuvem (Graphify Cloud) é opcional.",
+      "exemploUso": "Rode /graphify . no projeto e abra graphify-out/graph.html no navegador para ver o mapa. Depois pergunte algo como \"qual o caminho entre o login e o banco de dados?\" — o Claude responde seguindo o grafo.",
+      "promptInicial": "Utilize a Skill Graphify para executar o mapeamento deste projeto num grafo de conhecimento e use o grafo para responder às minhas perguntas sobre a arquitetura. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "legado",
+        "monorepo",
+        "contexto",
+        "documentacao"
+      ]
+    },
+    {
+      "id": "ecc",
+      "nome": "ECC",
+      "autor": "affaan-m",
+      "repo": "https://github.com/affaan-m/ECC",
+      "stars": 0,
+      "atualizadoEm": "2026-10-20",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "programacao",
+        "multiagentes",
+        "seguranca"
+      ],
+      "tags": [
+        "harness",
+        "agentes",
+        "hooks",
+        "memoria",
+        "agentshield",
+        "pt-br"
+      ],
+      "destaque": false,
+      "tipo": "colecao",
+      "facilidade": "medio",
+      "paraQueServe": "Um \"sistema operacional\" para o seu agente de programação: 71 agentes especializados, 311 skills e 97 comandos, além de hooks, regras, memória entre sessões e o AgentShield, que confere a segurança da configuração do agente.",
+      "quandoUsar": "Quando você já usa o Claude Code no dia a dia e quer um pacote completo de processos prontos — planejar, revisar, consertar o build, controlar o contexto — em vez de montar tudo aos poucos.",
+      "beneficios": [
+        "Agentes para planejamento, revisão, conserto de build, segurança e arquitetura",
+        "Comandos diretos como /ecc:plan, /code-review e /build-fix",
+        "Salva e retoma sessões longas (/save-session e /resume-session)",
+        "Tem README em português do Brasil"
+      ],
+      "economiaTokens": "O lema do projeto é \"otimize a janela de contexto, persista o resto\": as skills carregam só quando precisa, e o comando /context-budget mostra quanto do contexto está sendo usado.",
+      "qualidadeRespostas": "Em vez de reconstruir o processo a cada prompt, você instala uma vez e ele vira parte de como o agente trabalha — corrigir um bug, por exemplo, começa por um teste que falha.",
+      "multiAgentes": "Os 71 agentes servem para delegar partes do trabalho: um planeja, outro revisa, outro cuida da segurança.",
+      "melhorias": {
+        "programacao": "Processo de desenvolvimento completo, pronto para usar",
+        "seguranca": "Varredura da configuração do agente com o AgentShield",
+        "produtividade": "Sessões longas que dá para salvar e retomar"
+      },
+      "instalacao": "No Claude Code: /plugin marketplace add https://github.com/affaan-m/ECC e depois /plugin install ecc@ecc. Ou pelo assistente guiado: npx ecc-universal@2.2.3 setup. Escolha um caminho só — o README avisa para não instalar duas vezes.",
+      "exemploUso": "Para uma funcionalidade nova, rode /ecc:plan \"descreva a funcionalidade\" e siga com o fluxo de TDD. No fim do dia, /save-session guarda o contexto, e amanhã /resume-session continua de onde parou.",
+      "promptInicial": "Utilize a Skill ECC para executar esta tarefa de desenvolvimento com os agentes e fluxos do ECC, começando pelo planejamento. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "programacao",
+        "setup",
+        "qualidade",
+        "seguranca"
+      ]
+    },
+    {
+      "id": "claude-mem",
+      "nome": "Claude-Mem",
+      "autor": "thedotmack",
+      "repo": "https://github.com/thedotmack/claude-mem",
+      "stars": 0,
+      "atualizadoEm": "2026-10-24",
+      "licenca": "Apache-2.0",
+      "linguagem": "—",
+      "categorias": [
+        "tokens",
+        "automacao"
+      ],
+      "tags": [
+        "memoria",
+        "contexto",
+        "sessoes",
+        "hooks",
+        "busca"
+      ],
+      "destaque": false,
+      "tipo": "ferramenta",
+      "facilidade": "medio",
+      "paraQueServe": "Dá memória ao Claude Code: registra sozinho o que foi feito em cada sessão, resume e devolve o que importa nas próximas. Assim o Claude lembra do projeto mesmo depois de você fechar e abrir de novo.",
+      "quandoUsar": "Quando você trabalha no mesmo projeto por vários dias e cansou de explicar de novo, a cada sessão, o que já foi decidido e feito.",
+      "beneficios": [
+        "Funciona sozinho, sem você precisar fazer nada",
+        "Busca em linguagem natural no histórico do projeto (skill mem-search)",
+        "Marque trechos com a tag <private> para eles não serem guardados",
+        "Visualizador no navegador com as memórias, as sessões e as configurações"
+      ],
+      "economiaTokens": "A memória volta em camadas (\"revelação progressiva\"), mostrando o custo em tokens de cada nível: o Claude busca só o necessário, em vez de você colar o histórico inteiro.",
+      "qualidadeRespostas": "Com o histórico das sessões anteriores à mão, o Claude retoma o trabalho de onde parou, já sabendo o que foi decidido.",
+      "multiAgentes": "A memória fica num banco local (SQLite) que qualquer sessão do projeto consulta, e há uma área de equipe opcional (TeamBrain) para compartilhar descobertas.",
+      "melhorias": {
+        "produtividade": "Menos tempo reexplicando o projeto",
+        "raciocinio": "Decisões anteriores sempre no contexto"
+      },
+      "instalacao": "No Claude Code: /plugin marketplace add thedotmack/claude-mem e depois /plugin install claude-mem; reinicie o Claude Code. Pelo terminal: npx claude-mem install — esse instalador oferece um teste de 30 dias de um serviço pago na nuvem, que dá para pular com a opção --provider.",
+      "exemploUso": "Trabalhe normalmente num dia. No seguinte, abra uma sessão nova e pergunte \"o que fizemos ontem no módulo de pagamentos?\" — o Claude busca na memória e responde com o que ficou registrado.",
+      "promptInicial": "Utilize a Skill Claude-Mem para executar a retomada deste projeto a partir da memória das sessões anteriores, resumindo o que já foi decidido antes de continuar. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "contexto",
+        "produtividade",
+        "custo"
+      ]
+    },
+    {
+      "id": "last30days",
+      "nome": "last30days",
+      "autor": "mvanhorn",
+      "repo": "https://github.com/mvanhorn/last30days-skill",
+      "stars": 0,
+      "atualizadoEm": "2026-10-22",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "pesquisa"
+      ],
+      "tags": [
+        "pesquisa",
+        "reddit",
+        "youtube",
+        "hacker-news",
+        "tendencias",
+        "pt-br"
+      ],
+      "destaque": true,
+      "tipo": "skill",
+      "facilidade": "facil",
+      "paraQueServe": "Pesquisa qualquer assunto no que as pessoas disseram nos últimos 30 dias — Reddit, X, YouTube, TikTok, Hacker News, Polymarket, GitHub e outras fontes — e entrega um resumo ordenado pelo engajamento de verdade, não pelo que aparece primeiro no Google.",
+      "quandoUsar": "Antes de uma reunião (o que a pessoa ou a empresa anda fazendo), para comparar ferramentas, acompanhar um assunto que muda todo dia ou aprender rápido o que a comunidade já descobriu.",
+      "beneficios": [
+        "Reddit, Hacker News, Polymarket e GitHub funcionam sem configurar nada",
+        "Um assistente de configuração libera X, YouTube, TikTok, arXiv e outras fontes",
+        "Instala também no claude.ai e no Claude Desktop, sem terminal",
+        "Tem README em português do Brasil"
+      ],
+      "economiaTokens": "As buscas rodam em paralelo e o Claude recebe os trechos já pontuados por engajamento, em vez de abrir dezenas de páginas uma por uma.",
+      "qualidadeRespostas": "As respostas mostram o que as pessoas realmente disseram e com que peso (votos, curtidas, apostas no Polymarket), em vez de repetir o que estava no treinamento do modelo, que costuma estar meses atrasado.",
+      "multiAgentes": "Cada fonte é pesquisada em paralelo, e um agente junta tudo numa síntese só.",
+      "melhorias": {
+        "analise": "Visão atualizada de qualquer assunto",
+        "produtividade": "Preparação de reuniões e comparação de ferramentas em minutos"
+      },
+      "instalacao": "No Claude Code: /plugin marketplace add mvanhorn/last30days-skill e depois /plugin install last30days. Sem terminal: baixe o arquivo last30days.skill na página de releases do repositório e envie em Configurações → Habilidades → Adicionar → Fazer upload de habilidade. No Claude Desktop também dá para arrastar a extensão .mcpb em Configurações > Extensões.",
+      "exemploUso": "Digite /last30days seguido do assunto — por exemplo, /last30days Claude Code vs Cursor — e receba o que a comunidade discutiu no último mês, com os links e o peso de cada fonte.",
+      "promptInicial": "Utilize a Skill last30days para executar uma pesquisa sobre o tema deste projeto com o que foi discutido nos últimos 30 dias, separando fatos, opiniões e fontes. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "pesquisa",
+        "marketing",
+        "negocios"
+      ]
+    },
+    {
+      "id": "i-have-adhd",
+      "nome": "i-have-adhd",
+      "autor": "ayghri",
+      "repo": "https://github.com/ayghri/i-have-adhd",
+      "stars": 0,
+      "atualizadoEm": "2026-10-11",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "prompts",
+        "escrita"
+      ],
+      "tags": [
+        "respostas-diretas",
+        "tdah",
+        "clareza",
+        "passo-a-passo",
+        "pt-br"
+      ],
+      "destaque": false,
+      "tipo": "skill",
+      "facilidade": "medio",
+      "paraQueServe": "Faz o assistente parar de enterrar a resposta no meio do texto: primeiro a próxima ação, depois os passos numerados, e nada de \"Ótima pergunta!\" ou \"Espero ter ajudado!\". Pensada para quem tem TDAH, mas serve para qualquer pessoa — não precisa de diagnóstico.",
+      "quandoUsar": "Quando as respostas do Claude vêm longas, cheias de rodeios e resumos, e você só quer saber o que fazer agora.",
+      "beneficios": [
+        "10 regras simples, como \"comece pela próxima ação\" e \"listas de no máximo 5 itens\"",
+        "Estimativas de tempo concretas: minutos, não \"um pouquinho\"",
+        "Toda resposta termina com um próximo passo claro",
+        "Tem README em português do Brasil"
+      ],
+      "economiaTokens": "Sem introdução, sem recapitulação e sem despedida, as respostas ficam bem mais curtas.",
+      "qualidadeRespostas": "As respostas viram ação: o que fazer, em que ordem e o que já está funcionando. Erros são descritos sem drama — onde, por quê e como corrigir.",
+      "multiAgentes": "Por ser só um estilo de resposta, dá para usar junto com qualquer outra skill.",
+      "melhorias": {
+        "produtividade": "Menos leitura, mais ação",
+        "escrita": "Respostas curtas, numeradas e diretas"
+      },
+      "instalacao": "No Claude Code: claude plugin marketplace add ayghri/i-have-adhd e depois claude plugin install i-have-adhd@i-have-adhd; aí é só digitar /i-have-adhd. Também dá para pedir ao próprio agente: \"Instale a skill i-have-adhd de https://github.com/ayghri/i-have-adhd seguindo o AGENTS.md do repositório\".",
+      "exemploUso": "Antes: \"Ótima pergunta! Vamos pensar nisso...\" e três parágrafos. Depois: \"Edite src/auth.ts:42. 1. Abra o arquivo 2. Troque a função verifyToken 3. Rode os testes. Próximo: cole a primeira linha que falhar.\"",
+      "promptInicial": "Utilize a Skill i-have-adhd para executar esta tarefa respondendo de forma direta, com a próxima ação primeiro e os passos numerados. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "produtividade",
+        "prompts"
+      ]
+    },
+    {
+      "id": "obsidian-skills",
+      "nome": "Obsidian Skills",
+      "autor": "kepano",
+      "repo": "https://github.com/kepano/obsidian-skills",
+      "stars": 0,
+      "atualizadoEm": "2026-09-15",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "documentacao",
+        "escrita"
+      ],
+      "tags": [
+        "obsidian",
+        "notas",
+        "markdown",
+        "canvas",
+        "segundo-cerebro"
+      ],
+      "destaque": false,
+      "tipo": "skill",
+      "facilidade": "medio",
+      "paraQueServe": "Ensina o agente a trabalhar com o Obsidian: escrever notas no Markdown do Obsidian (com links internos, callouts e propriedades), montar Bases e Canvas, usar o Obsidian CLI e transformar páginas da web em Markdown limpo.",
+      "quandoUsar": "Quando você organiza notas, estudos ou a documentação de um projeto no Obsidian e quer que o Claude crie e edite esses arquivos no formato certo.",
+      "beneficios": [
+        "Seis skills: obsidian-markdown, obsidian-bases, json-canvas, obsidian-cli, defuddle e knap",
+        "Segue a especificação aberta de Agent Skills: vale para Claude Code, Codex e OpenCode",
+        "Links internos e embeds que funcionam de verdade no Obsidian",
+        "Gera notas em lote a partir de dados em JSON ou CSV (skill knap)"
+      ],
+      "economiaTokens": "A skill defuddle pega só o conteúdo principal de uma página da web, sem menus e anúncios, o que economiza tokens na hora de levar um artigo para as suas notas.",
+      "qualidadeRespostas": "O Claude passa a usar a sintaxe própria do Obsidian em vez de Markdown genérico, então links, embeds e propriedades aparecem certinhos no seu cofre.",
+      "multiAgentes": "Notas e Bases ficam em arquivos simples, que qualquer agente do projeto consegue ler.",
+      "melhorias": {
+        "escrita": "Notas no formato do Obsidian, prontas para usar",
+        "produtividade": "Artigos da web direto para as suas notas"
+      },
+      "instalacao": "No Claude Code: /plugin marketplace add kepano/obsidian-skills e depois /plugin install obsidian@obsidian-skills. Ou: npx skills add https://github.com/kepano/obsidian-skills.",
+      "exemploUso": "Peça: \"Transforme este artigo numa nota do Obsidian, com autor e data nas propriedades e links para as minhas notas sobre o tema\". O Claude usa a defuddle para limpar a página e a obsidian-markdown para escrever a nota.",
+      "promptInicial": "Utilize a Skill Obsidian Skills para executar a criação e a organização destas notas no formato do Obsidian, com links internos e propriedades. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "documentacao",
+        "produtividade",
+        "conteudo"
+      ]
+    },
+    {
+      "id": "claude-hud",
+      "nome": "Claude HUD",
+      "autor": "jarrodwatts",
+      "repo": "https://github.com/jarrodwatts/claude-hud",
+      "stars": 0,
+      "atualizadoEm": "2026-10-24",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "tokens"
+      ],
+      "tags": [
+        "status-line",
+        "contexto",
+        "limites-de-uso",
+        "monitoramento",
+        "plugin"
+      ],
+      "destaque": false,
+      "tipo": "ferramenta",
+      "facilidade": "medio",
+      "paraQueServe": "Um painel embaixo da caixa de digitação do Claude Code que mostra o tempo todo quanto do contexto já foi usado, quanto falta do seu limite de uso, quais ferramentas e agentes estão rodando e o progresso das tarefas.",
+      "quandoUsar": "Quando você quer saber a hora de limpar o contexto ou dar uma pausa antes de bater no limite, sem ficar perguntando.",
+      "beneficios": [
+        "Barra de contexto que passa de verde para amarelo e vermelho conforme enche",
+        "Mostra o limite de uso da assinatura e quando ele renova",
+        "Linhas opcionais com ferramentas, agentes e lista de tarefas",
+        "Configuração guiada com /claude-hud:configure"
+      ],
+      "economiaTokens": "Ver o contexto enchendo em tempo real ajuda a decidir a hora de compactar ou abrir uma conversa nova, antes de cada mensagem carregar um histórico enorme.",
+      "qualidadeRespostas": "Você acompanha o que o Claude está fazendo — ferramenta, agente, tarefa — e percebe na hora quando ele sai do rumo.",
+      "multiAgentes": "Mostra os agentes rodando, com o modelo de cada um e há quanto tempo estão trabalhando.",
+      "melhorias": {
+        "produtividade": "Uso do contexto e do limite sempre à vista"
+      },
+      "instalacao": "No Claude Code: /plugin marketplace add jarrodwatts/claude-hud, depois /plugin install claude-hud, /reload-plugins e, por fim, /claude-hud:setup. No Windows, precisa do Node.js instalado.",
+      "exemploUso": "Depois do setup aparece algo como \"Context █████░░░░░ 45% │ Usage ██░░░░░░░░ 25% (resets in 1h 30m)\" embaixo do campo de digitação. Quando a barra ficar vermelha, é hora de compactar ou começar uma conversa nova.",
+      "promptInicial": "Utilize a Skill Claude HUD para executar a configuração do painel de status para acompanhar o uso de contexto, os limites e os agentes desta sessão. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "custo",
+        "contexto",
+        "produtividade"
+      ]
+    },
+    {
+      "id": "planning-with-files",
+      "nome": "Planning with Files",
+      "autor": "OthmanAdi",
+      "repo": "https://github.com/OthmanAdi/planning-with-files",
+      "stars": 0,
+      "atualizadoEm": "2026-10-24",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "planejamento",
+        "tokens"
+      ],
+      "tags": [
+        "plano-em-arquivo",
+        "tarefas-longas",
+        "hooks",
+        "contexto",
+        "retomada"
+      ],
+      "destaque": false,
+      "tipo": "skill",
+      "facilidade": "medio",
+      "paraQueServe": "Guarda o plano do agente em arquivos dentro do projeto — task_plan.md, findings.md e progress.md — e traz esse plano de volta a cada rodada. Se o contexto acabar, você der /clear ou a sessão cair, o Claude retoma da fase em que parou.",
+      "quandoUsar": "Em tarefas longas, de várias etapas ou vários dias, em que o Claude costuma se perder depois de uma compactação ou de um /clear.",
+      "beneficios": [
+        "Plano, descobertas e progresso em três arquivos Markdown simples",
+        "Hooks que trazem o plano de volta a cada rodada",
+        "Pode segurar o fim da tarefa até o plano dizer que está completo",
+        "Também em espanhol, alemão, árabe e chinês"
+      ],
+      "economiaTokens": "O que importa vai para o disco, não para o contexto. Nas medições do próprio projeto, retomar o trabalho caiu de 13,3 para 5 rodadas de reorientação.",
+      "qualidadeRespostas": "Venceu 3 de 3 comparações cegas A/B feitas pelo autor: com o plano no disco, o agente segue o combinado em vez de improvisar.",
+      "multiAgentes": "Tarefas paralelas ganham pastas separadas (.planning/AAAA-MM-DD-nome/), cada uma com os seus três arquivos.",
+      "melhorias": {
+        "produtividade": "Retomada rápida de tarefas longas",
+        "raciocinio": "Plano que sobrevive a /clear e à compactação"
+      },
+      "instalacao": "No Claude Code: /plugin marketplace add OthmanAdi/planning-with-files e depois /plugin install planning-with-files@planning-with-files. Para outros agentes: npx skills add OthmanAdi/planning-with-files --skill planning-with-files -g.",
+      "exemploUso": "Peça uma migração grande, de várias etapas: o Claude cria o task_plan.md com as fases e caixinhas de marcar. Se você der /clear no meio, ele relê o plano e continua da fase atual.",
+      "promptInicial": "Utilize a Skill Planning with Files para executar esta tarefa longa mantendo o plano, as descobertas e o progresso em arquivos, para poder retomar de onde parou. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "planejamento",
+        "produtividade",
+        "contexto"
+      ]
+    },
+    {
+      "id": "pm-skills",
+      "nome": "PM Skills (gestão de produto)",
+      "autor": "phuryn",
+      "repo": "https://github.com/phuryn/pm-skills",
+      "stars": 0,
+      "atualizadoEm": "2026-10-16",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "planejamento",
+        "pesquisa"
+      ],
+      "tags": [
+        "produto",
+        "prd",
+        "discovery",
+        "estrategia",
+        "cowork"
+      ],
+      "destaque": false,
+      "tipo": "colecao",
+      "facilidade": "facil",
+      "paraQueServe": "69 skills e 42 fluxos encadeados de gestão de produto, em 9 plugins: da descoberta de ideias à estratégia, execução, lançamento e crescimento. Cada skill segue um método conhecido de produto e conduz você passo a passo.",
+      "quandoUsar": "Quando você precisa validar uma ideia, escrever um PRD, definir métricas ou planejar um lançamento, e quer estrutura em vez de um texto genérico.",
+      "beneficios": [
+        "Comandos diretos: /discover, /strategy, /write-prd, /plan-launch e /north-star",
+        "Métodos de Teresa Torres, Marty Cagan e Alberto Savoia embutidos",
+        "No Cowork instala pelo app, sem terminal",
+        "Cada comando sugere o próximo passo quando termina"
+      ],
+      "economiaTokens": "As skills entram só quando o assunto aparece na conversa, e cada comando encadeia várias delas num fluxo só — sem você explicar o método toda vez.",
+      "qualidadeRespostas": "IA genérica entrega texto; aqui cada skill aplica um framework de produto, como mapeamento de hipóteses e priorização, e o resultado sai estruturado.",
+      "multiAgentes": "Os comandos funcionam como uma esteira: o /discover encadeia quatro skills, do brainstorm de ideias à priorização das hipóteses.",
+      "melhorias": {
+        "analise": "Decisões de produto com método",
+        "escrita": "PRDs e planos de lançamento bem estruturados"
+      },
+      "instalacao": "No Cowork: Customize > Browse plugins > Personal > + > Add marketplace from GitHub (os nomes podem aparecer traduzidos no seu app) e digite phuryn/pm-skills. No Claude Code: claude plugin marketplace add phuryn/pm-skills e depois claude plugin install pm-toolkit@pm-skills (e os outros plugins que quiser).",
+      "exemploUso": "Digite /write-prd e descreva a funcionalidade: o Claude faz as perguntas certas e monta o documento de requisitos. No fim, sugere o próximo passo, como o /plan-launch.",
+      "promptInicial": "Utilize a Skill PM Skills para executar esta tarefa de produto com os frameworks das skills, do problema do usuário até a decisão. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "produto",
+        "planejamento",
+        "startup",
+        "negocios"
+      ]
+    },
+    {
+      "id": "ponytail",
+      "nome": "Ponytail",
+      "autor": "DietrichGebert",
+      "repo": "https://github.com/DietrichGebert/ponytail",
+      "stars": 0,
+      "atualizadoEm": "2026-10-18",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "programacao",
+        "tokens"
+      ],
+      "tags": [
+        "menos-codigo",
+        "yagni",
+        "revisao",
+        "custo",
+        "plugin"
+      ],
+      "destaque": true,
+      "tipo": "skill",
+      "facilidade": "medio",
+      "paraQueServe": "Coloca dentro do agente o programador sênior mais \"preguiçoso\" da empresa: aquele que olha cinquenta linhas e troca por uma. O Claude passa a escrever só o que a tarefa precisa, reaproveitando o que já existe no projeto.",
+      "quandoUsar": "Quando o Claude instala bibliotecas ou cria arquivos demais para resolver coisas simples, e você quer código menor, mais fácil de manter e mais barato de gerar.",
+      "beneficios": [
+        "No benchmark do autor: 53% menos código, 41% menos tempo, 26% menos custo e 45% menos tokens",
+        "Nunca corta validação, tratamento de erros, segurança nem acessibilidade",
+        "Lógica arriscada sai com um teste: 98% das vezes, contra 68% sem a skill",
+        "Revisão das mudanças (/ponytail-review) e auditoria do repositório inteiro (/ponytail-audit)"
+      ],
+      "economiaTokens": "Escrever só o necessário reduz o que o Claude gera: no benchmark publicado (39 tarefas no Claude Code, 5 rodadas cada), o uso de tokens caiu 45%.",
+      "qualidadeRespostas": "Menos código não quer dizer menos cuidado: nas seis tarefas de segurança do benchmark (SQL injection, path traversal, tokens forjados e outras), passou nas 30 execuções.",
+      "multiAgentes": "Fica ativo em toda sessão e também funciona no Codex, OpenCode, Gemini e outros agentes, então o mesmo estilo vale para o time todo.",
+      "melhorias": {
+        "programacao": "Código menor e mais fácil de manter",
+        "produtividade": "Menos tokens e menos tempo por tarefa",
+        "raciocinio": "Revisão focada em bugs, segurança e no que dá para cortar"
+      },
+      "instalacao": "No Claude Code, em dois prompts separados: /plugin marketplace add DietrichGebert/ponytail e depois /plugin install ponytail@ponytail. O autor avisa: instale só a partir do repositório DietrichGebert/ponytail.",
+      "exemploUso": "Pedido: um seletor de data. Sem a skill, o agente instalou uma biblioteca ou escreveu um calendário inteiro (335 linhas). Com o Ponytail, juntou o componente de campo que o projeto já tinha com o seletor nativo do navegador: 10 linhas.",
+      "promptInicial": "Utilize a Skill Ponytail para executar esta tarefa escrevendo só o código necessário, reaproveitando o que já existe e sem cortar validação, segurança ou testes. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "programacao",
+        "custo",
+        "qualidade",
+        "revisao"
+      ]
+    },
+    {
+      "id": "trailofbits-skills",
+      "nome": "Trail of Bits Skills",
+      "autor": "trailofbits",
+      "repo": "https://github.com/trailofbits/skills",
+      "stars": 0,
+      "atualizadoEm": "2026-10-23",
+      "licenca": "CC-BY-SA-4.0",
+      "linguagem": "—",
+      "categorias": [
+        "seguranca",
+        "testes"
+      ],
+      "tags": [
+        "auditoria",
+        "analise-estatica",
+        "semgrep",
+        "codeql",
+        "fuzzing",
+        "dependencias"
+      ],
+      "destaque": false,
+      "tipo": "colecao",
+      "facilidade": "tecnico",
+      "paraQueServe": "Marketplace da Trail of Bits com 46 plugins para análise de segurança, testes e desenvolvimento: auditoria de código, análise estática com CodeQL e Semgrep, revisão de dependências, testes de mutação e muito mais.",
+      "quandoUsar": "Quando você precisa auditar a segurança de um código antes de publicar, revisar mudanças com foco em vulnerabilidades ou checar as dependências do projeto.",
+      "beneficios": [
+        "46 plugins: auditoria de C/C++ e Rust, contratos inteligentes, análise de malware, apps Android e mais",
+        "Análise estática com CodeQL, Semgrep e SARIF",
+        "Auditor de riscos nas dependências (npm, PyPI e Go)",
+        "Já ajudou a achar uma falha real: um vazamento por tempo de execução na assinatura ML-DSA da RustCrypto"
+      ],
+      "economiaTokens": "Você instala só os plugins da área que precisa, pelo /plugin menu, em vez de carregar o pacote inteiro.",
+      "qualidadeRespostas": "Os plugins seguem métodos de auditoria — por exemplo, verificar de forma sistemática os falsos positivos antes de reportar um problema.",
+      "multiAgentes": "Vários fluxos usam agentes em paralelo, como a auditoria de configurações inseguras, que põe um verificador para cada arquivo suspeito.",
+      "melhorias": {
+        "programacao": "Código revisado com foco em vulnerabilidades",
+        "analise": "Fuzzing, testes de propriedade e de mutação"
+      },
+      "instalacao": "No Claude Code: /plugin marketplace add trailofbits/skills e depois /plugin menu para escolher os plugins. A licença é CC BY-SA 4.0.",
+      "exemploUso": "Antes de abrir um pull request, use o plugin differential-review: ele faz uma revisão de segurança das mudanças, olhando também o histórico do git.",
+      "promptInicial": "Utilize a Skill Trail of Bits Skills para executar uma auditoria de segurança destas mudanças, verificando falsos positivos antes de reportar cada problema. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "seguranca",
+        "auditoria",
+        "testes"
+      ]
+    },
+    {
+      "id": "claude-financial-services",
+      "nome": "Claude for Financial Services (oficial Anthropic)",
+      "autor": "anthropics",
+      "repo": "https://github.com/anthropics/financial-services",
+      "stars": 0,
+      "atualizadoEm": "2026-09-21",
+      "licenca": "Apache-2.0",
+      "linguagem": "—",
+      "categorias": [
+        "pesquisa",
+        "automacao"
+      ],
+      "tags": [
+        "oficial",
+        "financas",
+        "cowork",
+        "excel",
+        "valuation",
+        "agentes"
+      ],
+      "destaque": false,
+      "tipo": "colecao",
+      "facilidade": "facil",
+      "paraQueServe": "Agentes, skills e conectores de dados oficiais da Anthropic para o mercado financeiro: banco de investimento, análise de ações, private equity e gestão de patrimônio. São 10 agentes prontos, como o Pitch Agent, o Market Researcher e o Model Builder.",
+      "quandoUsar": "Quando você trabalha com finanças e quer o Claude preparando comparáveis, modelos de DCF e LBO, notas de resultado ou conciliações — sempre para revisão de um profissional.",
+      "beneficios": [
+        "10 agentes, do pitch deck à conciliação contábil e ao KYC",
+        "Comandos como /comps, /dcf, /earnings e /ic-memo",
+        "O Model Builder monta DCF, LBO e três demonstrativos direto no Excel",
+        "No Cowork instala colando o link do repositório, sem terminal"
+      ],
+      "economiaTokens": "Cada agente traz só as skills de que precisa, e elas entram em ação apenas quando a tarefa pede.",
+      "qualidadeRespostas": "Os agentes rascunham o trabalho de analista — modelos, memorandos, notas — no formato do mercado. O README é claro: nada ali é recomendação de investimento, e tudo deve ser revisado por um profissional.",
+      "multiAgentes": "Os agentes também podem rodar pela API de Managed Agents, com subagentes para partes do trabalho (recurso em prévia).",
+      "melhorias": {
+        "analise": "Modelos e comparáveis prontos para revisão",
+        "produtividade": "Rotinas de fechamento e conciliação mais rápidas"
+      },
+      "instalacao": "No Cowork: Settings > Plugins > Add plugin e cole https://github.com/anthropics/financial-services. No Claude Code: claude plugin marketplace add anthropics/financial-services e depois claude plugin install financial-analysis@claude-for-financial-services (instale esse primeiro).",
+      "exemploUso": "Com o Market Researcher, peça uma visão de um setor: o agente monta o panorama, o cenário competitivo, os comparáveis e uma lista curta de ideias para você revisar.",
+      "promptInicial": "Utilize a Skill Claude for Financial Services para executar esta análise financeira com os agentes e skills do plugin, deixando claras as premissas para revisão. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "negocios",
+        "escritorio",
+        "dados"
+      ]
+    },
+    {
+      "id": "academic-research-skills",
+      "nome": "Academic Research Skills",
+      "autor": "Imbad0202",
+      "repo": "https://github.com/Imbad0202/academic-research-skills",
+      "stars": 0,
+      "atualizadoEm": "2026-10-25",
+      "licenca": "CC-BY-NC-4.0",
+      "linguagem": "—",
+      "categorias": [
+        "pesquisa",
+        "escrita"
+      ],
+      "tags": [
+        "academico",
+        "artigo-cientifico",
+        "revisao-de-literatura",
+        "citacoes",
+        "tcc"
+      ],
+      "destaque": false,
+      "tipo": "colecao",
+      "facilidade": "medio",
+      "paraQueServe": "Conjunto de skills para pesquisa acadêmica no Claude Code que cobre o caminho inteiro: pesquisar, escrever, revisar, ajustar e finalizar um artigo. A IA faz o trabalho braçal, e o processo para e pede a sua confirmação em cada etapa.",
+      "quandoUsar": "Quando você está escrevendo um artigo, uma dissertação ou uma revisão de literatura e quer ajuda com estrutura, referências e revisão — sem terceirizar as decisões.",
+      "beneficios": [
+        "/ars-plan conversa com você (diálogo socrático) para montar a estrutura do trabalho",
+        "/ars-lit-review faz uma revisão de literatura sobre um tema",
+        "Cada citação aponta o trecho da fonte, e uma auditoria opcional confere se a fonte sustenta a afirmação",
+        "Aprende o seu estilo a partir de textos anteriores"
+      ],
+      "economiaTokens": "O método acadêmico já vem nas skills, então você não precisa explicar normas e etapas a cada conversa.",
+      "qualidadeRespostas": "Foi feito para combater citações inventadas: o README cita um estudo que estimou 146.932 referências alucinadas em artigos só em 2025, e o processo tem portões de integridade com uma checklist que barra o avanço.",
+      "multiAgentes": "Tem verificação opcional com outro modelo (ARS_CROSS_MODEL), que confere o trabalho como uma segunda opinião.",
+      "melhorias": {
+        "escrita": "Textos acadêmicos estruturados e revisados",
+        "analise": "Referências conferidas na fonte"
+      },
+      "instalacao": "No Claude Code: /plugin marketplace add Imbad0202/academic-research-skills e depois /plugin install academic-research-skills. Para gerar DOCX e PDF no padrão APA, instale também o Pandoc (opcional). Atenção à licença: CC BY-NC 4.0, só para uso não comercial.",
+      "exemploUso": "Rode /ars-plan e descreva o artigo que você está escrevendo: o Claude faz perguntas para mapear capítulos e argumentos. Para um teste rápido, use /ars-lit-review \"seu tema\".",
+      "promptInicial": "Utilize a Skill Academic Research Skills para executar esta etapa do meu trabalho acadêmico, verificando cada referência e pedindo minha confirmação antes de avançar. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "academico",
+        "pesquisa",
+        "conteudo"
+      ]
+    },
+    {
+      "id": "github-mcp-server",
+      "nome": "GitHub MCP Server (oficial)",
+      "autor": "github",
+      "repo": "https://github.com/github/github-mcp-server",
+      "stars": 0,
+      "atualizadoEm": "2026-10-22",
+      "licenca": "MIT",
+      "linguagem": "—",
+      "categorias": [
+        "automacao",
+        "programacao"
+      ],
+      "tags": [
+        "oficial",
+        "mcp",
+        "github",
+        "issues",
+        "pull-requests",
+        "actions"
+      ],
+      "destaque": false,
+      "tipo": "ferramenta",
+      "facilidade": "tecnico",
+      "paraQueServe": "Servidor MCP oficial do GitHub: conecta o Claude à plataforma para ler repositórios e código, cuidar de issues e pull requests, acompanhar o GitHub Actions e analisar alertas de segurança — tudo em linguagem natural.",
+      "quandoUsar": "Quando o seu código mora no GitHub e você quer que o Claude abra issues, revise PRs, investigue um build que falhou ou resuma a atividade do time sem sair da conversa.",
+      "beneficios": [
+        "Mantido pelo próprio GitHub",
+        "Issues, pull requests, Actions, releases e alertas do Dependabot",
+        "Versão remota: não precisa instalar nada, só criar um token",
+        "Funciona no Claude Code e no Claude Desktop"
+      ],
+      "economiaTokens": "O Claude busca no GitHub só o que precisa — uma issue, um log de build, um arquivo — em vez de você copiar e colar páginas inteiras na conversa.",
+      "qualidadeRespostas": "Com acesso direto ao GitHub, as respostas sobre o projeto se baseiam no estado real das issues, PRs e builds, não no que você lembrou de colar.",
+      "multiAgentes": "Serve de base para fluxos com vários passos, como fazer a triagem de bugs e depois revisar as correções.",
+      "melhorias": {
+        "programacao": "Revisão de PRs e investigação de builds pela conversa",
+        "produtividade": "Rotinas do GitHub sem trocar de janela"
+      },
+      "instalacao": "Crie um token pessoal no GitHub (github.com/settings/personal-access-tokens/new). No terminal, com o Claude Code 2.1.1 ou mais novo: claude mcp add-json github '{\"type\":\"http\",\"url\":\"https://api.githubcopilot.com/mcp\",\"headers\":{\"Authorization\":\"Bearer SEU_TOKEN\"}}' e reinicie o Claude Code. Guarde o token num arquivo .env, nunca no código.",
+      "exemploUso": "Peça: \"Veja por que o último build do Actions falhou e abra uma issue com o resumo do erro\". O Claude lê o log e cria a issue.",
+      "promptInicial": "Utilize a Skill GitHub MCP Server para executar esta tarefa no GitHub do projeto, lendo issues, PRs e builds antes de propor qualquer mudança. Analise o contexto completo do projeto antes de realizar alterações. Preserve as regras de negócio existentes, documente os problemas encontrados, explique as decisões tomadas e apresente o resultado de forma organizada. Não altere funcionalidades fora do escopo solicitado.",
+      "recomendadoPara": [
+        "devops",
+        "ci",
+        "automacao",
+        "revisao"
+      ]
     }
   ],
   "tipos": {
