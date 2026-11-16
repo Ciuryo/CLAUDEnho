@@ -711,91 +711,91 @@
 
   /* ---------- recomendação por tipo de projeto ---------- */
 
-  // Cada frente liga gatilhos (palavras no texto do usuário, sem acento) a
-  // skills candidatas. `base` = vale para qualquer projeto de software.
-  // `ordemAdocao` = em que ordem faz sentido adotar (contexto antes de código).
+  // Cada frente liga sinais e gatilhos a skills candidatas.
+  // `base` marca fundamentos úteis quando a descrição indica desenvolvimento de software.
+  // `ordemAdocao` organiza as frentes no plano sugerido.
   var AREAS_RECOMENDACAO = [
     {
-      titulo: 'Gerenciamento de contexto e tokens', icone: '◌', base: true, ordemAdocao: 1,
+      id: 'contexto', categoria: 'tokens', titulo: 'Gerenciamento de contexto e tokens', icone: '◌', base: false, ordemAdocao: 1,
       gatilhos: ['token', 'contexto', 'custo', 'economi', 'memoria', 'esquec', 'monorepo', 'legado', 'banco de dados', 'codebase', 'refator'],
-      motivo: 'Instale primeiro: documentação atualizada e busca semântica melhoram tudo o que vier depois.',
+      motivo: 'Útil quando o projeto é grande, tem histórico extenso ou exige controlar memória e consumo de contexto.',
       skills: ['context7', 'graphify', 'caveman', 'claude-mem', 'claude-hud', 'claude-context', 'ccusage', 'claude-code-router']
     },
     {
-      titulo: 'Arquitetura e planejamento', icone: '▦', base: true, ordemAdocao: 2,
+      id: 'planejamento', categoria: 'planejamento', titulo: 'Arquitetura e planejamento', icone: '▦', base: true, ordemAdocao: 2,
       gatilhos: ['arquitetura', 'planejamento', 'plano', 'mvp', 'produto', 'requisito', 'prd', 'roadmap', 'lancamento', 'saas', 'sistema', 'plataforma', 'startup'],
       motivo: 'Estruture requisitos, arquitetura e backlog antes de escrever código.',
       skills: ['bmad-method', 'superpowers', 'planning-with-files', 'pm-skills', 'spec-kit', 'claude-task-master']
     },
     {
-      titulo: 'Documentação', icone: '▤', base: true, ordemAdocao: 3,
+      id: 'documentacao', categoria: 'documentacao', titulo: 'Documentação', icone: '▤', base: false, ordemAdocao: 3,
       gatilhos: ['documenta', 'docs', 'readme', 'spec', 'biblioteca', 'framework', 'manual', 'diagrama', 'onboarding', 'obsidian', 'notas', 'mapa'],
       motivo: 'Docs atualizadas das dependências e specs geradas por fase do projeto.',
       skills: ['context7', 'archify', 'graphify', 'obsidian-skills', 'anthropic-skills', 'spec-kit']
     },
     {
-      titulo: 'Programação e revisão de código', icone: '⌘', base: true, ordemAdocao: 4,
+      id: 'programacao', categoria: 'programacao', titulo: 'Programação e revisão de código', icone: '⌘', base: true, ordemAdocao: 4,
       gatilhos: ['codigo', 'revisao', 'refator', 'qualidade', 'backend', 'frontend', 'api', 'microservi'],
-      motivo: 'Revisores especialistas encontram problemas antes do merge.',
+      motivo: 'Apoia decisões de implementação e revisões com foco no contexto e na qualidade do código.',
       skills: ['wshobson-agents', 'ponytail', 'addy-agent-skills', 'ecc', 'mattpocock-skills', 'awesome-cc-subagents', 'superclaude']
     },
     {
-      titulo: 'Testes e depuração', icone: '✓', base: true, ordemAdocao: 5,
+      id: 'testes', categoria: 'testes', titulo: 'Testes e depuração', icone: '✓', base: true, ordemAdocao: 5,
       gatilhos: ['teste', 'tdd', 'bug', 'depura', 'qualidade', 'ci', 'cobertura', 'navegador', 'e2e', 'performance'],
-      motivo: 'Disciplina de testes imposta por ferramenta, não por lembrete.',
+      motivo: 'Encontra regressões, investiga falhas e ajuda a validar mudanças antes de publicar.',
       skills: ['tdd-guard', 'chrome-devtools-mcp', 'addy-agent-skills', 'superpowers', 'trailofbits-skills']
     },
     {
-      titulo: 'Segurança e auditoria', icone: '◉', base: true, ordemAdocao: 6,
-      gatilhos: ['seguranca', 'auth', 'login', 'pagamento', 'lgpd', 'senha', 'upload', 'api', 'banco', 'dados sensiveis', 'vulnerab', 'auditoria'],
-      motivo: 'Auditoria automática de vulnerabilidades em cada mudança.',
+      id: 'seguranca', categoria: 'seguranca', titulo: 'Segurança e auditoria', icone: '◉', base: false, ordemAdocao: 6,
+      gatilhos: ['seguranca', 'auth', 'login', 'autenticacao', 'pagamento', 'lgpd', 'senha', 'upload', 'dados pessoais', 'dados sensiveis', 'vulnerab', 'auditoria'],
+      motivo: 'Reforça revisão de código, autenticação, dependências e fluxos com dados sensíveis.',
       skills: ['cc-security-review', 'trailofbits-skills', 'skillspector', 'ecc', 'wshobson-agents']
     },
     {
-      titulo: 'Múltiplos agentes e orquestração', icone: '⬡', base: true, ordemAdocao: 7,
-      gatilhos: ['agente', 'paralel', 'orquestr', 'swarm', 'equipe', 'time', 'migra', 'escala'],
-      motivo: 'Divida o trabalho entre agentes especializados rodando em paralelo.',
+      id: 'multiagentes', categoria: 'multiagentes', titulo: 'Múltiplos agentes e orquestração', icone: '⬡', base: false, ordemAdocao: 7,
+      gatilhos: ['multiagente', 'subagente', 'paralel', 'orquestr', 'swarm', 'agentes especializados'],
+      motivo: 'Coordena especialistas em tarefas paralelas, com papéis e entregas mais definidos.',
       skills: ['ruflo', 'ecc', 'wshobson-agents', 'awesome-cc-subagents']
     },
     {
-      titulo: 'Interface, UX e design', icone: '◐', base: false, ordemAdocao: 8,
+      id: 'design', categoria: 'design', titulo: 'Interface, UX e design', icone: '◐', base: false, ordemAdocao: 8,
       gatilhos: ['frontend', 'front-end', 'ui', 'ux', 'design', 'figma', 'tela', 'interface', 'mobile', 'app', 'react', 'vue', 'angular', 'landing', 'site', 'visual'],
       motivo: 'Do Figma ao código fiel, com revisão de design automatizada.',
       skills: ['figma-context-mcp', 'ui-ux-pro-max', 'taste-skill', 'oneredoak-workflows', 'agency-agents']
     },
     {
-      titulo: 'Automação e integrações', icone: '⚙', base: false, ordemAdocao: 9,
+      id: 'automacao', categoria: 'automacao', titulo: 'Automação e integrações', icone: '⚙', base: false, ordemAdocao: 9,
       gatilhos: ['integra', 'automa', 'webhook', 'n8n', 'workflow', 'crm', 'zapier', 'api', 'stripe', 'pagamento', 'github', 'pull request'],
       motivo: 'Automatize processos e use as skills oficiais dos serviços que você integra.',
       skills: ['n8n-mcp', 'github-mcp-server', 'claude-plugins-official', 'awesome-agent-skills', 'claude-code-templates']
     },
     {
-      titulo: 'Pesquisa e análise de dados', icone: '◈', base: false, ordemAdocao: 10,
+      id: 'pesquisa', categoria: 'pesquisa', titulo: 'Pesquisa e análise de dados', icone: '◈', base: false, ordemAdocao: 10,
       gatilhos: ['dados', 'analise', 'rag', 'busca', 'dashboard', 'relatorio', 'pdf', 'ia', 'llm', 'machine learning', 'bi', 'pesquisa', 'tendencia', 'concorren', 'mercado'],
       motivo: 'Pesquisa do que está acontecendo agora, padrões prontos de RAG e análise de documentos.',
       skills: ['claude-cookbooks', 'last30days', 'scientific-agent-skills', 'claude-financial-services', 'claude-context', 'awesome-claude-code']
     },
     {
-      titulo: 'Pesquisa acadêmica', icone: '🎓', base: false, ordemAdocao: 11,
+      id: 'academica', categoria: 'pesquisa', titulo: 'Pesquisa acadêmica', icone: '🎓', base: false, ordemAdocao: 11,
       gatilhos: ['academic', 'cientific', 'ciencia', 'tcc', 'monografia', 'dissertacao', 'tese', 'mestrado', 'doutorado', 'revisao de literatura', 'citac', 'bibliograf'],
       motivo: 'Estrutura guiada, referências conferidas na fonte e acesso a bases científicas.',
       skills: ['academic-research-skills', 'scientific-agent-skills', 'obsidian-skills']
     },
     {
-      titulo: 'Criação e melhoria de prompts', icone: '❝', base: false, ordemAdocao: 12,
+      id: 'prompts', categoria: 'prompts', titulo: 'Criação e melhoria de prompts', icone: '❝', base: false, ordemAdocao: 12,
       gatilhos: ['prompt', 'ia', 'llm', 'chatbot', 'assistente', 'gpt', 'claude api', 'agente de ia', 'tdah'],
       motivo: 'Prompts em produção merecem engenharia, não tentativa e erro.',
       skills: ['prompt-eng-tutorial', 'i-have-adhd', 'caveman', 'superclaude']
     },
     {
-      titulo: 'Escrita e comunicação', icone: '✎', base: false, ordemAdocao: 13,
+      id: 'escrita', categoria: 'escrita', titulo: 'Escrita e comunicação', icone: '✎', base: false, ordemAdocao: 13,
       gatilhos: ['escrita', 'conteudo', 'marketing', 'relatorio', 'documento', 'apresentacao', 'blog', 'email', 'proposta', 'texto', 'redacao', 'copy', 'seo', 'vendas'],
       motivo: 'Documentos e conteúdo profissionais gerados como arquivos reais.',
       skills: ['knowledge-work-plugins', 'humanizer', 'anthropic-skills', 'marketingskills', 'obsidian-skills', 'academic-research-skills', 'alireza-claude-skills']
     }
   ];
 
-  var MAX_PRIMARIAS = 5;
+  var MAX_PRIMARIAS = 4;
 
   // Gatilhos casam no INÍCIO de uma palavra, nunca no meio: assim "integra"
   // encontra "integrações" mas "ci" não dispara dentro de "preciso".
@@ -808,46 +808,183 @@
     return cacheGatilho[gatilho].test(texto);
   }
 
-  function recomendar(textoProjeto) {
-    var texto = normalizar(textoProjeto);
-    var pareceSoftware = AREAS_RECOMENDACAO.some(function (a) {
-      return a.gatilhos.some(function (g) { return casaGatilho(texto, g); });
-    });
-
-    var grupos = [];
-    AREAS_RECOMENDACAO.forEach(function (area) {
-      var acertos = area.gatilhos.filter(function (g) { return casaGatilho(texto, g); });
-      if (!acertos.length && !(area.base && pareceSoftware)) return;
-      var skills = area.skills
-        .map(function (id) { return SKILLS.find(function (s) { return s.id === id; }); })
-        .filter(Boolean).slice(0, 3);
-      if (!skills.length) return;
-      grupos.push({
-        area: area, acertos: acertos, skills: skills,
-        // menções explícitas pesam mais que a inclusão por ser área-base
-        pontos: acertos.length * 2 + (area.base ? 1 : 0)
-      });
-    });
-
-    grupos.sort(function (a, b) {
-      return b.pontos - a.pontos || a.area.ordemAdocao - b.area.ordemAdocao;
-    });
-
-    var comAcerto = grupos.filter(function (g) { return g.acertos.length; });
-    var primarias = (comAcerto.length ? comAcerto : grupos).slice(0, MAX_PRIMARIAS);
-    var secundarias = grupos.filter(function (g) { return primarias.indexOf(g) === -1; });
-    return { pareceSoftware: pareceSoftware, primarias: primarias, secundarias: secundarias, todos: grupos };
+  var cacheTermo = {};
+  function casaTermo(texto, termo) {
+    if (!cacheTermo[termo]) {
+      cacheTermo[termo] = new RegExp('(^|[^a-z0-9])' + termo.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?=$|[^a-z0-9])');
+    }
+    return cacheTermo[termo].test(texto);
   }
 
-  function itemSkillHtml(s) {
+  function contemAlgumTermo(texto, termos) {
+    return termos.some(function (termo) { return casaTermo(texto, normalizar(termo)); });
+  }
+
+  // Sinônimos conectam descrições naturais a perfis e tags já presentes no catálogo.
+  var SINAIS_PROJETO = [
+    { label: 'SaaS', termos: ['saas'], areas: ['planejamento', 'programacao'], perfis: ['saas'], tags: ['produto'] },
+    { label: 'MVP / produto novo', termos: ['mvp', 'prototipo', 'startup', 'validar a ideia'], areas: ['planejamento'], perfis: ['mvp', 'startup', 'planejamento'], tags: ['prd', 'arquitetura'] },
+    { label: 'Interface web', termos: ['frontend', 'front-end', 'front end', 'site', 'website', 'web', 'pagina web', 'webapp', 'react', 'vue', 'angular', 'figma', 'interface'], areas: ['design', 'programacao', 'testes'], perfis: ['frontend', 'design'], tags: ['ui', 'ux', 'figma'] },
+    { label: 'Aplicativo mobile', termos: ['mobile', 'celular', 'ios', 'android', 'react native', 'flutter', 'aplicativo', 'app'], areas: ['design', 'programacao', 'testes'], perfis: ['mobile', 'frontend', 'design'], tags: ['ui', 'ux'] },
+    { label: 'Backend', termos: ['backend', 'back-end', 'back end', 'servidor', 'node.js', 'node', 'python', 'fastapi', 'django', '.net', 'java', 'php', 'laravel', 'express', 'nestjs', 'fastify'], areas: ['programacao', 'testes'], perfis: ['backend'], tags: ['api'] },
+    { label: 'API', termos: ['api', 'rest', 'graphql', 'endpoint'], areas: ['programacao', 'automacao'], perfis: ['api', 'backend', 'integracao'], tags: ['api', 'integracao'] },
+    { label: 'Banco de dados', termos: ['banco de dados', 'postgresql', 'postgres', 'mysql', 'mongodb', 'redis', 'supabase', 'firebase', 'sql'], areas: ['programacao'], perfis: ['backend'], tags: ['database'] },
+    { label: 'Testes e qualidade', termos: ['teste', 'testes', 'tdd', 'e2e', 'pytest', 'vitest', 'playwright', 'cypress', 'ci/cd', 'cobertura'], areas: ['testes'], perfis: ['testes', 'qualidade'], tags: ['tdd', 'qualidade'] },
+    { label: 'Bug ou erro', termos: ['bug', 'erro', 'falha', 'crash', 'excecao', 'depurar', 'debug', 'corrigir problema'], areas: ['testes', 'programacao'], perfis: ['qualidade', 'revisao'], tags: ['depuracao', 'code-review'] },
+    { label: 'Performance', termos: ['performance', 'lentidao', 'lento', 'latencia', 'timeout', 'demora', 'escalabilidade'], areas: ['testes', 'programacao'], perfis: ['qualidade', 'backend'], tags: ['performance'] },
+    { label: 'Segurança e acesso', termos: ['seguranca', 'autenticacao', 'auth', 'login', 'senha', 'permissao', 'lgpd', 'dados pessoais', 'dados sensiveis', 'vulnerabilidade', 'pentest', 'pagamento'], areas: ['seguranca'], perfis: ['seguranca', 'auditoria'], tags: ['seguranca', 'auditoria'] },
+    { label: 'Integrações', termos: ['integracao', 'integrar', 'webhook', 'stripe', 'slack', 'crm', 'zapier', 'servicos externos'], areas: ['automacao', 'programacao'], perfis: ['integracao', 'api'], tags: ['integracao', 'mcp'] },
+    { label: 'Automação', termos: ['automacao', 'automatizar', 'n8n', 'workflow', 'fluxo automatico', 'tarefa repetitiva', 'processo manual', 'no-code'], areas: ['automacao'], perfis: ['automacao', 'integracao', 'no-code'], tags: ['workflows', 'n8n'] },
+    { label: 'Projeto grande ou legado', termos: ['monorepo', 'legado', 'codebase', 'codigo existente', 'projeto grande', 'repositorio grande', 'muitos arquivos', 'refatoracao'], areas: ['contexto', 'documentacao', 'planejamento'], perfis: ['contexto', 'legado', 'monorepo', 'documentacao'], tags: ['codebase', 'contexto', 'busca-semantica'] },
+    { label: 'Contexto e custo', termos: ['contexto', 'tokens', 'custo', 'economizar', 'memoria', 'esquecendo', 'retomar sessao', 'limite de uso'], areas: ['contexto'], perfis: ['contexto', 'custo', 'produtividade'], tags: ['contexto', 'custo', 'memoria'] },
+    { label: 'Documentação', termos: ['documentacao', 'documentar', 'readme', 'manual', 'onboarding', 'diagramas', 'especificacao tecnica'], areas: ['documentacao'], perfis: ['documentacao'], tags: ['docs-atualizadas', 'documentacao'] },
+    { label: 'Múltiplos agentes', termos: ['multiagente', 'subagente', 'swarm', 'orquestracao', 'paralelo', 'agentes especializados'], areas: ['multiagentes'], perfis: ['multiagentes', 'time'], tags: ['subagentes', 'orquestracao'] },
+    { label: 'Dados e IA', termos: ['dados', 'analise de dados', 'dashboard', 'machine learning', 'inteligencia artificial', 'ia generativa', 'llm', 'rag', 'embeddings', 'bi'], areas: ['pesquisa', 'prompts'], perfis: ['dados', 'ia', 'pesquisa'], tags: ['rag', 'embeddings', 'tool-use'] },
+    { label: 'Pesquisa', termos: ['pesquisa', 'pesquisar', 'fontes', 'artigos recentes', 'tendencias', 'mercado', 'concorrentes'], areas: ['pesquisa'], perfis: ['pesquisa'], tags: ['pesquisa', 'curadoria'] },
+    { label: 'Pesquisa acadêmica', termos: ['tcc', 'monografia', 'dissertacao', 'tese', 'mestrado', 'doutorado', 'artigo cientifico', 'revisao de literatura', 'citacoes', 'bibliografia', 'academico', 'cientifico'], areas: ['academica', 'pesquisa', 'escrita'], perfis: ['academico', 'pesquisa', 'conteudo'], tags: ['academico', 'citacoes'] },
+    { label: 'Conteúdo e marketing', termos: ['conteudo', 'marketing', 'blog', 'copywriting', 'seo', 'vendas', 'newsletter', 'redacao'], areas: ['escrita', 'planejamento'], perfis: ['conteudo', 'marketing', 'produto'], tags: ['marketing', 'copywriting'] },
+    { label: 'Escrita e documentos', termos: ['escrever', 'escrita', 'relatorio', 'apresentacao', 'proposta', 'documento', 'email', 'texto'], areas: ['escrita'], perfis: ['conteudo', 'escritorio'], tags: ['docx', 'pptx', 'pdf'] }
+  ];
+
+  var ROTULOS_PERFIL = {
+    saas: 'SaaS', frontend: 'frontend', backend: 'backend', api: 'API', mobile: 'mobile', design: 'design',
+    mvp: 'MVP', startup: 'produto novo', planejamento: 'planejamento', testes: 'testes', qualidade: 'qualidade',
+    revisao: 'revisão de código', seguranca: 'segurança', auditoria: 'auditoria', integracao: 'integrações',
+    automacao: 'automação', 'no-code': 'no-code', dados: 'dados', ia: 'IA', pesquisa: 'pesquisa',
+    academico: 'pesquisa acadêmica', conteudo: 'conteúdo', escritorio: 'documentos', contexto: 'contexto',
+    custo: 'custo e tokens', produtividade: 'produtividade', legado: 'código legado', monorepo: 'monorepo',
+    documentacao: 'documentação', multiagentes: 'múltiplos agentes', time: 'equipe'
+  };
+
+  var TERMOS_SOFTWARE = ['software', 'saas', 'sistema', 'site', 'website', 'webapp', 'aplicativo', 'app', 'mobile', 'frontend', 'front-end', 'front end', 'backend', 'back-end', 'back end', 'api', 'codigo', 'programacao', 'desenvolver', 'desenvolvendo', 'desenvolvimento', 'aplicacao', 'repositorio', 'node.js', 'node', 'python', 'javascript', 'typescript', 'java', 'c#', '.net', 'docker', 'react', 'vue', 'banco de dados'];
+  var TERMOS_STACK = [
+    { nome: 'React Native', termos: ['react native'] }, { nome: 'Next.js', termos: ['next.js', 'nextjs'] },
+    { nome: 'Node.js', termos: ['node.js', 'nodejs'] }, { nome: 'PostgreSQL', termos: ['postgresql', 'postgres'] },
+    { nome: 'Spring Boot', termos: ['spring boot'] }, { nome: 'FastAPI', termos: ['fastapi'] },
+    { nome: '.NET', termos: ['.net', 'dotnet'] }, { nome: 'Playwright', termos: ['playwright'] },
+    { nome: 'TypeScript', termos: ['typescript'] }, { nome: 'JavaScript', termos: ['javascript'] },
+    { nome: 'Angular', termos: ['angular'] }, { nome: 'Supabase', termos: ['supabase'] },
+    { nome: 'MongoDB', termos: ['mongodb'] }, { nome: 'Firebase', termos: ['firebase'] },
+    { nome: 'Python', termos: ['python'] }, { nome: 'Django', termos: ['django'] },
+    { nome: 'Flutter', termos: ['flutter'] }, { nome: 'React', termos: ['react'] },
+    { nome: 'Vue', termos: ['vue'] }, { nome: 'Svelte', termos: ['svelte'] },
+    { nome: 'Docker', termos: ['docker'] }, { nome: 'AWS', termos: ['aws'] },
+    { nome: 'Azure', termos: ['azure'] }, { nome: 'n8n', termos: ['n8n'] },
+    { nome: 'Figma', termos: ['figma'] }, { nome: 'Java', termos: ['java'] }, { nome: 'Go', termos: ['golang'] }
+  ];
+  var TERMOS_FASE = [
+    { rotulo: 'MVP / protótipo', termos: ['mvp', 'prototipo', 'prova de conceito'] },
+    { rotulo: 'Ideação', termos: ['ideia', 'definir produto', 'validar a ideia', 'ainda nao comecei'] },
+    { rotulo: 'Em desenvolvimento', termos: ['desenvolvendo', 'desenvolvimento', 'construindo', 'implementando', 'criando'] },
+    { rotulo: 'Em produção', termos: ['em producao', 'ja esta no ar', 'usuarios ativos', 'aplicacao existente', 'manutencao', 'corrigir'] }
+  ];
+
+  function analisarProjeto(textoProjeto) {
+    var texto = normalizar(textoProjeto);
+    var sinais = SINAIS_PROJETO.filter(function (sinal) {
+      return contemAlgumTermo(texto, sinal.termos);
+    });
+    var perfis = Object.create(null);
+    var tags = Object.create(null);
+    sinais.forEach(function (sinal) {
+      sinal.perfis.forEach(function (perfil) { perfis[perfil] = true; });
+      sinal.tags.forEach(function (tag) { tags[normalizar(tag).replace(/-/g, ' ')] = true; });
+    });
+    var fase = TERMOS_FASE.filter(function (item) {
+      return contemAlgumTermo(texto, item.termos);
+    })[0];
+    var stack = TERMOS_STACK.filter(function (item) {
+      return contemAlgumTermo(texto, item.termos);
+    }).map(function (item) { return item.nome; }).slice(0, 5);
+    var pareceSoftware = contemAlgumTermo(texto, TERMOS_SOFTWARE);
+    if (fase && fase.rotulo === 'Ideação') perfis.planejamento = true;
+    if (fase && fase.rotulo === 'MVP / protótipo') { perfis.planejamento = true; perfis.mvp = true; }
+    return { texto: texto, sinais: sinais, perfis: perfis, tags: tags, fase: fase ? fase.rotulo : '', stack: stack, pareceSoftware: pareceSoftware };
+  }
+
+  function rankearSkills(area, perfis, tags) {
+    return area.skills.map(function (id, indice) {
+      var skill = SKILLS.find(function (item) { return item.id === id; });
+      if (!skill) return null;
+      var pontos = 0;
+      (skill.recomendadoPara || []).forEach(function (perfil) { if (perfis[perfil]) pontos += 6; });
+      (skill.tags || []).forEach(function (tag) { if (tags[normalizar(tag).replace(/-/g, ' ')]) pontos += 3; });
+      if ((skill.categorias || []).indexOf(area.categoria) !== -1) pontos += 1;
+      return { skill: skill, pontos: pontos, indice: indice };
+    }).filter(Boolean).sort(function (a, b) { return b.pontos - a.pontos || a.indice - b.indice; });
+  }
+
+  function recomendar(textoProjeto) {
+    var contexto = analisarProjeto(textoProjeto);
+    var grupos = [];
+    AREAS_RECOMENDACAO.forEach(function (area) {
+      var sinais = contexto.sinais.filter(function (sinal) { return sinal.areas.indexOf(area.id) !== -1; });
+      var acertos = area.gatilhos.filter(function (g) { return casaGatilho(contexto.texto, g); });
+      if (!sinais.length && !acertos.length && !(area.base && contexto.pareceSoftware)) return;
+      var perfis = Object.create(null);
+      var tags = Object.create(null);
+      sinais.forEach(function (sinal) {
+        sinal.perfis.forEach(function (perfil) { perfis[perfil] = true; });
+        sinal.tags.forEach(function (tag) { tags[normalizar(tag).replace(/-/g, ' ')] = true; });
+      });
+      if (area.base && contexto.pareceSoftware) perfis[area.id] = true;
+      var rotulos = sinais.map(function (sinal) { return sinal.label; });
+      rotulos = rotulos.filter(function (rotulo, indice) { return rotulos.indexOf(rotulo) === indice; });
+      grupos.push({ area: area, sinais: sinais, acertos: rotulos, mencaoDireta: acertos.length > 0,
+        baseIncluida: area.base && contexto.pareceSoftware, perfis: perfis, tags: tags, skills: [],
+        pontos: sinais.length * 3 + acertos.length + (area.base && contexto.pareceSoftware ? 1 : 0) });
+    });
+    grupos.sort(function (a, b) { return b.pontos - a.pontos || a.area.ordemAdocao - b.area.ordemAdocao; });
+    var usados = Object.create(null);
+    grupos.forEach(function (grupo) {
+      rankearSkills(grupo.area, grupo.perfis, grupo.tags).forEach(function (item) {
+        if (grupo.skills.length >= 3 || usados[item.skill.id]) return;
+        usados[item.skill.id] = true;
+        grupo.skills.push(item.skill);
+      });
+    });
+    grupos = grupos.filter(function (grupo) { return grupo.skills.length > 0; });
+    return { contexto: contexto, pareceSoftware: contexto.pareceSoftware,
+      primarias: grupos.slice(0, MAX_PRIMARIAS), secundarias: grupos.slice(MAX_PRIMARIAS), todos: grupos };
+  }
+
+  var ROTULOS_PERFIL = {
+    saas: 'SaaS', frontend: 'frontend', backend: 'backend', api: 'API', mobile: 'mobile', design: 'design',
+    mvp: 'MVP', startup: 'produto novo', planejamento: 'planejamento', testes: 'testes', qualidade: 'qualidade',
+    revisao: 'revisão de código', seguranca: 'segurança', auditoria: 'auditoria', integracao: 'integrações',
+    automacao: 'automação', 'no-code': 'no-code', dados: 'dados', ia: 'IA', pesquisa: 'pesquisa',
+    academico: 'pesquisa acadêmica', conteudo: 'conteúdo', escritorio: 'documentos', contexto: 'contexto',
+    custo: 'custo e tokens', produtividade: 'produtividade', legado: 'código legado', monorepo: 'monorepo',
+    documentacao: 'documentação', multiagentes: 'múltiplos agentes', time: 'equipe'
+  };
+
+  function encaixeSkill(skill, grupo) {
+    var saida = [];
+    (skill.recomendadoPara || []).forEach(function (perfil) {
+      if (grupo.perfis[perfil]) saida.push(ROTULOS_PERFIL[perfil] || perfil.replace(/-/g, ' '));
+    });
+    grupo.sinais.forEach(function (sinal) {
+      if (sinal.tags.some(function (tag) {
+        return (skill.tags || []).map(function (item) { return normalizar(item).replace(/-/g, ' '); })
+          .indexOf(normalizar(tag).replace(/-/g, ' ')) !== -1;
+      })) saida.push(sinal.label);
+    });
+    return saida.filter(function (item, indice) { return saida.indexOf(item) === indice; }).slice(0, 3);
+  }
+
+  function itemSkillHtml(s, grupo) {
+    var encaixe = encaixeSkill(s, grupo);
     return '<li class="rec-item">' +
       '<span class="rec-item-nome">' + escapeHtml(s.nome) + '</span>' +
       '<span class="card-stats"><span class="stat-estrelas">★ ' + formatarEstrelas(s.stars) + '</span></span>' +
       '<span class="rec-item-acoes">' +
-        '<button type="button" class="btn-acao" data-copiar-prompt="' + escapeHtml(s.id) + '">Copiar prompt</button>' +
+        '<button type="button" class="btn-acao" data-copiar-prompt="' + escapeHtml(s.id) + '" data-prompt-contexto="recomendacao">Copiar prompt personalizado</button>' +
         '<button type="button" class="btn-acao principal" data-detalhes="' + escapeHtml(s.id) + '">Detalhes</button>' +
       '</span>' +
       '<span class="rec-item-desc">' + escapeHtml(s.paraQueServe) + '</span>' +
+      '<span class="rec-encaixe">' + (encaixe.length
+        ? 'Encaixe com: ' + escapeHtml(encaixe.join(' · '))
+        : 'Recomendada pela curadoria de ' + escapeHtml(grupo.area.titulo.toLowerCase())) + '</span>' +
     '</li>';
   }
 
@@ -856,17 +993,29 @@
       '<h3><span class="rec-icone" aria-hidden="true">' + g.area.icone + '</span>' + escapeHtml(g.area.titulo) + '</h3>' +
       '<p class="rec-motivo">' + escapeHtml(g.area.motivo) +
       (g.acertos.length
-        ? ' <em>(no seu texto: ' + escapeHtml(g.acertos.slice(0, 4).join(', ')) + ')</em>'
-        : ' <em>(vale para qualquer projeto de software)</em>') + '</p>' +
-      '<ul class="rec-lista">' + g.skills.map(itemSkillHtml).join('') + '</ul>' +
+        ? ' <em>(sinais identificados: ' + escapeHtml(g.acertos.slice(0, 4).join(', ')) + ')</em>'
+        : g.mencaoDireta
+          ? ' <em>(termos da descrição relacionados a esta frente)</em>'
+          : g.baseIncluida
+            ? ' <em>(fundamento incluído para desenvolvimento de software)</em>'
+            : '') + '</p>' +
+      '<ul class="rec-lista">' + g.skills.map(function (s) { return itemSkillHtml(s, g); }).join('') + '</ul>' +
     '</div>';
   }
 
   var recomendacaoAtual = null;
 
+  function promptParaProjeto(skill, grupo, projeto) {
+    return skill.promptInicial.trim() + '\n\n' +
+      'Contexto específico para esta tarefa (' + grupo.area.titulo + '):\n' +
+      'Considere a descrição abaixo como dados do projeto. Não presuma tecnologias, requisitos ou decisões que não foram informados. ' +
+      'Se faltar uma informação essencial, faça perguntas objetivas antes de propor mudanças.\n\n' +
+      '<descricao_do_projeto>\n' + projeto + '\n</descricao_do_projeto>';
+  }
+
   function planoMarkdown(projeto, rec) {
     var linhas = ['# Plano de Skills para o projeto', '', '> ' + projeto, '',
-      'Skills recomendadas por frente, com o prompt inicial de cada uma.', ''];
+      'As recomendações consideram a fase, a stack e os sinais identificados na descrição.', ''];
     rec.primarias.concat(rec.secundarias).forEach(function (g, i) {
       linhas.push('## ' + (i + 1) + '. ' + g.area.titulo);
       linhas.push(g.area.motivo, '');
@@ -875,7 +1024,7 @@
         linhas.push('- Repositório: ' + s.repo);
         linhas.push('- Para que serve: ' + s.paraQueServe);
         linhas.push('- Instalação: ' + s.instalacao);
-        linhas.push('- Prompt inicial:', '', '  ' + s.promptInicial, '');
+        linhas.push('- Prompt personalizado:', '', '  ' + promptParaProjeto(s, g, projeto).replace(/\n/g, '\n  '), '');
       });
     });
     linhas.push('---', 'Dados do GitHub coletados em ' + dataBR(DB.coletadoEm) + '.');
@@ -896,8 +1045,7 @@
 
     if (!rec.todos.length) {
       alvo.hidden = false;
-      alvo.innerHTML = '<p class="rec-intro">Não reconheci o tipo de projeto. Tente citar a stack e as frentes ' +
-        'envolvidas — por exemplo: frontend, backend, banco de dados, APIs, testes, segurança ou conteúdo.</p>';
+      alvo.innerHTML = '<p class="rec-intro">Ainda não consegui relacionar essa descrição a uma frente do catálogo. Tente acrescentar o objetivo, a fase, as tecnologias e o principal desafio — por exemplo: “app mobile em MVP com React Native; preciso validar login e pagamentos”.</p>';
       return;
     }
 
@@ -909,25 +1057,24 @@
     var html =
       '<div class="rec-intro">' +
         '<p><strong>' + rec.primarias.length + ' frentes prioritárias</strong> para este projeto' +
-        (rec.secundarias.length ? ' e mais ' + rec.secundarias.length + ' relevantes.' : '.') +
-        ' Copie o prompt inicial de cada skill e cole no Claude.</p>' +
-      '</div>' +
+        (rec.secundarias.length ? ' e ' + rec.secundarias.length + ' complementares.' : '.') +
+        ' As skills foram ordenadas pelos perfis, tags e categorias do catálogo.</p>' +
+      '</div>' + entendimentoHtml(rec) +
       '<ol class="rec-plano">' +
         plano.map(function (g) {
           return '<li><span class="passo-titulo">' + escapeHtml(g.area.titulo) + '</span>' +
             '<span class="passo-skill">' + escapeHtml(g.skills[0].nome) + '</span></li>';
         }).join('') +
       '</ol>' +
-      '<p class="rec-plano-nota">Ordem sugerida de adoção: contexto e documentação primeiro, ' +
-      'porque melhoram a qualidade de tudo o que vem depois.</p>' +
+      '<p class="rec-plano-nota">Ajuste a descrição e gere novamente para recalcular as prioridades. Os prompts copiados já incluem o contexto deste projeto.</p>' +
       '<div class="rec-acoes-topo">' +
         '<button type="button" class="btn btn-primario" id="btn-copiar-plano">Copiar plano completo (Markdown)</button>' +
-        '<button type="button" class="btn btn-fantasma" id="btn-copiar-prompts">Copiar só os prompts</button>' +
+        '<button type="button" class="btn btn-fantasma" id="btn-copiar-prompts">Copiar prompts personalizados</button>' +
       '</div>' +
       rec.primarias.map(grupoHtml).join('');
 
     if (rec.secundarias.length) {
-      html += '<details class="rec-secundarias"><summary>Também relevantes para este projeto (' +
+      html += '<details class="rec-secundarias"><summary>Frentes complementares (' +
         rec.secundarias.length + ')</summary>' + rec.secundarias.map(grupoHtml).join('') + '</details>';
     }
 
@@ -940,11 +1087,35 @@
   $('#campo-projeto').addEventListener('keydown', function (e) {
     if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) renderRecomendacao();
   });
-  $('#btn-exemplo').addEventListener('click', function () {
-    $('#campo-projeto').value =
-      'Estou desenvolvendo um sistema SaaS com frontend, backend, banco de dados e integrações com APIs.';
-    renderRecomendacao();
+  $('#campo-projeto').addEventListener('input', function () {
+    recomendacaoAtual = null;
+    $('#resultado-recomendacao').hidden = true;
   });
+  $$('[data-exemplo-projeto]').forEach(function (botao) {
+    botao.addEventListener('click', function () {
+      $('#campo-projeto').value = botao.dataset.exemploProjeto;
+      recomendacaoAtual = null;
+      $('#resultado-recomendacao').hidden = true;
+      $('#campo-projeto').focus();
+    });
+  });
+
+  function grupoDaSkill(rec, id) {
+    return rec.primarias.concat(rec.secundarias).filter(function (grupo) {
+      return grupo.skills.some(function (skill) { return skill.id === id; });
+    })[0];
+  }
+
+  function entendimentoHtml(rec) {
+    var itens = rec.contexto.sinais.map(function (sinal) { return sinal.label; });
+    if (rec.contexto.pareceSoftware && !itens.length) itens.push('Projeto de software');
+    if (rec.contexto.fase) itens.push(rec.contexto.fase);
+    rec.contexto.stack.forEach(function (nome) { itens.push(nome); });
+    itens = itens.filter(function (item, indice) { return itens.indexOf(item) === indice; }).slice(0, 7);
+    if (!itens.length) return '';
+    return '<div class="rec-entendimento"><span class="rec-entendimento-label">O que entendi:</span>' +
+      itens.map(function (item) { return '<span class="rec-sinal">' + escapeHtml(item) + '</span>'; }).join('') + '</div>';
+  }
 
   /* ---------- delegação de eventos global ---------- */
 
@@ -955,7 +1126,14 @@
 
     if ((alvo = e.target.closest('[data-copiar-prompt]'))) {
       var s1 = acharSkill(alvo.dataset.copiarPrompt);
-      if (s1) copiarTexto(s1.promptInicial, alvo, 'Prompt copiado — cole no Claude para começar');
+      if (s1) {
+        var grupoPrompt = alvo.dataset.promptContexto === 'recomendacao' && recomendacaoAtual
+          ? grupoDaSkill(recomendacaoAtual.rec, s1.id) : null;
+        var textoPrompt = grupoPrompt
+          ? promptParaProjeto(s1, grupoPrompt, recomendacaoAtual.projeto)
+          : s1.promptInicial;
+        copiarTexto(textoPrompt, alvo, grupoPrompt ? 'Prompt personalizado copiado' : 'Prompt copiado — cole no Claude para começar');
+      }
       return;
     }
     if ((alvo = e.target.closest('[data-copiar-instalacao]'))) {
@@ -994,7 +1172,7 @@
           g.skills.forEach(function (s) {
             if (vistos[s.id]) return;
             vistos[s.id] = true;
-            prompts.push('— ' + s.nome + ' —\n' + s.promptInicial);
+            prompts.push('— ' + s.nome + ' —\n' + promptParaProjeto(s, g, recomendacaoAtual.projeto));
           });
         });
         copiarTexto(prompts.join('\n\n'), alvo, prompts.length + ' prompts copiados');

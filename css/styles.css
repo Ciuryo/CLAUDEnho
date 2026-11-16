@@ -311,10 +311,24 @@ button { font-family: inherit; }
 
 .painel-form { margin-top: 18px; }
 
+.campo-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
+.campo-ajuda {
+  margin-bottom: 10px;
+  color: var(--tinta-2);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
 #campo-projeto {
   width: 100%;
   resize: vertical;
-  min-height: 74px;
+  min-height: 112px;
   padding: 13px 16px;
   font-family: inherit;
   font-size: 0.95rem;
@@ -323,6 +337,29 @@ button { font-family: inherit; }
   background: var(--fundo);
   border: 1px solid var(--borda-forte);
   border-radius: var(--raio);
+}
+
+#campo-projeto:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 2px;
+}
+
+.exemplos-projeto {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.exemplos-projeto-label {
+  color: var(--tinta-2);
+  font-size: 0.8rem;
+}
+
+.exemplos-projeto .btn {
+  padding: 6px 11px;
+  font-size: 0.78rem;
 }
 
 .painel-acoes {
@@ -851,6 +888,9 @@ button { font-family: inherit; }
 @media (max-width: 640px) {
   .hero { padding: 36px 0 30px; }
   .painel { padding: 20px; }
+  .exemplos-projeto { align-items: flex-start; }
+  .exemplos-projeto-label { flex-basis: 100%; }
+  #btn-recomendar { width: 100%; justify-content: center; }
   .modal-caixa { margin: 0; max-height: 100vh; border-radius: 0; padding: 22px; }
   .trilho { grid-auto-columns: 82vw; }
   .filtro select { min-width: 130px; }
@@ -884,6 +924,38 @@ button { font-family: inherit; }
 
 /* plano de adoção: a ordem aqui é informação, não decoração */
 .rec-intro p { margin: 0; }
+
+.rec-entendimento {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin: 12px 0 4px;
+}
+
+.rec-entendimento-label {
+  color: var(--tinta-2);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.rec-sinal {
+  display: inline-flex;
+  padding: 4px 9px;
+  color: var(--tinta);
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  font-size: 0.76rem;
+}
+
+.rec-motivo em { color: var(--acento); font-style: normal; }
+
+.rec-encaixe {
+  flex: 1 1 100%;
+  color: var(--acento);
+  font-size: 0.78rem;
+}
 
 .rec-plano {
   counter-reset: passo;

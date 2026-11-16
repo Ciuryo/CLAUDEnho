@@ -78,17 +78,25 @@
         <div class="painel">
           <div class="painel-cab">
             <h2>Qual projeto você está desenvolvendo?</h2>
-            <p>Descreva seu projeto e receba as skills mais adequadas para cada frente — arquitetura, revisão, segurança, testes, documentação, contexto e multiagentes — com o prompt ideal de cada uma.</p>
+            <p>Conte o que você quer construir, em que fase está e o que mais precisa resolver. A recomendação considera sua stack e as necessidades descritas.</p>
           </div>
           <div class="painel-form">
-            <textarea id="campo-projeto" rows="3"
-              placeholder="Ex.: Estou desenvolvendo um sistema SaaS com frontend, backend, banco de dados e integrações com APIs."></textarea>
+            <label class="campo-label" for="campo-projeto">Descreva seu projeto</label>
+            <p id="ajuda-projeto" class="campo-ajuda">Inclua objetivo, fase atual, tecnologias e principal desafio. A análise acontece no navegador, usando o catálogo desta página.</p>
+            <textarea id="campo-projeto" rows="4" aria-describedby="ajuda-projeto"
+              placeholder="Ex.: Estou criando um app de entregas para celular, ainda no MVP, com React Native e pagamentos. Quero validar a ideia e evitar falhas no login."></textarea>
+            <div class="exemplos-projeto" aria-label="Exemplos para começar">
+              <span class="exemplos-projeto-label">Comece por um exemplo:</span>
+              <button class="btn btn-chip" type="button" data-exemplo-projeto="Estou criando um SaaS para pequenas empresas, no MVP, com React, Node.js e PostgreSQL. Preciso definir a arquitetura, integrar pagamentos e preparar testes antes do lançamento.">SaaS no MVP</button>
+              <button class="btn btn-chip" type="button" data-exemplo-projeto="Tenho uma aplicação web em produção com React e Node.js. Alguns usuários relatam lentidão e erros no login; quero investigar a causa e reforçar a segurança.">Corrigir app em produção</button>
+              <button class="btn btn-chip" type="button" data-exemplo-projeto="Quero automatizar o recebimento de pedidos com n8n, integrar um formulário ao CRM e avisar a equipe pelo Slack quando houver uma nova venda.">Automação e integrações</button>
+              <button class="btn btn-chip" type="button" data-exemplo-projeto="Estou escrevendo meu TCC sobre inteligência artificial na educação. Preciso encontrar artigos recentes, organizar referências e estruturar a revisão de literatura.">Pesquisa acadêmica</button>
+            </div>
             <div class="painel-acoes">
-              <button id="btn-recomendar" class="btn btn-primario" type="button">Recomendar skills</button>
-              <button id="btn-exemplo" class="btn btn-fantasma" type="button">Usar exemplo</button>
+              <button id="btn-recomendar" class="btn btn-primario" type="button">Encontrar skills para meu projeto</button>
             </div>
           </div>
-          <div id="resultado-recomendacao" class="recomendacao-resultado" hidden></div>
+          <div id="resultado-recomendacao" class="recomendacao-resultado" aria-live="polite" hidden></div>
         </div>
       </div>
     </section>
