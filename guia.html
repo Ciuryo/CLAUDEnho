@@ -263,11 +263,10 @@
             </li>
             <li>
               <strong>Ligue a habilidade nas configurações</strong>
-              <p>Abra as <strong>Configurações</strong> (ícone de engrenagem) e, na seção
-              <strong>Personalizar</strong>, clique em <strong>Habilidades</strong> — é assim que as
-              Skills aparecem no Claude em português. Ali você vê as suas habilidades; use o botão
-              <strong>"Navegar"</strong> para encontrar e ativar as prontas (as de criar documentos
-              costumam já vir disponíveis).</p>
+              <p>Em <strong>Configurações</strong>, ative <strong>Code execution and file creation</strong>
+              (em alguns layouts, <em>Create and edit files</em>).
+              Depois vá a <strong>Personalizar → Habilidades</strong> e ligue as que quiser. Em contas
+              Team e Enterprise, o administrador também precisa habilitar o recurso para a organização.</p>
             </li>
             <li>
               <strong>Peça na conversa, com as suas palavras</strong>
@@ -297,10 +296,9 @@
             </li>
             <li>
               <strong>Ative a habilidade nas configurações</strong>
-              <p>Abra <strong>Configurações → Habilidades</strong> (seção <strong>Personalizar</strong>).
-              Use <strong>"Navegar"</strong> para ativar uma habilidade pronta, ou <strong>"Adicionar"</strong>
-              para trazer uma nova (veja como logo abaixo). Skills que conectam o Claude a outros
-              programas ficam perto, em <strong>Conectores</strong> ou <strong>Plugins</strong>.</p>
+              <p>Na barra lateral, abra <strong>Personalizar → Habilidades</strong> e ligue as que
+              quiser. As habilidades ativadas na sua conta também ficam disponíveis nas sessões do
+              Cowork. Para criar ou enviar uma habilidade sua, veja o passo a passo abaixo.</p>
             </li>
             <li>
               <strong>Peça na conversa</strong>
@@ -355,6 +353,40 @@
       </div>
     </section>
 
+    <section class="guia-secao guia-secao-alt">
+      <div class="container guia-largura">
+        <h2>Skills que já vêm no Claude Code</h2>
+        <p class="guia-intro">
+          Antes de instalar um plugin, veja as habilidades incluídas no Claude Code. Digite
+          <code>/</code> no início da conversa para consultar o que está disponível na sua versão.
+        </p>
+        <div class="guia-grade">
+          <article class="guia-card">
+            <h3>Resolver e revisar código</h3>
+            <p><code>/debug</code> investiga problemas em tempo de execução;
+            <code>/code-review</code> revisa alterações; <code>/batch</code> divide mudanças grandes
+            em partes que podem ser trabalhadas em paralelo.</p>
+          </article>
+          <article class="guia-card">
+            <h3>Conferir a configuração</h3>
+            <p><code>/doctor</code> procura problemas de instalação e configuração. Para revisar
+            instruções antigas ou conflitantes em <code>CLAUDE.md</code> e nas skills, use
+            <code>/doctor prompt-audit</code>.</p>
+          </article>
+          <article class="guia-card">
+            <h3>Executar e verificar o app</h3>
+            <p>Em versões recentes, <code>/run</code> abre o projeto e
+            <code>/verify</code> confere a mudança no app em execução. O Claude Code também inclui
+            <code>/claude-api</code> para orientar projetos que usam a API da Anthropic.</p>
+          </article>
+        </div>
+        <p class="uso-nota">
+          <span aria-hidden="true">ℹ️</span> A lista varia conforme a versão, o plano e o ambiente.
+          Consulte a <a href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener noreferrer">referência oficial de comandos e skills</a>.
+        </p>
+      </div>
+    </section>
+
     <section class="guia-secao">
       <div class="container guia-largura">
         <h2>Bora fazer junto: um exemplo do começo ao fim</h2>
@@ -380,8 +412,8 @@
           <li class="wt-passo">
             <span class="wt-onde claude">Agora no Claude</span>
             <p>Abra o <strong>claude.ai</strong> no navegador (ou o app no computador/celular) e faça
-            login. Só na primeira vez: vá em <strong>Configurações → Habilidades</strong> (seção
-            <strong>Personalizar</strong>) e confirme que a <strong>habilidade de criar documentos está
+            login. Só na primeira vez: vá a <strong>Personalizar → Habilidades</strong> e confirme que a
+            <strong>habilidade de criar documentos está
             ligada</strong>.</p>
           </li>
           <li class="wt-passo">
@@ -430,83 +462,81 @@
           dá para transformar isso numa habilidade e parar de repetir as instruções.
         </p>
 
-        <h3 class="guia-sub">Primeiro: qual das três formas usar?</h3>
+        <h3 class="guia-sub">Escolha como criar sua habilidade</h3>
         <p class="guia-intro">
-          Em <strong>Configurações → Habilidades</strong>, o botão <strong>"Adicionar"</strong> abre
-          três opções. Elas servem para coisas diferentes:
+          Você pode gravar um fluxo no Cowork para Mac, escrever um arquivo <code>SKILL.md</code> ou
+          enviar uma habilidade que baixou. As opções da tela mudam conforme o dispositivo e o plano.
         </p>
 
         <div class="guia-grade">
           <article class="guia-card">
-            <h3>Criar com o Claude <span class="selo-rec">comece por aqui</span></h3>
-            <p>Você <strong>descreve o que quer</strong> e o próprio Claude escreve a habilidade
-            pronta. É o caminho mais fácil se você nunca criou uma.</p>
+            <h3>Gravar um fluxo</h3>
+            <p>No Cowork para Mac, Claude observa uma tarefa e propõe uma habilidade. Disponível em
+            planos Pro, Max, Ultra e Team; não funciona no chat, no Windows, no plano Free ou no
+            Enterprise.</p>
           </article>
           <article class="guia-card">
-            <h3>Criar uma habilidade</h3>
-            <p>Você mesmo preenche três campos. Use quando já sabe exatamente as regras que quer —
-            dá mais controle sobre o texto.</p>
+            <h3>Escrever um arquivo</h3>
+            <p>Crie uma pasta com um <code>SKILL.md</code> que explique o que a habilidade faz e quando
+            deve ser usada. Você pode acrescentar exemplos, arquivos de referência e scripts.</p>
           </article>
           <article class="guia-card">
             <h3>Fazer upload de habilidade</h3>
-            <p>Para uma habilidade <strong>pronta que você baixou</strong> (de um repositório deste
-            catálogo, por exemplo). Você envia a pasta e ela entra na sua lista.</p>
+            <p>Compacte a pasta da habilidade em um arquivo ZIP e envie em
+            <strong>Personalizar → Habilidades → +</strong>. Confira a licença e revise os arquivos
+            antes de ativá-la.</p>
           </article>
         </div>
 
-        <h3 class="guia-sub">Caminho fácil: deixe o Claude escrever</h3>
+        <h3 class="guia-sub">Gravar um fluxo no Cowork para Mac</h3>
         <ol class="walkthrough">
           <li class="wt-passo">
-            <p>Em <strong>Configurações → Habilidades</strong>, clique em <strong>"Adicionar"</strong>
-            e escolha <strong>"Criar com o Claude"</strong>.</p>
+            <p>Abra o Cowork no Claude para Mac e escolha <strong>Personalizar → Habilidades →
+            Adicionar → Gravar sua tela</strong>. Também é possível iniciar em <strong>+</strong> no
+            campo de mensagem e escolher <strong>Gravar uma skill</strong>.</p>
           </li>
           <li class="wt-passo">
-            <p>Descreva, com suas palavras, o que você quer que ela faça — e quando. Algo assim:</p>
-            <div class="wt-chat">
-              <span class="wt-chat-rot" aria-hidden="true">Você escreve</span>
-              <p>Quero uma habilidade que responda e-mails de clientes no tom da minha empresa:
-              cordial, direto, sem jargão, sempre agradecendo o contato no começo.</p>
-            </div>
+            <p>Faça a tarefa como faria normalmente. Narrar por que você toma cada decisão ajuda o
+            Claude a entender o fluxo. A gravação pode durar cerca de dez minutos.</p>
           </li>
           <li class="wt-passo">
-            <p>O Claude devolve o <strong>nome</strong>, a <strong>descrição</strong> e as
-            <strong>instruções</strong> já escritas. Leia e peça ajustes se quiser ("deixe o tom mais
-            formal", "acrescente que nunca prometa prazo").</p>
+            <p>Ao terminar, Claude propõe uma skill nova ou uma atualização para uma skill existente.
+            Abra o conteúdo, revise e só então escolha <strong>Salvar</strong> ou
+            <strong>Atualizar</strong>.</p>
           </li>
           <li class="wt-passo">
-            <p>Clique em <strong>"Criar"</strong>. Pronto — ela aparece na sua lista de habilidades.</p>
+            <p>A gravação captura a tela, os cliques, o que você digita e o que fala. O vídeo e o áudio
+            não são guardados após a análise, mas capturas de tela podem ficar na tarefa do Cowork.
+            Feche telas com senhas, chaves ou dados privados antes de começar.</p>
           </li>
         </ol>
 
-        <h3 class="guia-sub">Caminho manual: você preenche os três campos</h3>
+        <h3 class="guia-sub">Criar e enviar uma pasta de skill</h3>
         <ol class="walkthrough">
           <li class="wt-passo">
-            <p>Em <strong>Configurações → Habilidades</strong>, clique em <strong>"Adicionar"</strong>
-            e escolha <strong>"Criar uma habilidade"</strong>. Abre uma janela com três campos.</p>
+            <p>Crie uma pasta com um arquivo <code>SKILL.md</code>. No início do arquivo, inclua nome e
+            descrição em YAML, que ajudam Claude a reconhecer quando usar a skill. Depois escreva as
+            instruções em Markdown.</p>
           </li>
           <li class="wt-passo">
-            <p><strong>Nome da skill</strong> — um apelido curto, sem espaços e sem acento. Serve só
-            para você identificar na lista. Ex.: <code>resposta-cliente</code>.</p>
+            <p>Mantenha cada skill focada em uma tarefa. O nome pode ter até 64 caracteres; a descrição,
+            até 200. Diga com clareza o que ela faz e em quais pedidos deve entrar.</p>
           </li>
           <li class="wt-passo">
-            <p><strong>Descrição</strong> — aqui você diz <strong>quando</strong> o Claude deve usar
-            essa habilidade sozinho. É o campo que faz ela "acordar" na hora certa, então escreva
-            pensando na situação: <em>"Use quando eu pedir para responder um cliente"</em>.</p>
+            <p>Se houver materiais extras, como uma tabela de preços, coloque-os na pasta e explique no
+            <code>SKILL.md</code> quando Claude deve consultá-los. Scripts também podem ser incluídos,
+            mas revise o código e não guarde senhas ou chaves dentro da skill.</p>
           </li>
           <li class="wt-passo">
-            <p><strong>Instruções</strong> — o campo grande, onde você diz <strong>o que fazer</strong>.
-            Escreva como se estivesse treinando um funcionário novo: as regras, o tom, o formato e o
-            que evitar.</p>
-          </li>
-          <li class="wt-passo">
-            <p>Se a habilidade precisar de algum arquivo de apoio (um modelo de documento, uma tabela
-            de preços), use <strong>"+ Adicionar arquivo"</strong>. É opcional — pode pular.</p>
-          </li>
-          <li class="wt-passo">
-            <p>Clique em <strong>"Criar"</strong>. Se quiser guardar para terminar depois, use
-            <strong>"Rascunho"</strong>.</p>
+            <p>Compacte a pasta em ZIP mantendo a própria pasta no nível principal do arquivo. Depois,
+            em <strong>Personalizar → Habilidades → + → Criar skill → Enviar uma skill</strong>,
+            carregue o ZIP e ative-a na lista.</p>
           </li>
         </ol>
+        <p class="uso-nota">
+          <span aria-hidden="true">📘</span> Veja o passo a passo mais recente na
+          <a href="https://support.claude.com/en/articles/12512198-how-to-create-custom-skills" target="_blank" rel="noopener noreferrer">documentação oficial para criar skills</a>.
+        </p>
 
         <h3 class="guia-sub">Exemplo completo: uma habilidade de resposta a clientes</h3>
         <p class="guia-intro">
@@ -570,7 +600,7 @@
 
         <p class="uso-nota">
           <span aria-hidden="true">🔧</span> <strong>Não ficou como você queria?</strong> Volte em
-          Configurações → Habilidades, abra a habilidade e edite as instruções. Ajustar depois de
+          Personalizar → Habilidades, abra a habilidade e edite as instruções. Ajustar depois de
           testar é o normal — ninguém acerta tudo de primeira.
         </p>
       </div>
@@ -582,15 +612,21 @@
         <div class="guia-faq">
           <details>
             <summary>Preciso pagar para usar as skills?</summary>
-            <p>As skills em si são gratuitas e de código aberto — o que você paga é o seu plano do
-            Claude (há um nível gratuito). Algumas skills usam serviços de terceiros (ex.: uma chave de
-            API do Figma) que podem ter custo próprio; isso está descrito na instalação de cada uma.</p>
+            <p>O formato de skills não tem custo, e há recursos disponíveis no plano Free, mas é preciso
+            ativar execução de código e criação de arquivos. As licenças dos repositórios do catálogo
+            variam; confira cada licença antes de reutilizar uma skill. Algumas também dependem de
+            serviços de terceiros que podem cobrar à parte.</p>
           </details>
           <details>
             <summary>Preciso saber programar?</summary>
             <p>Para as skills que rodam em claude.ai ou no Claude Desktop, não. Para as que rodam no
             Claude Code, ajuda saber usar o terminal, mas a maior parte da instalação é copiar e colar
             um comando pronto — o catálogo já te dá o comando exato.</p>
+          </details>
+          <details>
+            <summary>É seguro instalar qualquer skill que encontrei?</summary>
+            <p>Revise as instruções, scripts, licença e acessos externos antes de ativar uma skill de
+            terceiros. Nunca coloque senhas ou chaves de API dentro dos arquivos dela.</p>
           </details>
           <details>
             <summary>Funciona no Windows?</summary>
